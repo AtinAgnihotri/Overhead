@@ -49,11 +49,29 @@ struct AddExpenseView: View {
                     }
                 }
             }.navigationBarTitle("Add Expanse")
+            .alert(isPresented: $showingAlert) {
+                    Alert(title: Text(alertTitle), message: Text(alertMsg), dismissButton: .default(Text("OK")))
+            }
         }.transition(.scale)
     }
     
+    func showError(alertTitle: String, alertMsg: String) {
+        self.alertTitle = alertTitle
+        self.alertMsg = alertMsg
+        self.showingAlert = true
+    }
     
     func addExpense() {
+        // Input Validations
+        guard expenseName != "" else {
+            showError(alertTitle: "Empty Name", alertMsg: "The name cannot be empty")
+            return
+        }
+        guard let amount = Double(expenseAmount) else {
+            showError(alertTitle: "Invalid Amount", alertMsg: "Please enter a valid amount")
+            return
+        }
+        
         addNewExpenseItem(amount)
         dismissView()
     }
