@@ -20,6 +20,8 @@
 		856679972688D336007A731B /* StringInterpolationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679962688D336007A731B /* StringInterpolationExtensions.swift */; };
 		8566799B2688D3A0007A731B /* ExpenseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566799A2688D3A0007A731B /* ExpenseItem.swift */; };
 		8566799D2688D46A007A731B /* ExpenseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566799C2688D46A007A731B /* ExpenseManager.swift */; };
+		8566799F2688D4ED007A731B /* AddItemImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566799E2688D4ED007A731B /* AddItemImage.swift */; };
+		856679A12688DD08007A731B /* CenteredFormButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679A02688DD08007A731B /* CenteredFormButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		856679962688D336007A731B /* StringInterpolationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringInterpolationExtensions.swift; sourceTree = "<group>"; };
 		8566799A2688D3A0007A731B /* ExpenseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseItem.swift; sourceTree = "<group>"; };
 		8566799C2688D46A007A731B /* ExpenseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseManager.swift; sourceTree = "<group>"; };
+		8566799E2688D4ED007A731B /* AddItemImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemImage.swift; sourceTree = "<group>"; };
+		856679A02688DD08007A731B /* CenteredFormButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredFormButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				856679602688CE79007A731B /* ContentView.swift */,
+				8566799E2688D4ED007A731B /* AddItemImage.swift */,
+				856679A02688DD08007A731B /* CenteredFormButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -318,6 +324,8 @@
 				8566799B2688D3A0007A731B /* ExpenseItem.swift in Sources */,
 				8566799D2688D46A007A731B /* ExpenseManager.swift in Sources */,
 				8566795F2688CE79007A731B /* ExpenseTrackingAppApp.swift in Sources */,
+				856679A12688DD08007A731B /* CenteredFormButton.swift in Sources */,
+				8566799F2688D4ED007A731B /* AddItemImage.swift in Sources */,
 				856679972688D336007A731B /* StringInterpolationExtensions.swift in Sources */,
 				856679952688D177007A731B /* CustomViewModifiers.swift in Sources */,
 				8566796B2688CE81007A731B /* ExpenseTrackingApp.xcdatamodeld in Sources */,
