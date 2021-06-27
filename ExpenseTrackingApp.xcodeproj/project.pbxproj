@@ -16,6 +16,7 @@
 		856679762688CE82007A731B /* ExpenseTrackingAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679752688CE82007A731B /* ExpenseTrackingAppTests.swift */; };
 		856679812688CE82007A731B /* ExpenseTrackingAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679802688CE82007A731B /* ExpenseTrackingAppUITests.swift */; };
 		856679932688CFF3007A731B /* UIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679922688CFF3007A731B /* UIApplicationExtensions.swift */; };
+		856679952688D177007A731B /* CustomViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679942688D176007A731B /* CustomViewModifiers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		856679802688CE82007A731B /* ExpenseTrackingAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackingAppUITests.swift; sourceTree = "<group>"; };
 		856679822688CE82007A731B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		856679922688CFF3007A731B /* UIApplicationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtensions.swift; sourceTree = "<group>"; };
+		856679942688D176007A731B /* CustomViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewModifiers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				856679922688CFF3007A731B /* UIApplicationExtensions.swift */,
+				856679942688D176007A731B /* CustomViewModifiers.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				856679932688CFF3007A731B /* UIApplicationExtensions.swift in Sources */,
 				856679612688CE79007A731B /* ContentView.swift in Sources */,
 				8566795F2688CE79007A731B /* ExpenseTrackingAppApp.swift in Sources */,
+				856679952688D177007A731B /* CustomViewModifiers.swift in Sources */,
 				8566796B2688CE81007A731B /* ExpenseTrackingApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
