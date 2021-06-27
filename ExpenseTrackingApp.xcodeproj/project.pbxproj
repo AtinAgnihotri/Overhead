@@ -18,6 +18,7 @@
 		856679932688CFF3007A731B /* UIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679922688CFF3007A731B /* UIApplicationExtensions.swift */; };
 		856679952688D177007A731B /* CustomViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679942688D176007A731B /* CustomViewModifiers.swift */; };
 		856679972688D336007A731B /* StringInterpolationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679962688D336007A731B /* StringInterpolationExtensions.swift */; };
+		8566799B2688D3A0007A731B /* ExpenseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566799A2688D3A0007A731B /* ExpenseItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		856679922688CFF3007A731B /* UIApplicationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtensions.swift; sourceTree = "<group>"; };
 		856679942688D176007A731B /* CustomViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewModifiers.swift; sourceTree = "<group>"; };
 		856679962688D336007A731B /* StringInterpolationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringInterpolationExtensions.swift; sourceTree = "<group>"; };
+		8566799A2688D3A0007A731B /* ExpenseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 		856679902688CFCB007A731B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8566799A2688D3A0007A731B /* ExpenseItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				856679682688CE81007A731B /* Persistence.swift in Sources */,
 				856679932688CFF3007A731B /* UIApplicationExtensions.swift in Sources */,
 				856679612688CE79007A731B /* ContentView.swift in Sources */,
+				8566799B2688D3A0007A731B /* ExpenseItem.swift in Sources */,
 				8566795F2688CE79007A731B /* ExpenseTrackingAppApp.swift in Sources */,
 				856679972688D336007A731B /* StringInterpolationExtensions.swift in Sources */,
 				856679952688D177007A731B /* CustomViewModifiers.swift in Sources */,
