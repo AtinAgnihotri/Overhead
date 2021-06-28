@@ -8,6 +8,14 @@
 import SwiftUI
 import CoreData
 
+enum ActiveSheet: Identifiable {
+    case add_expense, view_expense
+    
+    var id: Int {
+        hashValue
+    }
+}
+
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
