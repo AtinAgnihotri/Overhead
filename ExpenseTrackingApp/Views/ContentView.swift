@@ -24,22 +24,50 @@ struct ContentView: View {
         animation: .default)
     private var items: FetchedResults<Item>
 
+    @ObservedObject var expenseManager = ExpenseManager.getInstance()
+    @State var activeSheet: ActiveSheet?
+    @State var currentExpense = ExpenseItem(name: "Expense Name", amount: 0, type: "Personal")
+    
     var body: some View {
-        List {
-            ForEach(items) { item in
-                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-            }
-            .onDelete(perform: deleteItems)
-        }
-        .toolbar {
-            #if os(iOS)
-            EditButton()
-            #endif
+        /* Workaround for weird iOS 14 bug whereby when first item is added in the list, it will pass the prev value of currentExpense to DetailedExpenseView(currentExpense)
+        */
+        let localExpense = currentExpense
+        return NavigationView {
+            List {
+                ForEach(expenseManager.expenseList) { expenseItem in
+                    Button( action: {
+                        showExpenseDetails(currentExpense: expenseItem)
+                    }, label: { ExpenseListItem(expenseItem) })
+                }.onDelete(perform: removeItems)
 
-            Button(action: addItem) {
-                Label("Add Item", systemImage: "plus")
+            }
+            .navigationBarTitle("Expense Tracker")
+            .navigationBarItems(leading: EditButton(),
+                                trailing: Button(action: addItem) {
+                                    AddItemImage()
+            })
+            
+        }.sheet(item: $activeSheet) { item in
+            switch item {
+                case .add_expense:
+                    AddExpenseView()
+                case .view_expense:
+                    DetailedExpenseView(localExpense)
             }
         }
+    }
+    
+    func removeItems(at offset: IndexSet) {
+        expenseManager.expenseList.remove(atOffsets: offset)
+    }
+    
+    func addItem() {
+        activeSheet = .add_expense
+    }
+    
+    func showExpenseDetails(currentExpense: ExpenseItem) {
+        self.currentExpense = currentExpense
+        activeSheet = .view_expense
     }
 }
 
