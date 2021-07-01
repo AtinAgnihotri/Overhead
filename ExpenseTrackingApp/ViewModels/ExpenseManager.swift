@@ -6,9 +6,12 @@
 //
 
 import Foundation
+import CoreData
 
 class ExpenseManager: ObservableObject {
     static private var shared = ExpenseManager()
+    
+    private static let moc = PersistenceController.viewContext
     
     @Published var expenseList = [ExpenseItem]() {
         didSet {
@@ -28,6 +31,22 @@ class ExpenseManager: ObservableObject {
             }
         }
         self.expenseList = [ExpenseItem]()
+    }
+    
+    static func saveExpenseItemToDataModel(expenseItem : ExpenseItem) {
+        var expense = CDExpenseItem(context: moc)
+        expense.name = expenseItem.name
+        expense.type = expenseItem.type
+        expense.id = UUID()
+        expense.date = Date()
+        expense.amount = NSDecimalNumber(decimal: Decimal(expenseItem.amount))
+        saveContext()
+    }
+    
+    static func saveContext() {
+        if moc.hasChanges {
+            try? moc.save()
+        }
     }
     
     static func getInstance() -> ExpenseManager {
