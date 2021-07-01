@@ -20,9 +20,9 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var expenseItems: FetchedResults<CDExpenseItem>
 
     @ObservedObject var expenseManager = ExpenseManager.getInstance()
     @State var activeSheet: ActiveSheet?
