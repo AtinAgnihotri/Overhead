@@ -17,7 +17,14 @@ class ExpenseManager: ObservableObject {
     
     
     func deleteExpenses(at offset: IndexSet) {
-
+        offset.forEach { index in
+            let id = expenseList[index].expenseItem.objectID
+            guard let toBeDeleted = PersistenceController.shared.getExpenseByID(id: id) else { return }
+            PersistenceController.viewContext.delete(toBeDeleted)
+            saveContext()
+        }
+        expenseList.remove(atOffsets: offset)
+        getAllExpenses()
     }
     
     func getAllExpenses() {
@@ -53,4 +60,6 @@ class ExpenseManager: ObservableObject {
     static func getInstance() -> ExpenseManager {
         return shared
     }
+    
+    // Once we send in the CDExpenseItem, if we change it in detail view, and then save, that will do the update operation
 }

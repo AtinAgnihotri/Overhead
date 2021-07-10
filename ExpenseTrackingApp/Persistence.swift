@@ -60,6 +60,15 @@ struct PersistenceController {
         })
     }
     
+    func getExpenseByID(id: NSManagedObjectID) -> CDExpenseItem? {
+        do {
+            return try PersistenceController.viewContext.existingObject(with: id) as? CDExpenseItem
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+    
     func getAllExpenses() -> [CDExpenseItem] {
         let request: NSFetchRequest<CDExpenseItem> = CDExpenseItem.fetchRequest()
         do {
