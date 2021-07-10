@@ -26,7 +26,7 @@ struct ContentView: View {
 
     @ObservedObject var expenseManager = ExpenseManager.getInstance()
     @State var activeSheet: ActiveSheet?
-    @State var currentExpense = ExpenseItem(name: "Expense Name", amount: 0, type: "Personal")
+    @State var currentExpense : CDExpenseItem?
     
     var body: some View {
         /* Workaround for weird iOS 14 bug whereby when first item is added in the list, it will pass the prev value of currentExpense to DetailedExpenseView(currentExpense)
@@ -34,10 +34,10 @@ struct ContentView: View {
         let localExpense = currentExpense
         return NavigationView {
             List {
-                ForEach(expenseManager.expenseList) { expenseItem in
+                ForEach(expenseManager.expenseList, id:\.id) { expenseItemVM in
                     Button( action: {
-                        showExpenseDetails(currentExpense: expenseItem)
-                    }, label: { ExpenseListItem(expenseItem) })
+                        showExpenseDetails(currentExpense: expenseItemVM.expenseItem)
+                    }, label: { ExpenseListItem(expenseItemVM) })
                 }.onDelete(perform: removeItems)
 
             }
@@ -58,14 +58,14 @@ struct ContentView: View {
     }
     
     func removeItems(at offset: IndexSet) {
-        expenseManager.expenseList.remove(atOffsets: offset)
+        expenseManager.deleteExpenses(at: offset)
     }
     
     func addItem() {
         activeSheet = .add_expense
     }
     
-    func showExpenseDetails(currentExpense: ExpenseItem) {
+    func showExpenseDetails(currentExpense: CDExpenseItem) {
         self.currentExpense = currentExpense
         activeSheet = .view_expense
     }

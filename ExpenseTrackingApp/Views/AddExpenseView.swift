@@ -72,14 +72,10 @@ struct AddExpenseView: View {
             return
         }
         
-        addNewExpenseItem(amount)
+        expenseManager.saveExpense(name: expenseName, type: expenseType, amount: amount)
         dismissView()
     }
     
-    func addNewExpenseItem(_ amount: Double) {
-        let expense = ExpenseItem(name: expenseName, amount: amount, type: expenseType)
-        expenseManager.expenseList.append(expense)
-    }
     
     func dismissView() {
         self.presentationMode.wrappedValue.dismiss()

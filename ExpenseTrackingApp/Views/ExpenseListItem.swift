@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ExpenseListItem: View {
     var currecySymbol: String = "$"
-    var expenseItem: ExpenseItem
+    var expenseItem: ExpenseItemViewModel
     
-    init(_ expenseItem: ExpenseItem) {
+    init(_ expenseItem: ExpenseItemViewModel) {
         self.expenseItem = expenseItem
     }
     
@@ -33,8 +33,8 @@ struct ExpenseListItem: View {
     }
 }
 
-struct ExpenseDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        ExpenseListItem( ExpenseItem(name: "Test Expense", amount: 20, type: "Business"))
-    }
-}
+//struct ExpenseDetailsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ExpenseListItem( ExpenseItem(name: "Test Expense", amount: 20, type: "Business"))
+//    }
+//}

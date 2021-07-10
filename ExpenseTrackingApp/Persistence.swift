@@ -19,7 +19,6 @@ struct PersistenceController {
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
             let newItem = CDExpenseItem(context: viewContext)
-            newItem.id = UUID()
             newItem.name = ""
             newItem.type = ""
             newItem.amount = NSDecimalNumber(value: 0)
@@ -59,5 +58,15 @@ struct PersistenceController {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+    }
+    
+    func getAllExpenses() -> [CDExpenseItem] {
+        let request: NSFetchRequest<CDExpenseItem> = CDExpenseItem.fetchRequest()
+        do {
+            return try PersistenceController.viewContext.fetch(request)
+        } catch {
+            print(error.localizedDescription)
+        }
+        return [CDExpenseItem]()
     }
 }

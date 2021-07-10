@@ -11,13 +11,18 @@ struct DetailedExpenseView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
-    var expense: ExpenseItem
+    var expense: ExpenseItemViewModel
     var formattedDate: String {
         "Date: \(formatDate: expense.date)"
     }
     
-    init(_ expenseItem: ExpenseItem) {
-        self.expense = expenseItem
+    init(_ expenseItem: CDExpenseItem?) {
+        guard let expenseItem = expenseItem else {
+            self.expense = ExpenseItemViewModel(expenseItem: CDExpenseItem())
+            presentationMode.wrappedValue.dismiss()
+            return
+        }
+        self.expense = ExpenseItemViewModel(expenseItem: expenseItem)
     }
     
     var body: some View {
@@ -38,8 +43,8 @@ struct DetailedExpenseView: View {
     }
 }
 
-struct DetailedExpenseView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailedExpenseView(ExpenseItem(name: "Expense name", amount: 20, type: "Personal"))
-    }
-}
+//struct DetailedExpenseView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DetailedExpenseView(ExpenseItem(name: "Expense name", amount: 20, type: "Personal"))
+//    }
+//}

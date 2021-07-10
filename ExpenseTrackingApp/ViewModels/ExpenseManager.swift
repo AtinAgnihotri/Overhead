@@ -11,41 +11,42 @@ import CoreData
 class ExpenseManager: ObservableObject {
     static private var shared = ExpenseManager()
     
-    private static let moc = PersistenceController.viewContext
+//    private static let moc = PersistenceController.viewContext
     
-    @Published var expenseList = [ExpenseItem]() {
-        didSet {
-            let encoder = JSONEncoder()
-            if let data = try? encoder.encode(expenseList) {
-                UserDefaults.standard.set(data, forKey: "ExpenseItems")
-            }
-        }
+    @Published var expenseList = [ExpenseItemViewModel]()
+    
+    
+    func deleteExpenses(at offset: IndexSet) {
+
+    }
+    
+    func getAllExpenses() {
+        expenseList = PersistenceController.shared.getAllExpenses().map(ExpenseItemViewModel.init)
+    }
+    
+    func saveExpense(name: String, type: String, amount: Double) {
+        let expense = CDExpenseItem(context: PersistenceController.viewContext)
+        expense.name = name
+        expense.type = type
+        expense.date = Date()
+        expense.amount = NSDecimalNumber(decimal: Decimal(amount))
+        saveContext()
+        getAllExpenses()
     }
     
     private init() {
-        if let expenseData = UserDefaults.standard.data(forKey: "ExpenseItems") {
-            let decoder = JSONDecoder()
-            if let expenseItems = try? decoder.decode([ExpenseItem].self, from: expenseData ) {
-                self.expenseList = expenseItems
-                return
+        // Get items from DataModel on startup
+        getAllExpenses()
+    }
+    
+    func saveContext() {
+        if PersistenceController.viewContext.hasChanges {
+            do {
+                try PersistenceController.viewContext.save()
+            } catch {
+                PersistenceController.viewContext.rollback()
+                print(error.localizedDescription)
             }
-        }
-        self.expenseList = [ExpenseItem]()
-    }
-    
-    static func saveExpenseItemToDataModel(expenseItem : ExpenseItem) {
-        var expense = CDExpenseItem(context: moc)
-        expense.name = expenseItem.name
-        expense.type = expenseItem.type
-        expense.id = UUID()
-        expense.date = Date()
-        expense.amount = NSDecimalNumber(decimal: Decimal(expenseItem.amount))
-        saveContext()
-    }
-    
-    static func saveContext() {
-        if moc.hasChanges {
-            try? moc.save()
         }
     }
     
