@@ -19,12 +19,7 @@ enum ActiveSheet: Identifiable {
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
-    @FetchRequest(
-        sortDescriptors: [],
-        animation: .default)
-    private var expenseItems: FetchedResults<CDExpenseItem>
-
-    @ObservedObject var expenseManager = ExpenseManager.getInstance()
+    @ObservedObject var expenseListVM = ExpenseListViewModel.getInstance()
     @State var activeSheet: ActiveSheet?
     @State var currentExpense : CDExpenseItem?
     
@@ -34,7 +29,7 @@ struct ContentView: View {
         let localExpense = currentExpense
         return NavigationView {
             List {
-                ForEach(expenseManager.expenseList, id:\.id) { expenseItemVM in
+                ForEach(expenseListVM.expenseList, id:\.id) { expenseItemVM in
                     Button( action: {
                         showExpenseDetails(currentExpense: expenseItemVM.expenseItem)
                     }, label: { ExpenseListItem(expenseItemVM) })
@@ -58,7 +53,7 @@ struct ContentView: View {
     }
     
     func removeItems(at offset: IndexSet) {
-        expenseManager.deleteExpenses(at: offset)
+        expenseListVM.deleteExpenses(at: offset)
     }
     
     func addItem() {

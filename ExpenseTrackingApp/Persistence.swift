@@ -78,4 +78,33 @@ struct PersistenceController {
         }
         return [CDExpenseItem]()
     }
+    
+    
+    func saveContext() {
+        if PersistenceController.viewContext.hasChanges {
+            do {
+                try PersistenceController.viewContext.save()
+            } catch {
+                PersistenceController.viewContext.rollback()
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func saveExpense(name: String, type: String, amount: Double) {
+        let expense = CDExpenseItem(context: PersistenceController.viewContext)
+        expense.name = name
+        expense.type = type
+        expense.date = Date()
+        expense.amount = NSDecimalNumber(decimal: Decimal(amount))
+        saveContext()
+    }
+    
+    func deleteExpense(id: NSManagedObjectID) {
+        guard let toBeDeleted = getExpenseByID(id: id) else { return }
+        PersistenceController.viewContext.delete(toBeDeleted)
+        saveContext()
+    }
+    
+    // Once we send in the CDExpenseItem, if we change it in detail view, and then save, that will do the update operation
 }

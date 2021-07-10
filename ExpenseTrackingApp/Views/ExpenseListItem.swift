@@ -33,8 +33,13 @@ struct ExpenseListItem: View {
     }
 }
 
-//struct ExpenseDetailsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ExpenseListItem( ExpenseItem(name: "Test Expense", amount: 20, type: "Business"))
-//    }
-//}
+struct ExpenseDetailsView_Previews: PreviewProvider {
+    static var previews: some View {
+        let expense = CDExpenseItem(context: PersistenceController.viewContext)
+        expense.name = "Test Expense"
+        expense.amount = 1.23
+        expense.date = Date()
+        expense.type = "Personal"
+        return ExpenseListItem(ExpenseItemViewModel(expenseItem: expense))
+    }
+}

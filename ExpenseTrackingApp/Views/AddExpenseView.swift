@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddExpenseView: View {
-    @ObservedObject var expenseManager = ExpenseManager.getInstance()
+    @ObservedObject var expenseListVM = ExpenseListViewModel.getInstance()
     let expenseTypes = ["Personal", "Business"]
     
     @State private var expenseAmount = ""
@@ -72,7 +72,7 @@ struct AddExpenseView: View {
             return
         }
         
-        expenseManager.saveExpense(name: expenseName, type: expenseType, amount: amount)
+        expenseListVM.saveExpense(name: expenseName, type: expenseType, amount: amount)
         dismissView()
     }
     

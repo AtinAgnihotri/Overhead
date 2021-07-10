@@ -9,7 +9,11 @@ import Foundation
 import CoreData
 
 struct ExpenseItemViewModel: Equatable {
-    let expenseItem : CDExpenseItem
+    let expenseItem: CDExpenseItem
+    
+    init(expenseItem: CDExpenseItem) {
+        self.expenseItem = expenseItem
+    }
     
     var name: String {
         expenseItem.name ?? "Unknown Name"
