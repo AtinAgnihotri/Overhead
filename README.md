@@ -13,6 +13,6 @@ An Expense tracking app made with SwiftUI in MVVM pattern
 <img src="ExpenseTrackingAppScreenshots/expense_tracking_view_expense.gif" alt="View Expense" width=120 height=255>
 
 ## Data Persistence
-Through Codable and UserDefaults
+Through Core Data
 
 <img src="ExpenseTrackingAppScreenshots/expense_tracking_data_persistence.gif" alt="Data Persistence" width=120 height=255>
