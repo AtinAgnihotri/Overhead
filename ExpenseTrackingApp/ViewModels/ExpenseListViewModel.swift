@@ -35,13 +35,10 @@ class ExpenseListViewModel: ObservableObject {
     }
     
     func getPieChartData() -> Dictionary<String, Double> {
-        var total = 0.0
         var pieChartData = [String: Double]()
         for expense in expenseList {
             let type = expense.type
             let amount = expense.amount
-            
-            total += amount
             
             if pieChartData.keys.contains(type) {
                 pieChartData[type]! += amount
@@ -49,12 +46,6 @@ class ExpenseListViewModel: ObservableObject {
                 pieChartData[type] = amount
             }
         }
-        
-        for type in pieChartData.keys {
-            pieChartData[type] = pieChartData[type]! / total
-        }
-        
-        print(pieChartData)
         
         return pieChartData
     }

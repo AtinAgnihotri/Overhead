@@ -36,53 +36,90 @@ struct PieChartView: View {
     @State var lastDegree = 0.0
     @State var count = 0
     
+    @State var activeIndex = -1
+    
+    init(chartData: Dictionary<String, Double>) {
+        let total = Array(chartData.values).reduce(0, +)
+        var percentageData = chartData
+        for key in percentageData.keys {
+            percentageData[key] = percentageData[key]! / total
+        }
+        self.chartData = percentageData
+    }
+    
     var body: some View {
         ZStack {
             ForEach(dataKeys, id:\.self) { key in
                 ZStack {
                     PieceOfPie(startDegree: getStartDegree(key),
-                               endDegree: getEndDegree(key))
+                               endDegree: getStartDegree(key) + getEndDegree(key))
                         .foregroundColor(TypeManager.shared.colorType(key))
+                        .scaleEffect(self.activeIndex == dataKeys.firstIndex(of: key) ? 1.03 : 1)
+                        .onHover(perform: { hovering in
+                            if hovering {
+                                self.activeIndex = dataKeys.firstIndex(of: key)!
+                            } else {
+                                self.activeIndex = -1
+                            }
+                        })
+                        
+                    GeometryReader { geo in
+                        Text("\(key): \(getRoundedPercentage(key), specifier: "%g")%")
+                            .font(.caption)
+                            .foregroundColor(.primary)
+                            .position(getLabelCoordinate(in: geo.size,
+                                                         for: getStartDegree(key) + getEndDegree(key)/2))
+                    }
                 }
             }
-        }
+        }.shadow(radius: 5)
+    }
+    
+    func getRoundedPercentage(_ key: String) -> Double {
+        var value = chartData[key]!
+        value *= 100
+        value = round(value)
+        return value
+    }
+    
+    func getAlignment(_ key: String) -> Alignment {
+        print("\(key), \(getStartDegree(key)), \(getEndDegree(key))")
+        if key == "Personal" { return .leading }
+        else if key == "Business" { return .trailing }
+        else { return .center }
+    }
+    
+    func getLabelCoordinate(in geo: CGSize, for degree: Double) -> CGPoint {
+        let center = CGPoint(x: geo.width / 2, y: geo.height / 2)
+        let radius = geo.width / 4
+        let yCoordinate = radius * sin(CGFloat(degree) * (CGFloat.pi/180))
+        let xCoordinate = radius * cos(CGFloat(degree) * (CGFloat.pi/180))
+        return CGPoint(x: center.x + xCoordinate, y: center.y + yCoordinate)
     }
     
     func getStartDegree(_ key: String) -> Double {
-        getStartDegree(dataKeys.firstIndex(of: key)!)
-    }
-    
-    func getStartDegree(_ index: Int) -> Double {
+        let index = dataKeys.firstIndex(of: key)!
         if index == 0 { return 0 }
         else  {
-            return chartData[dataKeys[index - 1]]! * 360
+            var startDegree = 0.0
+            for indx in 0..<index {
+                startDegree += chartData[dataKeys[indx]]! * 360
+            }
+            return startDegree
         }
     }
     
     func getEndDegree(_ key: String) -> Double {
-        getEndDegree(dataKeys.firstIndex(of: key)!)
-    }
-    
-    func getEndDegree(_ index: Int) -> Double {
-        if index == dataKeys.count - 1 { return 360 }
+        let index = dataKeys.firstIndex(of: key)!
         return chartData[dataKeys[index]]! * 360
     }
-    
-//    func newColor() -> Color {
-//        var newColor = colors.randomElement()
-//        while lastColor == newColor {
-//            newColor = colors.randomElement()
-//        }
-//        lastColor = newColor!
-//        return newColor!
-//    }
 }
 
 struct PieChartView_Previews: PreviewProvider {
-    static let data = ["Personal": 0.5, "Business": 0.5]
+    static let data = ["Personal": 0.4, "Business": 0.3, "Others": 0.3]
     static var previews: some View {
         VStack {
-            PieChartView(chartData: data)
+            PieChartView(chartData: data).padding()
         }
     }
 }

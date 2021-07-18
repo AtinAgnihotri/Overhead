@@ -35,7 +35,7 @@ struct ContentView: View {
                         Section {
                             PieChartView(chartData: chartData)
                                 .scaledToFit()
-                                .frame(width: geo.size.width * 0.4)
+                                .frame(width: geo.size.width * 0.5)
 //                                .frame(height: 150)
                                 .transition(.slide)
                                 .animation(.easeInOut(duration: 1))
