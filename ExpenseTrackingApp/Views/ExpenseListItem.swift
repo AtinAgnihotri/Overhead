@@ -35,7 +35,7 @@ struct ExpenseListItem: View {
 
 struct ExpenseDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        let expense = CDExpenseItem(context: PersistenceController.viewContext)
+        let expense = CDExpenseItem(context: PersistenceManager.viewContext)
         expense.name = "Test Expense"
         expense.amount = 1.23
         expense.date = Date()

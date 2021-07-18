@@ -28,13 +28,31 @@ struct ContentView: View {
         */
         let localExpense = currentExpense
         return NavigationView {
-            List {
-                ForEach(expenseListVM.expenseList, id:\.id) { expenseItemVM in
-                    Button( action: {
-                        showExpenseDetails(currentExpense: expenseItemVM.expenseItem)
-                    }, label: { ExpenseListItem(expenseItemVM) })
-                }.onDelete(perform: removeItems)
+            GeometryReader { geo in
+                VStack {
+                    let chartData = expenseListVM.getPieChartData()
+                    if chartData.count != 0 {
+                        Section {
+                            PieChartView(chartData: chartData)
+                                .scaledToFit()
+                                .frame(width: geo.size.width * 0.4)
+//                                .frame(height: 150)
+                                .transition(.slide)
+                                .animation(.easeInOut(duration: 1))
+                        }
+                    }
+                    
+                    Spacer(minLength: 10)
+                    
+                    List {
+                        ForEach(expenseListVM.expenseList, id:\.id) { expenseItemVM in
+                            Button( action: {
+                                showExpenseDetails(currentExpense: expenseItemVM.expenseItem)
+                            }, label: { ExpenseListItem(expenseItemVM) })
+                        }.onDelete(perform: removeItems)
 
+                    }
+                }
             }
             .navigationBarTitle("Expense Tracker")
             .navigationBarItems(leading: EditButton(),
@@ -69,6 +87,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView().environment(\.managedObjectContext, PersistenceManager.preview.container.viewContext)
     }
 }

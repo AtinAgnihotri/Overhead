@@ -38,16 +38,18 @@ struct PieChartView: View {
     
     var body: some View {
         ZStack {
-//            ForEach(dataKeys, id:\.self) { key in
-            ForEach(0..<dataKeys.count) { index in
+            ForEach(dataKeys, id:\.self) { key in
                 ZStack {
-                    PieceOfPie(startDegree: getStartDegree(index),
-                               endDegree: getEndDegree(index))
-                        .foregroundColor(newColor())
-//                    Text("S: \(getStartDegree(index), specifier: "%.2f"), E: \(getEndDegree(index), specifier: "%.2f")")
+                    PieceOfPie(startDegree: getStartDegree(key),
+                               endDegree: getEndDegree(key))
+                        .foregroundColor(TypeManager.shared.colorType(key))
                 }
             }
         }
+    }
+    
+    func getStartDegree(_ key: String) -> Double {
+        getStartDegree(dataKeys.firstIndex(of: key)!)
     }
     
     func getStartDegree(_ index: Int) -> Double {
@@ -57,19 +59,23 @@ struct PieChartView: View {
         }
     }
     
+    func getEndDegree(_ key: String) -> Double {
+        getEndDegree(dataKeys.firstIndex(of: key)!)
+    }
+    
     func getEndDegree(_ index: Int) -> Double {
         if index == dataKeys.count - 1 { return 360 }
         return chartData[dataKeys[index]]! * 360
     }
     
-    func newColor() -> Color {
-        var newColor = colors.randomElement()
-        while lastColor == newColor {
-            newColor = colors.randomElement()
-        }
-        lastColor = newColor!
-        return newColor!
-    }
+//    func newColor() -> Color {
+//        var newColor = colors.randomElement()
+//        while lastColor == newColor {
+//            newColor = colors.randomElement()
+//        }
+//        lastColor = newColor!
+//        return newColor!
+//    }
 }
 
 struct PieChartView_Previews: PreviewProvider {

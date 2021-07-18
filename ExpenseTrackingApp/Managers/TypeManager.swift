@@ -6,11 +6,20 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct TypeManager {
     static let shared = TypeManager()
     
-    let types = ["Personal", "Business"]
+    let typeData: Dictionary<String, Color> = ["Personal": .red, "Business": .blue]
+    
+    var types: [String] {
+        Array(typeData.keys)
+    }
+    
+    func colorType(_ type: String) -> Color {
+        return typeData[type] ?? .orange
+    }
     
     private init () {
         
