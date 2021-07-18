@@ -7,15 +7,15 @@
 
 import CoreData
 
-struct PersistenceController {
-    static let shared = PersistenceController()
+struct PersistenceManager {
+    static let shared = PersistenceManager()
     
     static var viewContext: NSManagedObjectContext {
         shared.container.viewContext
     }
 
-    static var preview: PersistenceController = {
-        let result = PersistenceController(inMemory: true)
+    static var preview: PersistenceManager = {
+        let result = PersistenceManager(inMemory: true)
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
             let newItem = CDExpenseItem(context: viewContext)
@@ -62,7 +62,7 @@ struct PersistenceController {
     
     func getExpenseByID(id: NSManagedObjectID) -> CDExpenseItem? {
         do {
-            return try PersistenceController.viewContext.existingObject(with: id) as? CDExpenseItem
+            return try PersistenceManager.viewContext.existingObject(with: id) as? CDExpenseItem
         } catch {
             print(error.localizedDescription)
             return nil
@@ -72,7 +72,7 @@ struct PersistenceController {
     func getAllExpenses() -> [CDExpenseItem] {
         let request: NSFetchRequest<CDExpenseItem> = CDExpenseItem.fetchRequest()
         do {
-            return try PersistenceController.viewContext.fetch(request)
+            return try PersistenceManager.viewContext.fetch(request)
         } catch {
             print(error.localizedDescription)
         }
@@ -81,18 +81,18 @@ struct PersistenceController {
     
     
     func saveContext() {
-        if PersistenceController.viewContext.hasChanges {
+        if PersistenceManager.viewContext.hasChanges {
             do {
-                try PersistenceController.viewContext.save()
+                try PersistenceManager.viewContext.save()
             } catch {
-                PersistenceController.viewContext.rollback()
+                PersistenceManager.viewContext.rollback()
                 print(error.localizedDescription)
             }
         }
     }
     
     func saveExpense(name: String, type: String, amount: Double) {
-        let expense = CDExpenseItem(context: PersistenceController.viewContext)
+        let expense = CDExpenseItem(context: PersistenceManager.viewContext)
         expense.name = name
         expense.type = type
         expense.date = Date()
@@ -102,7 +102,7 @@ struct PersistenceController {
     
     func deleteExpense(id: NSManagedObjectID) {
         guard let toBeDeleted = getExpenseByID(id: id) else { return }
-        PersistenceController.viewContext.delete(toBeDeleted)
+        PersistenceManager.viewContext.delete(toBeDeleted)
         saveContext()
     }
     

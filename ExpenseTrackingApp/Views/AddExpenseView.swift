@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddExpenseView: View {
     @ObservedObject var expenseListVM = ExpenseListViewModel.getInstance()
-    let expenseTypes = ["Personal", "Business"]
+    let expenseTypes = TypeManager.shared.types
     
     @State private var expenseAmount = ""
     @State private var expenseName = ""

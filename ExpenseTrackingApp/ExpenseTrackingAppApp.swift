@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct ExpenseTrackingAppApp: App {
-    let persistenceController = PersistenceController.shared
+    let persistenceController = PersistenceManager.shared
 
     var body: some Scene {
         WindowGroup {
