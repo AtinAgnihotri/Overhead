@@ -33,22 +33,14 @@ struct PieChartView: View {
     var dataKeys: [String] {
         Array(chartData.keys)
     }
-    let colors: [Color] = [.red, .blue, .gray, .green, .orange, .pink, .purple, .yellow]
-    let largestCount: Int
-    @State var lastColor: Color = .gray
-    @State var lastDegree = 0.0
-    @State var count = 0
-    @State var activeIndex = -1
+    let centerColor = Color(UIColor.tertiarySystemFill)
     
     init(chartData: Dictionary<String, Double>, legendWidth: CGFloat = 150) {
         total = Array(chartData.values).reduce(0, +)
         var percentageData = chartData
-        var largestCount = 0
         for key in percentageData.keys {
             percentageData[key] = percentageData[key]! / total
-            if key.count > largestCount { largestCount = key.count}
         }
-        self.largestCount = largestCount
         self.chartData = percentageData
         self.legendWidth = legendWidth
     }
@@ -72,8 +64,11 @@ struct PieChartView: View {
                     }
                 }
                 Circle()
-                    .foregroundColor(.primary)
-                    .colorInvert()
+                    .foregroundColor(centerColor)
+                    .background(Color.primary
+                                    .colorInvert()
+                                    .clipShape(Circle())
+                    )
                     .scaleEffect(0.55)
                 Text("$\(total, specifier: "%.2f")")
                     .font(.caption)
