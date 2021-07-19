@@ -49,6 +49,7 @@ struct AddExpenseView: View {
                     }
                 }
             }.navigationBarTitle("Add Expanse")
+            .tertiaryBackground()
             .alert(isPresented: $showingAlert) {
                     Alert(title: Text(alertTitle), message: Text(alertMsg), dismissButton: .default(Text("OK")))
             }

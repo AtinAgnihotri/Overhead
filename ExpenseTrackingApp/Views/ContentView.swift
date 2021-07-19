@@ -32,32 +32,41 @@ struct ContentView: View {
                 VStack {
                     let chartData = expenseListVM.getPieChartData()
                     if chartData.count != 0 {
+                        Spacer(minLength: geo.size.height * 0.02)
                         Section {
-                            PieChartView(chartData: chartData)
-                                .scaledToFit()
-                                .frame(width: geo.size.width * 0.95)
+                            PieChartView(chartData: chartData, legendWidth: 120)
+                                .aspectRatio(contentMode: .fit)
+                                .padding()
+                                .frame(width: geo.size.width * 0.9)
                                 .transition(.asymmetric(insertion: .slide,
                                                         removal: .scale))
                                 .animation(.easeInOut(duration: 1))
-                        }.padding(.vertical)
+                        }
+                        .padding(.vertical)
                     }
-                    
+                    Spacer()
                     List {
                         ForEach(expenseListVM.expenseList, id:\.id) { expenseItemVM in
                             Button( action: {
                                 showExpenseDetails(currentExpense: expenseItemVM.expenseItem)
-                            }, label: { ExpenseListItem(expenseItemVM) })
-                            .padding(.horizontal)
-                        }.onDelete(perform: removeItems)
-
-                    }
+                            }, label: { ExpenseListItem(expenseItemVM)
+                            })
+                            .listRowBackground(Color.secondary)
+                        }
+                        .onDelete(perform: removeItems)
+                    }.clearBackground()
                 }
             }
+            .background(Color(UIColor.tertiarySystemFill))
             .navigationBarTitle("Expense Tracker")
-            .navigationBarItems(leading: EditButton(),
-                                trailing: Button(action: addItem) {
+            .navigationBarItems(trailing: Button(action: addItem) {
                                     AddItemImage()
             })
+            .toolbar {
+               ToolbarItem(placement: .navigationBarLeading) {
+                    EditButton().font(.title)
+               }
+            }
         }.sheet(item: $activeSheet) { item in
             switch item {
                 case .add_expense:

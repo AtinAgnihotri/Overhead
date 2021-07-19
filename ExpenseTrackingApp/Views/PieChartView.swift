@@ -29,6 +29,7 @@ struct PieceOfPie: Shape {
 struct PieChartView: View {
     let chartData: Dictionary<String, Double>
     let total: Double
+    let legendWidth: CGFloat
     var dataKeys: [String] {
         Array(chartData.keys)
     }
@@ -39,7 +40,7 @@ struct PieChartView: View {
     @State var count = 0
     @State var activeIndex = -1
     
-    init(chartData: Dictionary<String, Double>) {
+    init(chartData: Dictionary<String, Double>, legendWidth: CGFloat = 150) {
         total = Array(chartData.values).reduce(0, +)
         var percentageData = chartData
         var largestCount = 0
@@ -49,6 +50,7 @@ struct PieChartView: View {
         }
         self.largestCount = largestCount
         self.chartData = percentageData
+        self.legendWidth = legendWidth
     }
     
     var body: some View {
@@ -95,7 +97,7 @@ struct PieChartView: View {
             .clipShape(RoundedRectangle(cornerRadius: 2))
             .shadow(radius: 5)
             .padding(5)
-            .frame(maxWidth: .infinity, alignment: .trailing)
+            .frame(width: legendWidth, alignment: .trailing)
             
         }
     }

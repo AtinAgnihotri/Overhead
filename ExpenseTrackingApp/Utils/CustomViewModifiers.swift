@@ -18,8 +18,41 @@ struct CenterItemInForm: ViewModifier {
     }
 }
 
+struct TertiaryBackgroundColor: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .onAppear() {
+                UITableView.appearance().backgroundColor = .tertiarySystemFill
+            }
+            .onDisappear() {
+                UITableView.appearance().backgroundColor = .clear
+            }
+    }
+}
+
+struct ClearBackgroundColor: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .onAppear() {
+                UITableView.appearance().backgroundColor = .clear
+            }
+    }
+}
+
 extension View {
     func centerItemInForm() -> some View {
         self.modifier(CenterItemInForm())
     }
+    
+    func tertiaryBackground() -> some View {
+        self.modifier(TertiaryBackgroundColor())
+    }
+    
+    func clearBackground() -> some View {
+        self.modifier(ClearBackgroundColor())
+    }
 }
+
+
+
+

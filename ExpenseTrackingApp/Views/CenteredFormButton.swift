@@ -21,6 +21,7 @@ struct CenteredFormButton: View {
         .background(backgroundColor)
         .foregroundColor(.white)
         .clipShape(RoundedRectangle(cornerRadius: 10))
+        .listRowBackground(Color(UIColor.tertiarySystemFill))
     }
 }
 

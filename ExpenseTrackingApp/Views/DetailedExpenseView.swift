@@ -39,7 +39,7 @@ struct DetailedExpenseView: View {
                 Text(formattedDate)
                     .padding()
             }.navigationBarTitle(expenseVM.name)
-        }
+        }.tertiaryBackground()
     }
     
     func dismissView() {

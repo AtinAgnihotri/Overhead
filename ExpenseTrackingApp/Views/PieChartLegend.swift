@@ -22,10 +22,7 @@ struct PieChartLegend: View {
                 .background(color)
                 .frame(width: 20, height: 20, alignment: .center)
             Text(type)
-//            if spacer {
-//                Spacer()
-//            }
-        }
+        }.frame(alignment: .trailing)
     }
 }
 
