@@ -27,6 +27,7 @@
 		85B2258026A42C9200A698A8 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2257F26A42C9200A698A8 /* PieChartView.swift */; };
 		85B2258226A4466E00A698A8 /* ShadedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2258126A4466E00A698A8 /* ShadedButton.swift */; };
 		85B2258826A4854E00A698A8 /* TypeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2258726A4854E00A698A8 /* TypeManager.swift */; };
+		85E5F46626A531660031B012 /* PieChartLegend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E5F46526A531660031B012 /* PieChartLegend.swift */; };
 		85E7E613269986D100CBEEB0 /* ExpenseItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E7E612269986D100CBEEB0 /* ExpenseItemViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		85B2257F26A42C9200A698A8 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		85B2258126A4466E00A698A8 /* ShadedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadedButton.swift; sourceTree = "<group>"; };
 		85B2258726A4854E00A698A8 /* TypeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeManager.swift; sourceTree = "<group>"; };
+		85E5F46526A531660031B012 /* PieChartLegend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartLegend.swift; sourceTree = "<group>"; };
 		85E7E612269986D100CBEEB0 /* ExpenseItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseItemViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,6 +186,7 @@
 				856679A42688E013007A731B /* ExpenseListItem.swift */,
 				85367B312689871B00B9C1C8 /* DetailedExpenseView.swift */,
 				85B2258126A4466E00A698A8 /* ShadedButton.swift */,
+				85E5F46526A531660031B012 /* PieChartLegend.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				856679682688CE81007A731B /* PersistenceManager.swift in Sources */,
+				85E5F46626A531660031B012 /* PieChartLegend.swift in Sources */,
 				856679932688CFF3007A731B /* UIApplicationExtensions.swift in Sources */,
 				85B2258226A4466E00A698A8 /* ShadedButton.swift in Sources */,
 				856679612688CE79007A731B /* ContentView.swift in Sources */,

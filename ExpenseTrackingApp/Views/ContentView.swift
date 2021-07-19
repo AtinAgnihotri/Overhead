@@ -35,20 +35,19 @@ struct ContentView: View {
                         Section {
                             PieChartView(chartData: chartData)
                                 .scaledToFit()
-                                .frame(width: geo.size.width * 0.5)
-//                                .frame(height: 150)
-                                .transition(.slide)
+                                .frame(width: geo.size.width * 0.95)
+                                .transition(.asymmetric(insertion: .slide,
+                                                        removal: .scale))
                                 .animation(.easeInOut(duration: 1))
-                        }
+                        }.padding(.vertical)
                     }
-                    
-                    Spacer(minLength: 10)
                     
                     List {
                         ForEach(expenseListVM.expenseList, id:\.id) { expenseItemVM in
                             Button( action: {
                                 showExpenseDetails(currentExpense: expenseItemVM.expenseItem)
                             }, label: { ExpenseListItem(expenseItemVM) })
+                            .padding(.horizontal)
                         }.onDelete(perform: removeItems)
 
                     }
@@ -59,7 +58,6 @@ struct ContentView: View {
                                 trailing: Button(action: addItem) {
                                     AddItemImage()
             })
-            
         }.sheet(item: $activeSheet) { item in
             switch item {
                 case .add_expense:

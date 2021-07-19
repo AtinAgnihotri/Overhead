@@ -17,7 +17,7 @@ struct TypeManager {
         Array(typeData.keys)
     }
     
-    func colorType(_ type: String) -> Color {
+    func typeColor(_ type: String) -> Color {
         return typeData[type] ?? .orange
     }
     

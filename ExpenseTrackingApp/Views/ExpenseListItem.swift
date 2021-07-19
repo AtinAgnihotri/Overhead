@@ -20,15 +20,16 @@ struct ExpenseListItem: View {
             VStack (alignment: .leading) {
                 Text(expenseItem.name)
                     .font(.headline)
-                    .padding(.horizontal)
+//                    .padding(.horizontal)
+//                    .foregroundColor(.primary)
                 Text(expenseItem.type)
                     .font(.subheadline)
-                    .padding(.horizontal)
+//                    .padding(.)
             }
             Spacer()
             Text("\(currecySymbol)\(expenseItem.amount, specifier: "%g")")
                 .font(.title)
-                .padding()
+                .padding(.horizontal)
         }
     }
 }

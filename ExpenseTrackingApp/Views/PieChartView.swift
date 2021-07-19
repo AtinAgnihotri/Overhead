@@ -28,51 +28,80 @@ struct PieceOfPie: Shape {
 
 struct PieChartView: View {
     let chartData: Dictionary<String, Double>
+    let total: Double
     var dataKeys: [String] {
         Array(chartData.keys)
     }
     let colors: [Color] = [.red, .blue, .gray, .green, .orange, .pink, .purple, .yellow]
+    let largestCount: Int
     @State var lastColor: Color = .gray
     @State var lastDegree = 0.0
     @State var count = 0
-    
     @State var activeIndex = -1
     
     init(chartData: Dictionary<String, Double>) {
-        let total = Array(chartData.values).reduce(0, +)
+        total = Array(chartData.values).reduce(0, +)
         var percentageData = chartData
+        var largestCount = 0
         for key in percentageData.keys {
             percentageData[key] = percentageData[key]! / total
+            if key.count > largestCount { largestCount = key.count}
         }
+        self.largestCount = largestCount
         self.chartData = percentageData
     }
     
     var body: some View {
-        ZStack {
-            ForEach(dataKeys, id:\.self) { key in
-                ZStack {
-                    PieceOfPie(startDegree: getStartDegree(key),
-                               endDegree: getStartDegree(key) + getEndDegree(key))
-                        .foregroundColor(TypeManager.shared.colorType(key))
-                        .scaleEffect(self.activeIndex == dataKeys.firstIndex(of: key) ? 1.03 : 1)
-                        .onHover(perform: { hovering in
-                            if hovering {
-                                self.activeIndex = dataKeys.firstIndex(of: key)!
-                            } else {
-                                self.activeIndex = -1
-                            }
-                        })
-                        
-                    GeometryReader { geo in
-                        Text("\(key): \(getRoundedPercentage(key), specifier: "%g")%")
-                            .font(.caption)
-                            .foregroundColor(.primary)
-                            .position(getLabelCoordinate(in: geo.size,
-                                                         for: getStartDegree(key) + getEndDegree(key)/2))
+        HStack {
+            ZStack {
+                ForEach(dataKeys, id:\.self) { key in
+                    ZStack {
+                        PieceOfPie(startDegree: getStartDegree(key),
+                                   endDegree: getStartDegree(key) + getEndDegree(key))
+                            .foregroundColor(TypeManager.shared.typeColor(key))
+                            
+                        GeometryReader { geo in
+                            Text("\(getRoundedPercentage(key), specifier: "%g")%")
+                                .font(.caption)
+                                .foregroundColor(.white)
+                                .position(getLabelCoordinate(in: geo.size,
+                                                             for: getStartDegree(key) + getEndDegree(key)/2))
+                        }
                     }
                 }
+                Circle()
+                    .foregroundColor(.primary)
+                    .colorInvert()
+                    .scaleEffect(0.55)
+                Text("$\(total, specifier: "%.2f")")
+                    .font(.caption)
+                    .foregroundColor(.primary)
+                
+            }.shadow(radius: 5)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            VStack {
+                    Text("Legend")
+                        .font(.headline)
+                        .frame(alignment: .leading)
+                    ForEach(dataKeys, id:\.self) { key in
+                        HStack {
+                            PieChartLegend(type: key).frame( alignment: .leading)
+                            Spacer(minLength: 0.1)
+                        }
+                    }.frame(alignment: .leading)
             }
-        }.shadow(radius: 5)
+            .padding(5)
+            .border(Color.primary, width: 1)
+            .clipShape(RoundedRectangle(cornerRadius: 2))
+            .shadow(radius: 5)
+            .padding(5)
+            .frame(maxWidth: .infinity, alignment: .trailing)
+            
+        }
+    }
+    
+    func getTotal() -> Double {
+        Array(chartData.values).reduce(0, +)
     }
     
     func getRoundedPercentage(_ key: String) -> Double {
@@ -91,7 +120,7 @@ struct PieChartView: View {
     
     func getLabelCoordinate(in geo: CGSize, for degree: Double) -> CGPoint {
         let center = CGPoint(x: geo.width / 2, y: geo.height / 2)
-        let radius = geo.width / 4
+        let radius = geo.width / 2.6
         let yCoordinate = radius * sin(CGFloat(degree) * (CGFloat.pi/180))
         let xCoordinate = radius * cos(CGFloat(degree) * (CGFloat.pi/180))
         return CGPoint(x: center.x + xCoordinate, y: center.y + yCoordinate)
@@ -116,10 +145,10 @@ struct PieChartView: View {
 }
 
 struct PieChartView_Previews: PreviewProvider {
-    static let data = ["Personal": 0.4, "Business": 0.3, "Others": 0.3]
+    static let data = ["Personal": 400.0, "Business": 300.0, "Others": 300.0]
     static var previews: some View {
         VStack {
-            PieChartView(chartData: data).padding()
+            PieChartView(chartData: data)
         }
     }
 }
