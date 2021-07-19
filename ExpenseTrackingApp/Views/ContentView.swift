@@ -57,7 +57,7 @@ struct ContentView: View {
                     }.clearBackground()
                 }
             }
-            .background(Color(UIColor.tertiarySystemFill))
+            .background(Color(UIColor.tertiarySystemFill).edgesIgnoringSafeArea(.all))
             .navigationBarTitle("Expense Tracker")
             .navigationBarItems(trailing: Button(action: addItem) {
                                     AddItemImage()
