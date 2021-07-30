@@ -62,6 +62,7 @@ struct ContentView: View {
                         }
                         .onDelete(perform: removeItems)
                     }.clearBackground()
+                    .padding(.vertical)
                 }
             }
             .background(Color(UIColor.tertiarySystemFill).edgesIgnoringSafeArea(.all))
@@ -74,7 +75,9 @@ struct ContentView: View {
                     EditButton().font(.title)
                }
             }
-        }.sheet(item: $activeSheet) { item in
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
+        .sheet(item: $activeSheet) { item in
             switch item {
                 case .add_expense:
                     AddExpenseView()
