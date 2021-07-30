@@ -30,14 +30,21 @@ struct ContentView: View {
         return NavigationView {
             GeometryReader { geo in
                 VStack {
-                    let chartData = expenseListVM.getPieChartData()
+                    let chartTuple = expenseListVM.getPieChartData()
+                    let chartData = chartTuple.0
+                    let chartColors = chartTuple.1
+                    let total = chartTuple.2
                     if chartData.count != 0 {
                         Spacer(minLength: geo.size.height * 0.02)
                         Section {
-                            PieChartView(chartData: chartData, legendWidth: 120)
+                            PieChartWithLegend(chartData: chartData,
+                                               legendWidth: 100,
+                                               chartColors: chartColors,
+                                               circlet: true,
+                                               centerText: "$\(total, specifier: "%.2f")")
                                 .aspectRatio(contentMode: .fit)
-                                .padding()
-                                .frame(width: geo.size.width * 0.9)
+                                .padding(.vertical)
+                                .frame(width: geo.size.width * 0.96)
                                 .transition(.asymmetric(insertion: .slide,
                                                         removal: .scale))
                                 .animation(.easeInOut(duration: 1))

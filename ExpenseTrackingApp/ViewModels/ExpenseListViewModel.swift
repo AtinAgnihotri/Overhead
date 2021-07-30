@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import SwiftUI
 
 class ExpenseListViewModel: ObservableObject {
     static private var shared = ExpenseListViewModel()
@@ -34,21 +35,38 @@ class ExpenseListViewModel: ObservableObject {
         getAllExpenses()
     }
     
-    func getPieChartData() -> Dictionary<String, Double> {
+    func getPieChartData() -> (Dictionary<String, Double>, Dictionary<String, Color>, Double) {
         var pieChartData = [String: Double]()
+        var pieChartColors = [String: Color]()
+        var total = 0.0
         for expense in expenseList {
             let type = expense.type
             let amount = expense.amount
+            
+            total += amount
             
             if pieChartData.keys.contains(type) {
                 pieChartData[type]! += amount
             } else {
                 pieChartData[type] = amount
             }
+            
+            if !pieChartColors.keys.contains(type) {
+                pieChartColors[type] = TypeManager.shared.typeColor(type)
+            }
         }
         
-        return pieChartData
+        return (chartData: pieChartData, chartColors: pieChartColors, total: total)
     }
+    
+//    func getPieChartColors() -> [String: Color] {
+//        var pieChartColors = [String: Color]()
+//        for type in getPieChartData().keys {
+//            let color = TypeManager.shared.typeColor(type)
+//            pieChartColors[type] = color
+//        }
+//        return pieChartColors
+//    }
     
     private init() {
         // Get items from DataModel on startup
