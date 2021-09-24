@@ -67,14 +67,21 @@ struct ContentView: View {
             }
             .background(Color(UIColor.tertiarySystemFill).edgesIgnoringSafeArea(.all))
             .navigationBarTitle("Expense Tracker")
-            .navigationBarItems(trailing: Button(action: addItem) {
-                                    AddItemImage()
-            })
-            .toolbar {
-               ToolbarItem(placement: .navigationBarLeading) {
-                    EditButton().font(.title)
-               }
-            }
+            .navigationBarItems(leading: Button(action: {print("Search coming soon")}) {
+                                            Text("Settings")
+                                                .font(.title2)
+                                        },
+                                trailing: HStack {
+                                    Button(action: {print("Search coming soon")}) {
+                                        Image(systemName: "magnifyingglass")
+                                            .font(.title2)
+                                    }
+                                    .padding()
+                                    Button(action: addItem) {
+                                        Image(systemName: "plus.app")
+                                            .font(.title2)
+                                    }
+                                })
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .sheet(item: $activeSheet) { item in
