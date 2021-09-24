@@ -6,17 +6,19 @@
 //
 
 import SwiftUI
+import Introspect
+import Combine
 
 struct AddExpenseView: View {
     @ObservedObject var expenseListVM = ExpenseListViewModel.getInstance()
-    let expenseTypes = TypeManager.shared.types
+    @ObservedObject var addExpenseVM = AddExpenseViewModel()
+//    let expenseTypes = TypeManager.shared.types
     
-    @State private var expenseAmount = ""
-    @State private var expenseName = ""
-    @State private var expenseType = "Personal"
     @State private var showingAlert = false
     @State private var alertTitle = ""
     @State private var alertMsg = ""
+    
+    @State private var formAppeared = false
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -26,27 +28,27 @@ struct AddExpenseView: View {
                 Form {
                     Section (header: Text("Name of the expense")
                                 .font(.headline)) {
-                        TextField("Name", text: $expenseName)
+                        TextField("Name", text: $addExpenseVM.name)
+                            .introspectTextField{ textField in
+                                if formAppeared {
+                                    textField.becomeFirstResponder()
+                                    formAppeared.toggle()
+                                }
+                            }
                     }
                     Section (header: Text("Amount spent")
                                 .font(.headline)) {
-                        TextField("Amount", text: $expenseAmount)
+                        TextField("Amount", text: $addExpenseVM.amount)
                             .keyboardType(.decimalPad)
                     }
                     Section (header: Text("Type of Expense")
                                 .font(.headline)) {
-                        Picker ("Type", selection: $expenseType){
-                            ForEach(expenseTypes, id:\.self) {
-                                Text("\($0)")
+                        Picker ("Type", selection: $addExpenseVM.type){
+                            ForEach(addExpenseVM.types, id:\.self) {
+                                Text("\($0.rawValue)")
                             }
                         }.pickerStyle(SegmentedPickerStyle())
                     }
-//                    CenteredFormButton(text: "ADD", backgroundColor: Color.green) {
-//                        addExpense()
-//                    }
-//                    CenteredFormButton(text: "DISMISS", backgroundColor: Color.red) {
-//                        dismissView()
-//                    }
                 }
             }.navigationBarTitle("Add Expanse")
             .navigationBarItems(leading: Button(action: dismissView) {
@@ -61,6 +63,9 @@ struct AddExpenseView: View {
                     Alert(title: Text(alertTitle), message: Text(alertMsg), dismissButton: .default(Text("OK")))
             }
         }.transition(.scale)
+        .onAppear {
+            formAppeared = true
+        }
     }
     
     func showError(alertTitle: String, alertMsg: String) {
@@ -70,18 +75,7 @@ struct AddExpenseView: View {
     }
     
     func addExpense() {
-        // Input Validations
-        guard expenseName != "" else {
-            showError(alertTitle: "Empty Name", alertMsg: "The name cannot be empty")
-            return
-        }
-        guard let amount = Double(expenseAmount) else {
-            showError(alertTitle: "Invalid Amount", alertMsg: "Please enter a valid amount")
-            return
-        }
-        
-        expenseListVM.saveExpense(name: expenseName, type: expenseType, amount: amount)
-        dismissView()
+        addExpenseVM.addExpense(to: expenseListVM, onFail: showError, completion: dismissView)
     }
     
     

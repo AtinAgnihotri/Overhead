@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,9 @@
 		8523AEAE26B4A171006EC205 /* PieceOfPie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8523AEA926B4A171006EC205 /* PieceOfPie.swift */; };
 		8523AEAF26B4A171006EC205 /* PieChartWithLegend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8523AEAA26B4A171006EC205 /* PieChartWithLegend.swift */; };
 		85367B322689871B00B9C1C8 /* DetailedExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85367B312689871B00B9C1C8 /* DetailedExpenseView.swift */; };
+		8554E0E226FE2AC3003945EE /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 8554E0E126FE2AC3003945EE /* Introspect */; };
+		8554E0E526FE30D0003945EE /* AddExpenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8554E0E426FE30D0003945EE /* AddExpenseViewModel.swift */; };
+		8554E0E826FE3251003945EE /* ExpenseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8554E0E726FE3251003945EE /* ExpenseType.swift */; };
 		8566795F2688CE79007A731B /* ExpenseTrackingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566795E2688CE79007A731B /* ExpenseTrackingAppApp.swift */; };
 		856679612688CE79007A731B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679602688CE79007A731B /* ContentView.swift */; };
 		856679632688CE81007A731B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 856679622688CE81007A731B /* Assets.xcassets */; };
@@ -58,6 +61,8 @@
 		8523AEA926B4A171006EC205 /* PieceOfPie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieceOfPie.swift; sourceTree = "<group>"; };
 		8523AEAA26B4A171006EC205 /* PieChartWithLegend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartWithLegend.swift; sourceTree = "<group>"; };
 		85367B312689871B00B9C1C8 /* DetailedExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedExpenseView.swift; sourceTree = "<group>"; };
+		8554E0E426FE30D0003945EE /* AddExpenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseViewModel.swift; sourceTree = "<group>"; };
+		8554E0E726FE3251003945EE /* ExpenseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseType.swift; sourceTree = "<group>"; };
 		8566795B2688CE78007A731B /* ExpenseTrackingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseTrackingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8566795E2688CE79007A731B /* ExpenseTrackingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackingAppApp.swift; sourceTree = "<group>"; };
 		856679602688CE79007A731B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -90,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8554E0E226FE2AC3003945EE /* Introspect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +144,21 @@
 			path = PieCharts;
 			sourceTree = "<group>";
 		};
+		8554E0E326FE2D0A003945EE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8554E0E626FE3226003945EE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8554E0E726FE3251003945EE /* ExpenseType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		856679522688CE78007A731B = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +182,7 @@
 		8566795D2688CE78007A731B /* ExpenseTrackingApp */ = {
 			isa = PBXGroup;
 			children = (
+				8554E0E626FE3226003945EE /* Models */,
 				85B2258626A4851A00A698A8 /* Managers */,
 				856679912688CFD1007A731B /* Utils */,
 				8566798F2688CFC0007A731B /* Views */,
@@ -205,6 +227,7 @@
 			children = (
 				8566799C2688D46A007A731B /* ExpenseListViewModel.swift */,
 				85E7E612269986D100CBEEB0 /* ExpenseItemViewModel.swift */,
+				8554E0E426FE30D0003945EE /* AddExpenseViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -227,6 +250,7 @@
 		856679912688CFD1007A731B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				8554E0E326FE2D0A003945EE /* Extensions */,
 				856679922688CFF3007A731B /* UIApplicationExtensions.swift */,
 				856679942688D176007A731B /* CustomViewModifiers.swift */,
 				856679962688D336007A731B /* StringInterpolationExtensions.swift */,
@@ -259,6 +283,9 @@
 			dependencies = (
 			);
 			name = ExpenseTrackingApp;
+			packageProductDependencies = (
+				8554E0E126FE2AC3003945EE /* Introspect */,
+			);
 			productName = ExpenseTrackingApp;
 			productReference = 8566795B2688CE78007A731B /* ExpenseTrackingApp.app */;
 			productType = "com.apple.product-type.application";
@@ -330,6 +357,9 @@
 				Base,
 			);
 			mainGroup = 856679522688CE78007A731B;
+			packageReferences = (
+				8554E0E026FE2AC3003945EE /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+			);
 			productRefGroup = 8566795C2688CE78007A731B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -373,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				856679682688CE81007A731B /* PersistenceManager.swift in Sources */,
+				8554E0E526FE30D0003945EE /* AddExpenseViewModel.swift in Sources */,
 				856679932688CFF3007A731B /* UIApplicationExtensions.swift in Sources */,
 				8523AEAD26B4A171006EC205 /* PieChart.swift in Sources */,
 				8523AEAE26B4A171006EC205 /* PieceOfPie.swift in Sources */,
@@ -391,6 +422,7 @@
 				85B2258826A4854E00A698A8 /* TypeManager.swift in Sources */,
 				856679952688D177007A731B /* CustomViewModifiers.swift in Sources */,
 				8566796B2688CE81007A731B /* ExpenseTrackingApp.xcdatamodeld in Sources */,
+				8554E0E826FE3251003945EE /* ExpenseType.swift in Sources */,
 				85367B322689871B00B9C1C8 /* DetailedExpenseView.swift in Sources */,
 				8523AEAF26B4A171006EC205 /* PieChartWithLegend.swift in Sources */,
 			);
@@ -712,6 +744,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8554E0E026FE2AC3003945EE /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8554E0E126FE2AC3003945EE /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8554E0E026FE2AC3003945EE /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		856679692688CE81007A731B /* ExpenseTrackingApp.xcdatamodeld */ = {

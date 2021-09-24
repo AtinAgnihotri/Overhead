@@ -59,15 +59,6 @@ class ExpenseListViewModel: ObservableObject {
         return (chartData: pieChartData, chartColors: pieChartColors, total: total)
     }
     
-//    func getPieChartColors() -> [String: Color] {
-//        var pieChartColors = [String: Color]()
-//        for type in getPieChartData().keys {
-//            let color = TypeManager.shared.typeColor(type)
-//            pieChartColors[type] = color
-//        }
-//        return pieChartColors
-//    }
-    
     private init() {
         // Get items from DataModel on startup
         getAllExpenses()

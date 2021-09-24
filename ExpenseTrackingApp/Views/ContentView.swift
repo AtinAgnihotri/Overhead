@@ -39,7 +39,7 @@ struct ContentView: View {
                         Section {
                             PieChartWithLegend(chartData: chartData,
                                                legendWidth: 100,
-                                               chartColors: chartColors,
+                                               chartColors: ExpenseType.chartColors,
                                                circlet: true,
                                                centerText: "$\(total, specifier: "%.2f")")
                                 .aspectRatio(contentMode: .fit)
