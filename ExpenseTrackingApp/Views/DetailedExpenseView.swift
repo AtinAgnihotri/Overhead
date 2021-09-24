@@ -10,36 +10,44 @@ import SwiftUI
 struct DetailedExpenseView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    var expense: CDExpenseItem
+//    var expense: CDExpenseItem
     
-    var expenseVM: ExpenseItemViewModel {
-        ExpenseItemViewModel(expenseItem: expense)
-    }
+    var expenseVM: ExpenseItemViewModel
+//    {
+//        ExpenseItemViewModel(expenseItem: expense)
+//    }
     
     var formattedDate: String {
         "Date: \(formatDate: expenseVM.date)"
     }
     
-    init(_ expenseItem: CDExpenseItem?) {
-        guard let expenseItem = expenseItem else {
-            self.expense = CDExpenseItem()
-            presentationMode.wrappedValue.dismiss()
-            return
-        }
-        self.expense = expenseItem
+//    init(_ expenseItem: CDExpenseItem?) {
+//        guard let expenseItem = expenseItem else {
+//            self.expense = CDExpenseItem()
+//            presentationMode.wrappedValue.dismiss()
+//            return
+//        }
+//        self.expense = expenseItem
+//    }
+    
+    init(_ expenseVM: ExpenseItemViewModel) {
+        self.expenseVM = expenseVM
     }
     
     var body: some View {
-        NavigationView {
-            Form {
-                Text("Amount: \(expenseVM.amount, specifier: "%g")")
-                    .padding()
-                Text("Type: \(expenseVM.type)")
-                    .padding()
-                Text(formattedDate)
-                    .padding()
-            }.navigationBarTitle(expenseVM.name)
-        }.tertiaryBackground()
+//        NavigationView {
+        Form {
+            Text("Amount: \(expenseVM.amount, specifier: "%g")")
+                .padding()
+            Text("Type: \(expenseVM.type)")
+                .padding()
+            Text(formattedDate)
+                .padding()
+        }.navigationBarTitle(expenseVM.name)
+        .tertiaryBackground()
+        .buttonStyle(PlainButtonStyle())
+//        }
+        
     }
     
     func dismissView() {
@@ -54,6 +62,7 @@ struct DetailedExpenseView_Previews: PreviewProvider {
         expense.amount = 1.22
         expense.date = Date()
         expense.type = "Personal"
-        return DetailedExpenseView(expense)
+        let expenseVM = ExpenseItemViewModel(expenseItem: expense)
+        return DetailedExpenseView(expenseVM)
     }
 }

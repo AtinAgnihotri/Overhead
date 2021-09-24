@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import Introspect
 
 enum ActiveSheet: Identifiable {
     case add_expense, view_expense
@@ -21,7 +22,7 @@ struct ContentView: View {
 
     @ObservedObject var expenseListVM = ExpenseListViewModel.getInstance()
     @State var activeSheet: ActiveSheet?
-    @State var currentExpense : CDExpenseItem?
+    @State var currentExpense : ExpenseItemViewModel?
     
     var body: some View {
         /* Workaround for weird iOS 14 bug whereby when first item is added in the list, it will pass the prev value of currentExpense to DetailedExpenseView(currentExpense)
@@ -54,13 +55,34 @@ struct ContentView: View {
                     Spacer()
                     List {
                         ForEach(expenseListVM.expenseList, id:\.id) { expenseItemVM in
-                            Button( action: {
-                                showExpenseDetails(currentExpense: expenseItemVM.expenseItem)
-                            }, label: { ExpenseListItem(expenseItemVM)
-                            })
-                            .listRowBackground(Color.secondary)
+//                            NavigationLink(
+//                                destination: DetailedExpenseView(expenseItemVM),
+//                                label: {
+//                                    ExpenseListItem(expenseItemVM)
+//                                })
+//                                .navigationViewStyle(PlainButtonStyle())
+//                                .buttonStyle(PlainButtonStyle())
+//                                .listRowBackground(Color.secondary)
+                            ExpenseListItem(expenseItemVM)
+                                .listRowBackground(Color.secondary)
+                                .background(NavigationLink(
+                                                destination: DetailedExpenseView(expenseItemVM),
+                                                label: {}))
+                            
+//                                .buttonStyle(PlainButtonStyle())
+                                
+//                                .hidden()
+//                                .frame(width: 0)
+
+//                            Button( action: {
+//                                showExpenseDetails(for: expenseItemVM)
+//                            }, label: { ExpenseListItem(expenseItemVM)
+//                            })
+                            
                         }
+                        
                         .onDelete(perform: removeItems)
+//                        .buttonStyle(PlainButtonStyle())
                     }.clearBackground()
                     .padding(.vertical)
                 }
@@ -89,8 +111,13 @@ struct ContentView: View {
                 case .add_expense:
                     AddExpenseView()
                 case .view_expense:
-                    DetailedExpenseView(localExpense)
+                    if let expenseVM = localExpense {
+                        DetailedExpenseView(expenseVM)
+                    }
             }
+        }
+        .onAppear {
+            UIAppearanceUtils.shared.setTableViewAppearance()
         }
     }
     
@@ -102,8 +129,8 @@ struct ContentView: View {
         activeSheet = .add_expense
     }
     
-    func showExpenseDetails(currentExpense: CDExpenseItem) {
-        self.currentExpense = currentExpense
+    func showExpenseDetails(for expenseVM: ExpenseItemViewModel) {
+        self.currentExpense = expenseVM
         activeSheet = .view_expense
     }
 }
