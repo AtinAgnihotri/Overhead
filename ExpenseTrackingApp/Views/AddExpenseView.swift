@@ -41,14 +41,21 @@ struct AddExpenseView: View {
                             }
                         }.pickerStyle(SegmentedPickerStyle())
                     }
-                    CenteredFormButton(text: "ADD", backgroundColor: Color.green) {
-                        addExpense()
-                    }
-                    CenteredFormButton(text: "DISMISS", backgroundColor: Color.red) {
-                        dismissView()
-                    }
+//                    CenteredFormButton(text: "ADD", backgroundColor: Color.green) {
+//                        addExpense()
+//                    }
+//                    CenteredFormButton(text: "DISMISS", backgroundColor: Color.red) {
+//                        dismissView()
+//                    }
                 }
             }.navigationBarTitle("Add Expanse")
+            .navigationBarItems(leading: Button(action: dismissView) {
+                                    Text("Cancel").foregroundColor(.red)
+                                },
+                                trailing: Button(action: addExpense) {
+                                    Text("Save")
+                                        .fontWeight(.bold)
+                                })
             .tertiaryBackground()
             .alert(isPresented: $showingAlert) {
                     Alert(title: Text(alertTitle), message: Text(alertMsg), dismissButton: .default(Text("OK")))
