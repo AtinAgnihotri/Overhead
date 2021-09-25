@@ -105,11 +105,9 @@ struct PieChartWithLegend: View {
     
     func getHorizontallyAlignedChart() -> some View {
         HStack {
-            getPieChart()
-            Spacer()
+            getPieChart().padding(5)
             getLegend()
         }
-        .background(Color.purple) // remove later
     }
     
     func getVerticallyAlignedChart() -> some View {

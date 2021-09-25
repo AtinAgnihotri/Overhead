@@ -30,7 +30,7 @@ struct ContentView: View {
                     if expenseListVM.expenseList.count != 0 {
                         Spacer(minLength: geo.size.height * 0.02)
                         ExpensePieChartView(expenseListVM,
-                                        width: geo.size.width,
+                                            width: geo.size.width * 0.95,
                                         height: geo.size.height * 0.4)
                     }
                     Spacer()

@@ -27,13 +27,13 @@ struct ExpensePieChartView: View {
                                centerText: "$\(expenseListVM.total, specifier: "%.2f")")
                 .frame(width: width, height: height)
                 .aspectRatio(contentMode: .fit)
-                .padding(2)
+                .padding(5)
                 .transition(.asymmetric(insertion: .slide,
                                         removal: .scale))
                 .animation(.easeInOut(duration: 1))
         }
         .padding(.vertical)
-        .background(Color.green)
+//        .background(Color.green)
     }
 }
 struct ExpensePieChartView_Previews: PreviewProvider {
