@@ -7,7 +7,29 @@
 
 import SwiftUI
 
-struct AddItemImage: View {
+//struct AddNavBarButton: View {
+//    var addAction: () -> Void
+//
+//    var body: some View {
+//        Button(action: addAction, label: {
+//            Image(systemName: "plus.app")
+//                .font(.title2)
+//        })
+//    }
+//}
+
+//struct AddNavBarButton: View {
+//    var addAction: () -> Void
+//    
+//    var body: some View {
+//        Button(action: addAction, label: {
+//            Image(systemName: "plus.app")
+//                .font(.title2)
+//        })
+//    }
+//}
+
+struct TrailingNavBarButtons: View {
     var body: some View {
         Image(systemName: "plus")
             .foregroundColor(.primary)
@@ -18,9 +40,9 @@ struct AddItemImage: View {
     }
 }
 
-struct AddItemImage_Previews: PreviewProvider {
-    static var previews: some View {
-        AddItemImage()
-    }
-}
+//struct AddItemImage_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddItemImage()
+//    }
+//}
 

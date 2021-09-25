@@ -39,15 +39,17 @@ struct ContentView: View {
                                                chartColors: ExpenseType.chartColors,
                                                circlet: true,
                                                centerText: "$\(expenseListVM.total, specifier: "%.2f")")
+                                .frame(width: geo.size.width, height: geo.size.height * 0.4)
                                 .aspectRatio(contentMode: .fit)
-                                .padding(.vertical)
-                                .frame(width: geo.size.width * 0.96)
+                                .padding(2)
                                 .transition(.asymmetric(insertion: .slide,
                                                         removal: .scale))
                                 .animation(.easeInOut(duration: 1))
                         }
                         .padding(.vertical)
+                        .background(Color.green) // remove later
                     }
+                    
                     Spacer()
                     List {
                         ForEach(expenseListVM.expenseList, id:\.id) { expenseItemVM in
@@ -65,20 +67,14 @@ struct ContentView: View {
             .background(Color(UIColor.tertiarySystemFill)
             .edgesIgnoringSafeArea(.all))
             .navigationBarTitle("Expense Tracker")
-            .navigationBarItems(leading: Button(action: {print("Search coming soon")}) {
-                                            Text("Settings")
-                                                .font(.title2)
-                                        },
+            .navigationBarItems(leading: SettingsNavBarButton {
+                                    print("Settings coming soon")
+                                },
                                 trailing: HStack {
-                                    Button(action: {print("Search coming soon")}) {
-                                        Image(systemName: "magnifyingglass")
-                                            .font(.title2)
-                                    }
-                                    .padding()
-                                    Button(action: addItem) {
-                                        Image(systemName: "plus.app")
-                                            .font(.title2)
-                                    }
+                                    SearchNavBarButton {
+                                        print("Search coming soon")
+                                    }.padding()
+                                    AddNavBarButton(action: addItem)
                                 })
         }
         .navigationViewStyle(StackNavigationViewStyle())
