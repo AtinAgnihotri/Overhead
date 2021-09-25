@@ -31,18 +31,14 @@ struct ContentView: View {
         return NavigationView {
             GeometryReader { geo in
                 VStack {
-                    let chartTuple = expenseListVM.getPieChartData()
-                    let chartData = chartTuple.0
-                    let chartColors = chartTuple.1
-                    let total = chartTuple.2
-                    if chartData.count != 0 {
+                    if expenseListVM.expenseList.count != 0 {
                         Spacer(minLength: geo.size.height * 0.02)
                         Section {
-                            PieChartWithLegend(chartData: chartData,
+                            PieChartWithLegend(chartData: expenseListVM.pieChartData,
                                                legendWidth: 100,
                                                chartColors: ExpenseType.chartColors,
                                                circlet: true,
-                                               centerText: "$\(total, specifier: "%.2f")")
+                                               centerText: "$\(expenseListVM.total, specifier: "%.2f")")
                                 .aspectRatio(contentMode: .fit)
                                 .padding(.vertical)
                                 .frame(width: geo.size.width * 0.96)
@@ -55,39 +51,19 @@ struct ContentView: View {
                     Spacer()
                     List {
                         ForEach(expenseListVM.expenseList, id:\.id) { expenseItemVM in
-//                            NavigationLink(
-//                                destination: DetailedExpenseView(expenseItemVM),
-//                                label: {
-//                                    ExpenseListItem(expenseItemVM)
-//                                })
-//                                .navigationViewStyle(PlainButtonStyle())
-//                                .buttonStyle(PlainButtonStyle())
-//                                .listRowBackground(Color.secondary)
                             ExpenseListItem(expenseItemVM)
                                 .listRowBackground(Color.secondary)
                                 .background(NavigationLink(
                                                 destination: DetailedExpenseView(expenseItemVM),
                                                 label: {}))
-                            
-//                                .buttonStyle(PlainButtonStyle())
-                                
-//                                .hidden()
-//                                .frame(width: 0)
-
-//                            Button( action: {
-//                                showExpenseDetails(for: expenseItemVM)
-//                            }, label: { ExpenseListItem(expenseItemVM)
-//                            })
-                            
                         }
-                        
                         .onDelete(perform: removeItems)
-//                        .buttonStyle(PlainButtonStyle())
                     }.clearBackground()
                     .padding(.vertical)
                 }
             }
-            .background(Color(UIColor.tertiarySystemFill).edgesIgnoringSafeArea(.all))
+            .background(Color(UIColor.tertiarySystemFill)
+            .edgesIgnoringSafeArea(.all))
             .navigationBarTitle("Expense Tracker")
             .navigationBarItems(leading: Button(action: {print("Search coming soon")}) {
                                             Text("Settings")

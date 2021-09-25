@@ -35,29 +35,6 @@ class ExpenseListViewModel: ObservableObject {
         getAllExpenses()
     }
     
-    func getPieChartData() -> (Dictionary<String, Double>, Dictionary<String, Color>, Double) {
-        var pieChartData = [String: Double]()
-        var pieChartColors = [String: Color]()
-        var total = 0.0
-        for expense in expenseList {
-            let type = expense.type
-            let amount = expense.amount
-            
-            total += amount
-            
-            if pieChartData.keys.contains(type) {
-                pieChartData[type]! += amount
-            } else {
-                pieChartData[type] = amount
-            }
-            
-            if !pieChartColors.keys.contains(type) {
-                pieChartColors[type] = TypeManager.shared.typeColor(type)
-            }
-        }
-        
-        return (chartData: pieChartData, chartColors: pieChartColors, total: total)
-    }
     
     private init() {
         // Get items from DataModel on startup
@@ -66,6 +43,21 @@ class ExpenseListViewModel: ObservableObject {
     
     static func getInstance() -> ExpenseListViewModel {
         return shared
+    }
+    
+    var total: Double {
+        expenseList.reduce(0) { value, expense in
+            value + expense.amount
+        }
+    }
+    
+    var pieChartData: Dictionary<String, Double> {
+        expenseList.reduce(into: [:]) { (result: inout [String: Double], expense) in
+            let type = expense.type
+            let amount = expense.amount
+
+            result[type, default: 0] += amount
+        }
     }
     
 }
