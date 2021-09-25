@@ -34,6 +34,7 @@
 		856679A32688DE37007A731B /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679A22688DE36007A731B /* AddExpenseView.swift */; };
 		856679A52688E013007A731B /* ExpenseListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679A42688E013007A731B /* ExpenseListItem.swift */; };
 		85A2F99726FF0677001818AC /* ContentViewNavBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99626FF0677001818AC /* ContentViewNavBarItems.swift */; };
+		85A2F99926FF09E8001818AC /* ExpensePieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99826FF09E8001818AC /* ExpensePieChartView.swift */; };
 		85B2258226A4466E00A698A8 /* ShadedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2258126A4466E00A698A8 /* ShadedButton.swift */; };
 		85B2258826A4854E00A698A8 /* TypeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2258726A4854E00A698A8 /* TypeManager.swift */; };
 		85E7E613269986D100CBEEB0 /* ExpenseItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E7E612269986D100CBEEB0 /* ExpenseItemViewModel.swift */; };
@@ -89,6 +90,7 @@
 		856679A22688DE36007A731B /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
 		856679A42688E013007A731B /* ExpenseListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListItem.swift; sourceTree = "<group>"; };
 		85A2F99626FF0677001818AC /* ContentViewNavBarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewNavBarItems.swift; sourceTree = "<group>"; };
+		85A2F99826FF09E8001818AC /* ExpensePieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensePieChartView.swift; sourceTree = "<group>"; };
 		85B2258126A4466E00A698A8 /* ShadedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadedButton.swift; sourceTree = "<group>"; };
 		85B2258726A4854E00A698A8 /* TypeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeManager.swift; sourceTree = "<group>"; };
 		85E7E612269986D100CBEEB0 /* ExpenseItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseItemViewModel.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				85367B312689871B00B9C1C8 /* DetailedExpenseView.swift */,
 				85B2258126A4466E00A698A8 /* ShadedButton.swift */,
 				85A2F99626FF0677001818AC /* ContentViewNavBarItems.swift */,
+				85A2F99826FF09E8001818AC /* ExpensePieChartView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				856679682688CE81007A731B /* PersistenceManager.swift in Sources */,
 				8554E0E526FE30D0003945EE /* AddExpenseViewModel.swift in Sources */,
 				85A2F99726FF0677001818AC /* ContentViewNavBarItems.swift in Sources */,
+				85A2F99926FF09E8001818AC /* ExpensePieChartView.swift in Sources */,
 				856679932688CFF3007A731B /* UIApplicationExtensions.swift in Sources */,
 				8523AEAD26B4A171006EC205 /* PieChart.swift in Sources */,
 				8523AEAE26B4A171006EC205 /* PieceOfPie.swift in Sources */,

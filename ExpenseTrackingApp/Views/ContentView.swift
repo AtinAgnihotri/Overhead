@@ -10,7 +10,7 @@ import CoreData
 import Introspect
 
 enum ActiveSheet: Identifiable {
-    case add_expense, view_expense
+    case add_expense, settings
     
     var id: Int {
         hashValue
@@ -22,34 +22,17 @@ struct ContentView: View {
 
     @ObservedObject var expenseListVM = ExpenseListViewModel.getInstance()
     @State var activeSheet: ActiveSheet?
-    @State var currentExpense : ExpenseItemViewModel?
     
     var body: some View {
-        /* Workaround for weird iOS 14 bug whereby when first item is added in the list, it will pass the prev value of currentExpense to DetailedExpenseView(currentExpense)
-        */
-        let localExpense = currentExpense
-        return NavigationView {
+        NavigationView {
             GeometryReader { geo in
                 VStack {
                     if expenseListVM.expenseList.count != 0 {
                         Spacer(minLength: geo.size.height * 0.02)
-                        Section {
-                            PieChartWithLegend(chartData: expenseListVM.pieChartData,
-                                               legendWidth: 100,
-                                               chartColors: ExpenseType.chartColors,
-                                               circlet: true,
-                                               centerText: "$\(expenseListVM.total, specifier: "%.2f")")
-                                .frame(width: geo.size.width, height: geo.size.height * 0.4)
-                                .aspectRatio(contentMode: .fit)
-                                .padding(2)
-                                .transition(.asymmetric(insertion: .slide,
-                                                        removal: .scale))
-                                .animation(.easeInOut(duration: 1))
-                        }
-                        .padding(.vertical)
-                        .background(Color.green) // remove later
+                        ExpensePieChartView(expenseListVM,
+                                        width: geo.size.width,
+                                        height: geo.size.height * 0.4)
                     }
-                    
                     Spacer()
                     List {
                         ForEach(expenseListVM.expenseList, id:\.id) { expenseItemVM in
@@ -80,12 +63,8 @@ struct ContentView: View {
         .navigationViewStyle(StackNavigationViewStyle())
         .sheet(item: $activeSheet) { item in
             switch item {
-                case .add_expense:
-                    AddExpenseView()
-                case .view_expense:
-                    if let expenseVM = localExpense {
-                        DetailedExpenseView(expenseVM)
-                    }
+                case .add_expense: AddExpenseView()
+                case .settings: AddExpenseView() // Add SettingsView here later
             }
         }
         .onAppear {
@@ -100,16 +79,21 @@ struct ContentView: View {
     func addItem() {
         activeSheet = .add_expense
     }
-    
-    func showExpenseDetails(for expenseVM: ExpenseItemViewModel) {
-        self.currentExpense = expenseVM
-        activeSheet = .view_expense
-    }
 }
 
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceManager.preview.container.viewContext)
+        let expense = CDExpenseItem(context: PersistenceManager.viewContext)
+        expense.name = "Test Expense"
+        expense.amount = 1.22
+        expense.date = Date()
+        expense.type = "Personal"
+        let expenseVM = ExpenseItemViewModel(expenseItem: expense)
+        let expenseListVM = ExpenseListViewModel.getInstance()
+        expenseListVM.expenseList = [expenseVM]
+        return ContentView().environment(\.managedObjectContext, PersistenceManager.preview.container.viewContext)
     }
 }
+
+
