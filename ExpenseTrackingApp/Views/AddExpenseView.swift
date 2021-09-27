@@ -10,7 +10,6 @@ import Introspect
 import Combine
 
 struct AddExpenseView: View {
-    @ObservedObject var expenseListVM = ExpenseListViewModel.getInstance()
     @ObservedObject var addExpenseVM = AddExpenseViewModel()
 //    let expenseTypes = TypeManager.shared.types
     
@@ -49,7 +48,12 @@ struct AddExpenseView: View {
                             }
                         }.pickerStyle(SegmentedPickerStyle())
                     }
+                    Section (header: Text("Note (Optional)")
+                                .font(.headline)) {
+                        TextEditor(text: $addExpenseVM.note)
+                    }
                 }
+                .adaptsToKeyboard()
             }.navigationBarTitle("Add Expanse")
             .navigationBarItems(leading: Button(action: dismissView) {
                                     Text("Cancel").foregroundColor(.red)
@@ -75,7 +79,7 @@ struct AddExpenseView: View {
     }
     
     func addExpense() {
-        addExpenseVM.addExpense(to: expenseListVM, onFail: showError, completion: dismissView)
+        addExpenseVM.addExpense(completion: dismissView, onFail: showError)
     }
     
     

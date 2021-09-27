@@ -91,12 +91,34 @@ struct PersistenceManager {
         }
     }
     
-    func saveExpense(name: String, type: String, amount: Double) {
+    func saveExpense(name: String, type: String, amount: Double, note: String) {
         let expense = CDExpenseItem(context: PersistenceManager.viewContext)
         expense.name = name
         expense.type = type
         expense.date = Date()
+        expense.note = note
         expense.amount = NSDecimalNumber(decimal: Decimal(amount))
+        saveContext()
+    }
+    
+    func updateExpense(with expenseItem: CDExpenseItem,
+                       name: String? = nil,
+                       amount: Double? = nil,
+                       type: String? = nil,
+                       note: String? = nil) {
+        
+        if let name = name {
+            expenseItem.name = name
+        }
+        if let amount = amount {
+            expenseItem.amount = NSDecimalNumber(decimal: Decimal(amount))
+        }
+        if let type = type {
+            expenseItem.type = type
+        }
+        if let note = note {
+            expenseItem.note = note
+        }
         saveContext()
     }
     

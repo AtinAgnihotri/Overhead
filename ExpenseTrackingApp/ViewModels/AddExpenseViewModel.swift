@@ -12,27 +12,27 @@ class AddExpenseViewModel: ObservableObject {
     @Published var name: String
     @Published var amount: String
     @Published var type: ExpenseType
+    @Published var note: String
     let types = ExpenseType.allCases
     
     init() {
         name = ""
         amount = ""
         type = types[0]
+        note = ""
     }
     
-    func addExpense(to expenseListVM: ExpenseListViewModel, onFail: @escaping (String, String) -> Void, completion: @escaping () -> Void) {
+    func addExpense(completion: @escaping () -> Void, onFail: @escaping (String, String) -> Void) {
         // Input Validations
         guard name != "" else {
             onFail("Empty Name", "The name cannot be empty")
             return
         }
         guard let amount = Double(amount) else {
-//            showError(alertTitle: "Invalid Amount", alertMsg: "Please enter a valid amount")
             onFail("Invalid Amount", "Please enter a valid amount")
             return
         }
-        
-        expenseListVM.saveExpense(name: name, type: type.rawValue, amount: amount)
+        ExpenseListViewModel.getInstance().saveExpense(name: name, type: type.rawValue, amount: amount, note: note)
         completion()
     }
     

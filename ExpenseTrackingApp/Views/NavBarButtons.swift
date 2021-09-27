@@ -39,7 +39,16 @@ struct EditNavBarButton: View {
     var action: () -> Void
     
     var body: some View {
-        SystemNavBarButton(systemName: "pencil.circle", action: action)
+        SystemNavBarButton(systemName: "square.and.pencil", action: action)
+    }
+}
+
+struct DeleteNavBarButton: View {
+    var action: () -> Void
+    
+    var body: some View {
+        SystemNavBarButton(systemName: "trash", action: action)
+            .foregroundColor(.red)
     }
 }
 
@@ -54,8 +63,20 @@ struct SettingsNavBarButton: View {
     }
 }
 
-//struct ContentViewNavBarItems_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentViewNavBarItems()
-//    }
-//}
+struct TickNavBarButton: View {
+    var action: () -> Void
+    
+    var body: some View {
+        SystemNavBarButton(systemName: "checkmark.circle", action: action)
+            .foregroundColor(.green)
+    }
+}
+
+struct CrossNavBarButton: View {
+    var action: () -> Void
+    
+    var body: some View {
+        SystemNavBarButton(systemName: "xmark.circle", action: action)
+            .foregroundColor(.red)
+    }
+}

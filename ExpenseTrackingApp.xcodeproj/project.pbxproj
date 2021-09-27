@@ -12,6 +12,7 @@
 		8523AEAD26B4A171006EC205 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8523AEA826B4A171006EC205 /* PieChart.swift */; };
 		8523AEAE26B4A171006EC205 /* PieceOfPie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8523AEA926B4A171006EC205 /* PieceOfPie.swift */; };
 		8523AEAF26B4A171006EC205 /* PieChartWithLegend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8523AEAA26B4A171006EC205 /* PieChartWithLegend.swift */; };
+		85337B102702133F00EFABB4 /* DetailedExpenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85337B0F2702133F00EFABB4 /* DetailedExpenseViewModel.swift */; };
 		85367B322689871B00B9C1C8 /* DetailedExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85367B312689871B00B9C1C8 /* DetailedExpenseView.swift */; };
 		8554E0E226FE2AC3003945EE /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 8554E0E126FE2AC3003945EE /* Introspect */; };
 		8554E0E526FE30D0003945EE /* AddExpenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8554E0E426FE30D0003945EE /* AddExpenseViewModel.swift */; };
@@ -33,8 +34,10 @@
 		856679A12688DD08007A731B /* CenteredFormButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679A02688DD08007A731B /* CenteredFormButton.swift */; };
 		856679A32688DE37007A731B /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679A22688DE36007A731B /* AddExpenseView.swift */; };
 		856679A52688E013007A731B /* ExpenseListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679A42688E013007A731B /* ExpenseListItem.swift */; };
-		85A2F99726FF0677001818AC /* ContentViewNavBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99626FF0677001818AC /* ContentViewNavBarItems.swift */; };
+		85A2F99726FF0677001818AC /* NavBarButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99626FF0677001818AC /* NavBarButtons.swift */; };
 		85A2F99926FF09E8001818AC /* ExpensePieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99826FF09E8001818AC /* ExpensePieChartView.swift */; };
+		85A2F99D26FF8163001818AC /* ExpenseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99C26FF8163001818AC /* ExpenseListView.swift */; };
+		85A2F99F26FF81AE001818AC /* DevTestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99E26FF81AE001818AC /* DevTestUtils.swift */; };
 		85B2258226A4466E00A698A8 /* ShadedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2258126A4466E00A698A8 /* ShadedButton.swift */; };
 		85B2258826A4854E00A698A8 /* TypeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2258726A4854E00A698A8 /* TypeManager.swift */; };
 		85E7E613269986D100CBEEB0 /* ExpenseItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E7E612269986D100CBEEB0 /* ExpenseItemViewModel.swift */; };
@@ -63,6 +66,7 @@
 		8523AEA826B4A171006EC205 /* PieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
 		8523AEA926B4A171006EC205 /* PieceOfPie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieceOfPie.swift; sourceTree = "<group>"; };
 		8523AEAA26B4A171006EC205 /* PieChartWithLegend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartWithLegend.swift; sourceTree = "<group>"; };
+		85337B0F2702133F00EFABB4 /* DetailedExpenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedExpenseViewModel.swift; sourceTree = "<group>"; };
 		85367B312689871B00B9C1C8 /* DetailedExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedExpenseView.swift; sourceTree = "<group>"; };
 		8554E0E426FE30D0003945EE /* AddExpenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseViewModel.swift; sourceTree = "<group>"; };
 		8554E0E726FE3251003945EE /* ExpenseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseType.swift; sourceTree = "<group>"; };
@@ -89,8 +93,10 @@
 		856679A02688DD08007A731B /* CenteredFormButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredFormButton.swift; sourceTree = "<group>"; };
 		856679A22688DE36007A731B /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
 		856679A42688E013007A731B /* ExpenseListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListItem.swift; sourceTree = "<group>"; };
-		85A2F99626FF0677001818AC /* ContentViewNavBarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewNavBarItems.swift; sourceTree = "<group>"; };
+		85A2F99626FF0677001818AC /* NavBarButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButtons.swift; sourceTree = "<group>"; };
 		85A2F99826FF09E8001818AC /* ExpensePieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensePieChartView.swift; sourceTree = "<group>"; };
+		85A2F99C26FF8163001818AC /* ExpenseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListView.swift; sourceTree = "<group>"; };
+		85A2F99E26FF81AE001818AC /* DevTestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevTestUtils.swift; sourceTree = "<group>"; };
 		85B2258126A4466E00A698A8 /* ShadedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadedButton.swift; sourceTree = "<group>"; };
 		85B2258726A4854E00A698A8 /* TypeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeManager.swift; sourceTree = "<group>"; };
 		85E7E612269986D100CBEEB0 /* ExpenseItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseItemViewModel.swift; sourceTree = "<group>"; };
@@ -234,6 +240,7 @@
 				8566799C2688D46A007A731B /* ExpenseListViewModel.swift */,
 				85E7E612269986D100CBEEB0 /* ExpenseItemViewModel.swift */,
 				8554E0E426FE30D0003945EE /* AddExpenseViewModel.swift */,
+				85337B0F2702133F00EFABB4 /* DetailedExpenseViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -249,8 +256,9 @@
 				856679A42688E013007A731B /* ExpenseListItem.swift */,
 				85367B312689871B00B9C1C8 /* DetailedExpenseView.swift */,
 				85B2258126A4466E00A698A8 /* ShadedButton.swift */,
-				85A2F99626FF0677001818AC /* ContentViewNavBarItems.swift */,
+				85A2F99626FF0677001818AC /* NavBarButtons.swift */,
 				85A2F99826FF09E8001818AC /* ExpensePieChartView.swift */,
+				85A2F99C26FF8163001818AC /* ExpenseListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -263,6 +271,7 @@
 				856679942688D176007A731B /* CustomViewModifiers.swift */,
 				856679962688D336007A731B /* StringInterpolationExtensions.swift */,
 				8554E0E926FE4C82003945EE /* UIAppearanceUtils.swift */,
+				85A2F99E26FF81AE001818AC /* DevTestUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -413,17 +422,20 @@
 			files = (
 				856679682688CE81007A731B /* PersistenceManager.swift in Sources */,
 				8554E0E526FE30D0003945EE /* AddExpenseViewModel.swift in Sources */,
-				85A2F99726FF0677001818AC /* ContentViewNavBarItems.swift in Sources */,
+				85A2F99726FF0677001818AC /* NavBarButtons.swift in Sources */,
 				85A2F99926FF09E8001818AC /* ExpensePieChartView.swift in Sources */,
 				856679932688CFF3007A731B /* UIApplicationExtensions.swift in Sources */,
+				85A2F99F26FF81AE001818AC /* DevTestUtils.swift in Sources */,
 				8523AEAD26B4A171006EC205 /* PieChart.swift in Sources */,
 				8523AEAE26B4A171006EC205 /* PieceOfPie.swift in Sources */,
 				85B2258226A4466E00A698A8 /* ShadedButton.swift in Sources */,
 				856679612688CE79007A731B /* ContentView.swift in Sources */,
+				85337B102702133F00EFABB4 /* DetailedExpenseViewModel.swift in Sources */,
 				856679A32688DE37007A731B /* AddExpenseView.swift in Sources */,
 				8523AEAC26B4A171006EC205 /* Legend.swift in Sources */,
 				8554E0EA26FE4C82003945EE /* UIAppearanceUtils.swift in Sources */,
 				8523AEAB26B4A171006EC205 /* LegendItem.swift in Sources */,
+				85A2F99D26FF8163001818AC /* ExpenseListView.swift in Sources */,
 				85E7E613269986D100CBEEB0 /* ExpenseItemViewModel.swift in Sources */,
 				8566799D2688D46A007A731B /* ExpenseListViewModel.swift in Sources */,
 				8566795F2688CE79007A731B /* ExpenseTrackingAppApp.swift in Sources */,

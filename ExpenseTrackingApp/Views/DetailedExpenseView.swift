@@ -10,48 +10,127 @@ import SwiftUI
 struct DetailedExpenseView: View {
     
     @Environment(\.presentationMode) var presentationMode
-//    var expense: CDExpenseItem
+    @ObservedObject private var detailedExpenseVM: DetailedExpenseViewModel
+    @State private var alertTitle: String = ""
+    @State private var alertMsg: String = ""
+    @State private var isShowingAlert: Bool = false
     
     var expenseVM: ExpenseItemViewModel
-//    {
-//        ExpenseItemViewModel(expenseItem: expense)
-//    }
-    
+
     var formattedDate: String {
         "Date: \(formatDate: expenseVM.date)"
     }
     
-//    init(_ expenseItem: CDExpenseItem?) {
-//        guard let expenseItem = expenseItem else {
-//            self.expense = CDExpenseItem()
-//            presentationMode.wrappedValue.dismiss()
-//            return
-//        }
-//        self.expense = expenseItem
-//    }
     
     init(_ expenseVM: ExpenseItemViewModel) {
         self.expenseVM = expenseVM
+        self.detailedExpenseVM = DetailedExpenseViewModel(with: expenseVM)
+    }
+    
+    var isEditing: Bool {
+        detailedExpenseVM.isEditing
+    }
+    
+    var hasNote: Bool {
+        !detailedExpenseVM.note.isEmpty
+    }
+    
+    var showNote: Bool {
+        isEditing || hasNote
     }
     
     var body: some View {
-//        NavigationView {
         Form {
-            Text("Amount: \(expenseVM.amount, specifier: "%g")")
-                .padding()
-            Text("Type: \(expenseVM.type)")
-                .padding()
-            Text(formattedDate)
-                .padding()
+            HStack {
+                Text("Amount:")
+                if isEditing {
+                TextField("Enter Amount", text: $detailedExpenseVM.amount)
+                    .disabled(!detailedExpenseVM.isEditing)
+                    .introspectTextField { textField in
+                        textField.textAlignment = .right
+                    }
+                    .padding(5)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor(Color(UIColor.secondarySystemFill))
+                    )
+                    
+                } else {
+                    Spacer()
+                    Text(detailedExpenseVM.amount)
+                }
+            }
+            HStack {
+                Text("Type:")
+                if detailedExpenseVM.isEditing {
+                    Picker ("", selection: $detailedExpenseVM.type){
+                        ForEach(ExpenseType.allCases, id:\.self) {
+                            Text("\($0.rawValue)")
+                        }
+                    }.foregroundColor(.blue)
+                } else {
+                    Spacer()
+                    Text(detailedExpenseVM.type.rawValue)
+                }
+            }
+            HStack {
+                Text("Date:")
+                Spacer()
+                Text(detailedExpenseVM.date)
+            }
+            if showNote {
+                Section (header: Text("Note")) {
+                    TextEditor(text: $detailedExpenseVM.note)
+                        .disabled(!isEditing)
+                }
+            }
+            
+
         }.navigationBarTitle(expenseVM.name)
-        .tertiaryBackground()
-        .buttonStyle(PlainButtonStyle())
-//        }
-        
+        .navigationBarItems(trailing: HStack {
+            if detailedExpenseVM.isEditing {
+                CrossNavBarButton(action: discardChanges).padding()
+                TickNavBarButton(action: saveChanges)
+            } else {
+                DeleteNavBarButton(action: deleteItem).padding()
+                EditNavBarButton(action: didStartEditing)
+            }
+        })
+        .clearBackground()
+        .alert(isPresented: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Is Presented@*/.constant(false)/*@END_MENU_TOKEN@*/, content: {
+            Alert(title: Text(alertTitle), message: Text(alertMsg), dismissButton: .default(Text("OK")))
+        })
     }
     
     func dismissView() {
         self.presentationMode.wrappedValue.dismiss()
+    }
+    
+    func deleteItem() {
+        
+    }
+    
+    func didStartEditing() {
+        detailedExpenseVM.isEditing = true
+    }
+    
+    func didFinishEditing() {
+        detailedExpenseVM.isEditing = false
+    }
+    
+    func discardChanges() {
+        didFinishEditing()
+    }
+    
+    func saveChanges() {
+        detailedExpenseVM.saveChanges(onFail: showAlert)
+        didFinishEditing()
+    }
+    
+    func showAlert(title: String, message: String) {
+        alertTitle = title
+        alertMsg = message
+        isShowingAlert = true
     }
 }
 

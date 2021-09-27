@@ -4,6 +4,7 @@
         <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="note" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -15,6 +16,6 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="CDExpenseItem" positionX="-63" positionY="-18" width="128" height="89"/>
+        <element name="CDExpenseItem" positionX="-63" positionY="-18" width="128" height="104"/>
     </elements>
 </model>

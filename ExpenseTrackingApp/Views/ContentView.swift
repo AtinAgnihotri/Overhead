@@ -23,6 +23,13 @@ struct ContentView: View {
     @ObservedObject var expenseListVM = ExpenseListViewModel.getInstance()
     @State var activeSheet: ActiveSheet?
     
+    @State private var tableView: UITableView?
+    private func deselectRows() {
+        if let tableView = tableView, let selectedRow = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedRow, animated: true)
+        }
+    }
+    
     var body: some View {
         NavigationView {
             GeometryReader { geo in
@@ -34,21 +41,41 @@ struct ContentView: View {
                                         height: geo.size.height * 0.4)
                     }
                     Spacer()
-                    List {
-                        ForEach(expenseListVM.expenseList, id:\.id) { expenseItemVM in
-                            ExpenseListItem(expenseItemVM)
-                                .listRowBackground(Color.secondary)
-                                .background(NavigationLink(
-                                                destination: DetailedExpenseView(expenseItemVM),
-                                                label: {}))
-                        }
-                        .onDelete(perform: removeItems)
-                    }.clearBackground()
-                    .padding(.vertical)
+                    ExpenseListView(expenseListVM)
+//                    List {
+//                        ForEach(expenseListVM.expenseList, id:\.id) { expenseItemVM in
+//                            ExpenseListItem(expenseItemVM)
+//                                .background(NavigationLink(
+//                                                destination: DetailedExpenseView(expenseItemVM),
+//                                                label: {})
+//                                                .id(UUID())
+//                                                .opacity(0))
+//                                .buttonStyle(PlainButtonStyle())
+//                        }
+//                        .onDelete(perform: removeItems)
+//                        .listRowBackground(Color.secondary)
+//                        .buttonStyle(PlainButtonStyle())
+//
+//                    }
+//                    .accentColor(Color(UIColor.tertiarySystemFill))
+//                    .background(Color(UIColor.tertiarySystemFill))
+//                    .onAppear {
+//                        UITableViewCell.appearance().selectionStyle = .none
+//                        UIAppearanceUtils.shared.setTableViewAppearance()
+//                    }
+//                    .clearBackground()
+//                    .padding(.vertical)
+//                    .introspectTableViewCell { tableViewCell in
+//                        tableViewCell.selectionStyle = .none
+//                        tableViewCell.accessoryView = .none
+//                    }
+//                    .introspectTableView { tableView in
+//                        self.tableView = tableView
+//                    }
                 }
             }
-            .background(Color(UIColor.tertiarySystemFill)
-            .edgesIgnoringSafeArea(.all))
+//            .background(Color(UIColor.tertiarySystemFill)
+//                            .edgesIgnoringSafeArea(.all))
             .navigationBarTitle("Expense Tracker")
             .navigationBarItems(leading: SettingsNavBarButton {
                                     print("Settings coming soon")
@@ -60,6 +87,7 @@ struct ContentView: View {
                                     AddNavBarButton(action: addItem)
                                 })
         }
+        .edgesIgnoringSafeArea(.bottom)
         .navigationViewStyle(StackNavigationViewStyle())
         .sheet(item: $activeSheet) { item in
             switch item {
@@ -68,7 +96,7 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            UIAppearanceUtils.shared.setTableViewAppearance()
+//            UIAppearanceUtils.shared.setTableViewAppearance()
         }
     }
     

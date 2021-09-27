@@ -28,8 +28,19 @@ struct ExpenseItemViewModel: Equatable {
         expenseItem.date ?? Date()
     }
     
-    var type: String {
-        expenseItem.type ?? "Unknown Type"
+    var type: ExpenseType {
+//        expenseItem.type ?? "Unknown Type"
+        var type: ExpenseType
+        if let expenseType = expenseItem.type {
+            type = ExpenseType.init(rawValue: expenseType) ?? ExpenseType.other
+        } else {
+            type = ExpenseType.other
+        }
+        return type
+    }
+    
+    var note: String {
+        expenseItem.note ?? ""
     }
     
     var id: NSManagedObjectID {
@@ -42,5 +53,22 @@ struct ExpenseItemViewModel: Equatable {
         let amountCheck = lhs.amount == rhs.amount
         let typeCheck = lhs.type == rhs.type
         return nameCheck && dateCheck && amountCheck && typeCheck
+    }
+    
+    func updateItem(name: String?, type: ExpenseType?, amount: Double?, note: String?) {
+        if let name = name {
+            expenseItem.name = name
+        }
+        if let amount = amount {
+            expenseItem.amount = NSDecimalNumber(decimal: Decimal(amount))
+        }
+        if let type = type?.rawValue {
+            expenseItem.type = type
+        }
+        if let note = note {
+            expenseItem.note = note
+        }
+        PersistenceManager.shared.saveContext()
+        ExpenseListViewModel.getInstance().getAllExpenses()
     }
 }

@@ -30,10 +30,14 @@ class ExpenseListViewModel: ObservableObject {
         expenseList = persistenceController.getAllExpenses().map(ExpenseItemViewModel.init)
     }
     
-    func saveExpense(name: String, type: String, amount: Double) {
-        persistenceController.saveExpense(name: name, type: type, amount: amount)
+    func saveExpense(name: String, type: String, amount: Double, note: String) {
+        persistenceController.saveExpense(name: name, type: type, amount: amount, note: note)
         getAllExpenses()
     }
+    
+//    func updateExpense(expense: CDExpenseItem, name: String?, type: String?, amount: Double?, note: String?) {
+//        persistenceController.updateExpense(with: expen)
+//    }
     
     
     private init() {
@@ -53,7 +57,7 @@ class ExpenseListViewModel: ObservableObject {
     
     var pieChartData: Dictionary<String, Double> {
         expenseList.reduce(into: [:]) { (result: inout [String: Double], expense) in
-            let type = expense.type
+            let type = expense.type.rawValue
             let amount = expense.amount
 
             result[type, default: 0] += amount
