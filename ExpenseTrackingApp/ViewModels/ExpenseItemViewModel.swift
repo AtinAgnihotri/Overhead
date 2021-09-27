@@ -71,4 +71,8 @@ struct ExpenseItemViewModel: Equatable {
         PersistenceManager.shared.saveContext()
         ExpenseListViewModel.getInstance().getAllExpenses()
     }
+    
+    func deleteItem() {
+        PersistenceManager.shared.deleteExpense(id: expenseItem.objectID)
+    }
 }

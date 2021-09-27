@@ -7,12 +7,18 @@
 
 import SwiftUI
 
+enum DetailedExpenseAlertTypes {
+    case validation
+    case confirmation
+}
+
 struct DetailedExpenseView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject private var detailedExpenseVM: DetailedExpenseViewModel
     @State private var alertTitle: String = ""
     @State private var alertMsg: String = ""
+    @State private var alertType: DetailedExpenseAlertTypes = .validation
     @State private var isShowingAlert: Bool = false
     
     var expenseVM: ExpenseItemViewModel
@@ -45,9 +51,11 @@ struct DetailedExpenseView: View {
                 Text("Amount:")
                 if isEditing {
                 TextField("Enter Amount", text: $detailedExpenseVM.amount)
+                    .keyboardType(.decimalPad)
                     .disabled(!detailedExpenseVM.isEditing)
                     .introspectTextField { textField in
                         textField.textAlignment = .right
+                        textField.contentHorizontalAlignment = .right
                     }
                     .padding(5)
                     .background(
@@ -92,22 +100,23 @@ struct DetailedExpenseView: View {
                 CrossNavBarButton(action: discardChanges).padding()
                 TickNavBarButton(action: saveChanges)
             } else {
-                DeleteNavBarButton(action: deleteItem).padding()
+                DeleteNavBarButton(action: confirmDeletion).padding()
                 EditNavBarButton(action: didStartEditing)
             }
         })
         .clearBackground()
-        .alert(isPresented: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Is Presented@*/.constant(false)/*@END_MENU_TOKEN@*/, content: {
-            Alert(title: Text(alertTitle), message: Text(alertMsg), dismissButton: .default(Text("OK")))
+        .alert(isPresented: $isShowingAlert, content: {
+            switch alertType {
+                case .validation :
+                    return getValidationErrorAlert()
+                case .confirmation:
+                    return getDeletionConfirmationAlert()
+            }
         })
     }
     
     func dismissView() {
         self.presentationMode.wrappedValue.dismiss()
-    }
-    
-    func deleteItem() {
-        
     }
     
     func didStartEditing() {
@@ -123,14 +132,40 @@ struct DetailedExpenseView: View {
     }
     
     func saveChanges() {
-        detailedExpenseVM.saveChanges(onFail: showAlert)
+        detailedExpenseVM.saveChanges(onFail: showValidationError)
         didFinishEditing()
     }
     
-    func showAlert(title: String, message: String) {
+    func showValidationError(title: String, message: String) {
+        showAlert(title: title, message: message, type: .validation)
+    }
+    
+    func confirmDeletion() {
+        showAlert(title: "Confirm Deletion", message: "Are you sure you want to delete this expense?", type: .confirmation)
+    }
+    
+    func showAlert(title: String, message: String, type: DetailedExpenseAlertTypes) {
         alertTitle = title
         alertMsg = message
+        alertType = type
         isShowingAlert = true
+    }
+    
+    func getValidationErrorAlert() -> Alert {
+        Alert(title: Text(alertTitle), message: Text(alertMsg), dismissButton: .default(Text("OK")))
+    }
+    
+    func getDeletionConfirmationAlert() -> Alert {
+        Alert(title: Text(alertTitle),
+              message: Text(alertMsg),
+              primaryButton: .destructive(Text("Confirm"), action: delete),
+              secondaryButton: .cancel())
+    }
+    
+    func delete() {
+        detailedExpenseVM.deleteItem {
+            dismissView()
+        }
     }
 }
 
