@@ -42,50 +42,19 @@ struct ContentView: View {
                     }
                     Spacer()
                     ExpenseListView(expenseListVM)
-//                    List {
-//                        ForEach(expenseListVM.expenseList, id:\.id) { expenseItemVM in
-//                            ExpenseListItem(expenseItemVM)
-//                                .background(NavigationLink(
-//                                                destination: DetailedExpenseView(expenseItemVM),
-//                                                label: {})
-//                                                .id(UUID())
-//                                                .opacity(0))
-//                                .buttonStyle(PlainButtonStyle())
-//                        }
-//                        .onDelete(perform: removeItems)
-//                        .listRowBackground(Color.secondary)
-//                        .buttonStyle(PlainButtonStyle())
-//
-//                    }
-//                    .accentColor(Color(UIColor.tertiarySystemFill))
-//                    .background(Color(UIColor.tertiarySystemFill))
-//                    .onAppear {
-//                        UITableViewCell.appearance().selectionStyle = .none
-//                        UIAppearanceUtils.shared.setTableViewAppearance()
-//                    }
-//                    .clearBackground()
-//                    .padding(.vertical)
-//                    .introspectTableViewCell { tableViewCell in
-//                        tableViewCell.selectionStyle = .none
-//                        tableViewCell.accessoryView = .none
-//                    }
-//                    .introspectTableView { tableView in
-//                        self.tableView = tableView
-//                    }
                 }
             }
-//            .background(Color(UIColor.tertiarySystemFill)
-//                            .edgesIgnoringSafeArea(.all))
             .navigationBarTitle("Expense Tracker")
-            .navigationBarItems(leading: SettingsNavBarButton {
-                                    print("Settings coming soon")
-                                },
-                                trailing: HStack {
-                                    SearchNavBarButton {
-                                        print("Search coming soon")
-                                    }.padding()
-                                    AddNavBarButton(action: addItem)
-                                })
+//            .navigationBarItems(leading: SettingsNavBarButton {
+//                                    print("Settings coming soon")
+//                                },
+//                                trailing: HStack {
+//                                    SearchNavBarButton {
+//                                        print("Search coming soon")
+//                                    }.padding()
+//                                    AddNavBarButton(action: addItem)
+//                                })
+            .navigationBarItems(trailing: AddNavBarButton(action: addItem))
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationViewStyle(StackNavigationViewStyle())
