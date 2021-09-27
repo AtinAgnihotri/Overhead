@@ -7,14 +7,23 @@
 
 import SwiftUI
 
+struct SystemNavBarButton: View {
+    var systemName: String
+    var action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            Image(systemName: systemName)
+                .font(.title2)
+        }
+    }
+}
+
 struct AddNavBarButton: View {
     var action: () -> Void
     
     var body: some View {
-        Button(action: action, label: {
-            Image(systemName: "plus.app")
-                .font(.title2)
-        })
+        SystemNavBarButton(systemName: "plus.app", action: action)
     }
 }
 
@@ -22,10 +31,15 @@ struct SearchNavBarButton: View {
     var action: () -> Void
     
     var body: some View {
-        Button(action: action, label: {
-            Image(systemName: "magnifyingglass")
-                .font(.title2)
-        })
+        SystemNavBarButton(systemName: "magnifyingglass", action: action)
+    }
+}
+
+struct EditNavBarButton: View {
+    var action: () -> Void
+    
+    var body: some View {
+        SystemNavBarButton(systemName: "pencil.circle", action: action)
     }
 }
 
