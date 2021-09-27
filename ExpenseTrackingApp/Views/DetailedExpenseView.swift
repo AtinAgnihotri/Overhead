@@ -113,6 +113,9 @@ struct DetailedExpenseView: View {
                     return getDeletionConfirmationAlert()
             }
         })
+        .onDisappear {
+            didFinishEditing()
+        }
     }
     
     func dismissView() {
