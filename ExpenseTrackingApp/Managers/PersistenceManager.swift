@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import CloudKit
 
 struct PersistenceManager {
     static let shared = PersistenceManager()

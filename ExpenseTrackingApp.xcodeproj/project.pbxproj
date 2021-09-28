@@ -18,6 +18,7 @@
 		8554E0E526FE30D0003945EE /* AddExpenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8554E0E426FE30D0003945EE /* AddExpenseViewModel.swift */; };
 		8554E0E826FE3251003945EE /* ExpenseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8554E0E726FE3251003945EE /* ExpenseType.swift */; };
 		8554E0EA26FE4C82003945EE /* UIAppearanceUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8554E0E926FE4C82003945EE /* UIAppearanceUtils.swift */; };
+		855FB9162703626B00A0CB79 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 855FB9152703626B00A0CB79 /* CloudKit.framework */; };
 		8566795F2688CE79007A731B /* ExpenseTrackingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566795E2688CE79007A731B /* ExpenseTrackingAppApp.swift */; };
 		856679612688CE79007A731B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679602688CE79007A731B /* ContentView.swift */; };
 		856679632688CE81007A731B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 856679622688CE81007A731B /* Assets.xcassets */; };
@@ -26,20 +27,19 @@
 		8566796B2688CE81007A731B /* ExpenseTrackingApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 856679692688CE81007A731B /* ExpenseTrackingApp.xcdatamodeld */; };
 		856679762688CE82007A731B /* ExpenseTrackingAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679752688CE82007A731B /* ExpenseTrackingAppTests.swift */; };
 		856679812688CE82007A731B /* ExpenseTrackingAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679802688CE82007A731B /* ExpenseTrackingAppUITests.swift */; };
-		856679932688CFF3007A731B /* UIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679922688CFF3007A731B /* UIApplicationExtensions.swift */; };
 		856679952688D177007A731B /* CustomViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679942688D176007A731B /* CustomViewModifiers.swift */; };
-		856679972688D336007A731B /* StringInterpolationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679962688D336007A731B /* StringInterpolationExtensions.swift */; };
+		856679972688D336007A731B /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679962688D336007A731B /* String+Extensions.swift */; };
 		8566799D2688D46A007A731B /* ExpenseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566799C2688D46A007A731B /* ExpenseListViewModel.swift */; };
 		8566799F2688D4ED007A731B /* AddItemImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566799E2688D4ED007A731B /* AddItemImage.swift */; };
 		856679A12688DD08007A731B /* CenteredFormButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679A02688DD08007A731B /* CenteredFormButton.swift */; };
 		856679A32688DE37007A731B /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679A22688DE36007A731B /* AddExpenseView.swift */; };
 		856679A52688E013007A731B /* ExpenseListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679A42688E013007A731B /* ExpenseListItem.swift */; };
+		8589A239270356860033B791 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8589A238270356860033B791 /* UIApplication+Extensions.swift */; };
 		85A2F99726FF0677001818AC /* NavBarButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99626FF0677001818AC /* NavBarButtons.swift */; };
 		85A2F99926FF09E8001818AC /* ExpensePieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99826FF09E8001818AC /* ExpensePieChartView.swift */; };
 		85A2F99D26FF8163001818AC /* ExpenseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99C26FF8163001818AC /* ExpenseListView.swift */; };
 		85A2F99F26FF81AE001818AC /* DevTestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99E26FF81AE001818AC /* DevTestUtils.swift */; };
 		85B2258226A4466E00A698A8 /* ShadedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2258126A4466E00A698A8 /* ShadedButton.swift */; };
-		85B2258826A4854E00A698A8 /* TypeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2258726A4854E00A698A8 /* TypeManager.swift */; };
 		85E7E613269986D100CBEEB0 /* ExpenseItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E7E612269986D100CBEEB0 /* ExpenseItemViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +71,8 @@
 		8554E0E426FE30D0003945EE /* AddExpenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseViewModel.swift; sourceTree = "<group>"; };
 		8554E0E726FE3251003945EE /* ExpenseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseType.swift; sourceTree = "<group>"; };
 		8554E0E926FE4C82003945EE /* UIAppearanceUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAppearanceUtils.swift; sourceTree = "<group>"; };
+		855FB9132703626700A0CB79 /* ExpenseTrackingAppRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExpenseTrackingAppRelease.entitlements; sourceTree = "<group>"; };
+		855FB9152703626B00A0CB79 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		8566795B2688CE78007A731B /* ExpenseTrackingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseTrackingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8566795E2688CE79007A731B /* ExpenseTrackingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackingAppApp.swift; sourceTree = "<group>"; };
 		856679602688CE79007A731B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -85,20 +87,19 @@
 		8566797C2688CE82007A731B /* ExpenseTrackingAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExpenseTrackingAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		856679802688CE82007A731B /* ExpenseTrackingAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackingAppUITests.swift; sourceTree = "<group>"; };
 		856679822688CE82007A731B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		856679922688CFF3007A731B /* UIApplicationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtensions.swift; sourceTree = "<group>"; };
 		856679942688D176007A731B /* CustomViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewModifiers.swift; sourceTree = "<group>"; };
-		856679962688D336007A731B /* StringInterpolationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringInterpolationExtensions.swift; sourceTree = "<group>"; };
+		856679962688D336007A731B /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		8566799C2688D46A007A731B /* ExpenseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListViewModel.swift; sourceTree = "<group>"; };
 		8566799E2688D4ED007A731B /* AddItemImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemImage.swift; sourceTree = "<group>"; };
 		856679A02688DD08007A731B /* CenteredFormButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredFormButton.swift; sourceTree = "<group>"; };
 		856679A22688DE36007A731B /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
 		856679A42688E013007A731B /* ExpenseListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListItem.swift; sourceTree = "<group>"; };
+		8589A238270356860033B791 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		85A2F99626FF0677001818AC /* NavBarButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButtons.swift; sourceTree = "<group>"; };
 		85A2F99826FF09E8001818AC /* ExpensePieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensePieChartView.swift; sourceTree = "<group>"; };
 		85A2F99C26FF8163001818AC /* ExpenseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListView.swift; sourceTree = "<group>"; };
 		85A2F99E26FF81AE001818AC /* DevTestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevTestUtils.swift; sourceTree = "<group>"; };
 		85B2258126A4466E00A698A8 /* ShadedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadedButton.swift; sourceTree = "<group>"; };
-		85B2258726A4854E00A698A8 /* TypeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeManager.swift; sourceTree = "<group>"; };
 		85E7E612269986D100CBEEB0 /* ExpenseItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseItemViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +109,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8554E0E226FE2AC3003945EE /* Introspect in Frameworks */,
+				855FB9162703626B00A0CB79 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,6 +161,8 @@
 		8554E0E326FE2D0A003945EE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				856679962688D336007A731B /* String+Extensions.swift */,
+				8589A238270356860033B791 /* UIApplication+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -171,6 +175,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		855FB9142703626B00A0CB79 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				855FB9152703626B00A0CB79 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		856679522688CE78007A731B = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +190,7 @@
 				856679742688CE82007A731B /* ExpenseTrackingAppTests */,
 				8566797F2688CE82007A731B /* ExpenseTrackingAppUITests */,
 				8566795C2688CE78007A731B /* Products */,
+				855FB9142703626B00A0CB79 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -194,6 +207,7 @@
 		8566795D2688CE78007A731B /* ExpenseTrackingApp */ = {
 			isa = PBXGroup;
 			children = (
+				855FB9132703626700A0CB79 /* ExpenseTrackingAppRelease.entitlements */,
 				8554E0E626FE3226003945EE /* Models */,
 				85B2258626A4851A00A698A8 /* Managers */,
 				856679912688CFD1007A731B /* Utils */,
@@ -267,9 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				8554E0E326FE2D0A003945EE /* Extensions */,
-				856679922688CFF3007A731B /* UIApplicationExtensions.swift */,
 				856679942688D176007A731B /* CustomViewModifiers.swift */,
-				856679962688D336007A731B /* StringInterpolationExtensions.swift */,
 				8554E0E926FE4C82003945EE /* UIAppearanceUtils.swift */,
 				85A2F99E26FF81AE001818AC /* DevTestUtils.swift */,
 			);
@@ -280,7 +292,6 @@
 			isa = PBXGroup;
 			children = (
 				856679672688CE81007A731B /* PersistenceManager.swift */,
-				85B2258726A4854E00A698A8 /* TypeManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -424,7 +435,6 @@
 				8554E0E526FE30D0003945EE /* AddExpenseViewModel.swift in Sources */,
 				85A2F99726FF0677001818AC /* NavBarButtons.swift in Sources */,
 				85A2F99926FF09E8001818AC /* ExpensePieChartView.swift in Sources */,
-				856679932688CFF3007A731B /* UIApplicationExtensions.swift in Sources */,
 				85A2F99F26FF81AE001818AC /* DevTestUtils.swift in Sources */,
 				8523AEAD26B4A171006EC205 /* PieChart.swift in Sources */,
 				8523AEAE26B4A171006EC205 /* PieceOfPie.swift in Sources */,
@@ -440,10 +450,10 @@
 				8566799D2688D46A007A731B /* ExpenseListViewModel.swift in Sources */,
 				8566795F2688CE79007A731B /* ExpenseTrackingAppApp.swift in Sources */,
 				856679A12688DD08007A731B /* CenteredFormButton.swift in Sources */,
+				8589A239270356860033B791 /* UIApplication+Extensions.swift in Sources */,
 				856679A52688E013007A731B /* ExpenseListItem.swift in Sources */,
 				8566799F2688D4ED007A731B /* AddItemImage.swift in Sources */,
-				856679972688D336007A731B /* StringInterpolationExtensions.swift in Sources */,
-				85B2258826A4854E00A698A8 /* TypeManager.swift in Sources */,
+				856679972688D336007A731B /* String+Extensions.swift in Sources */,
 				856679952688D177007A731B /* CustomViewModifiers.swift in Sources */,
 				8566796B2688CE81007A731B /* ExpenseTrackingApp.xcdatamodeld in Sources */,
 				8554E0E826FE3251003945EE /* ExpenseType.swift in Sources */,
@@ -627,6 +637,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ExpenseTrackingApp/ExpenseTrackingAppRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ExpenseTrackingApp/Preview Content\"";
 				DEVELOPMENT_TEAM = T9DDB4H4HQ;

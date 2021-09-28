@@ -23,7 +23,6 @@ class UIAppearanceUtils {
         if let cgColor = Color(UIColor.tertiarySystemFill).cgColor {
             UITableView.appearance().backgroundColor = UIColor(cgColor: cgColor)
         }
-//        UITableView.appearance().backgroundColor = UIColor(cgColor: Color(UIColor.tertiarySystemFill).cgColor)
         
         UITableView.appearance().separatorStyle = .singleLine
         UITableView.appearance().separatorColor = .black
