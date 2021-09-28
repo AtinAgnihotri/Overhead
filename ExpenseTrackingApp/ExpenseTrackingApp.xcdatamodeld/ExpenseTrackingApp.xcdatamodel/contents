@@ -6,14 +6,6 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="note" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
-        <uniquenessConstraints>
-            <uniquenessConstraint>
-                <constraint value="amount"/>
-                <constraint value="date"/>
-                <constraint value="name"/>
-                <constraint value="type"/>
-            </uniquenessConstraint>
-        </uniquenessConstraints>
     </entity>
     <elements>
         <element name="CDExpenseItem" positionX="-63" positionY="-18" width="128" height="104"/>

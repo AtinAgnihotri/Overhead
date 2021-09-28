@@ -40,6 +40,15 @@ struct PersistenceManager {
 
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "ExpenseTrackingApp")
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        guard let description = container.persistentStoreDescriptions.first else {
+            fatalError("Failed to fetch description")
+        }
+        description.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.ExpenseTrackingApp")
+        let remoteChangeKey = "NSPersistentStoreRemoteChangeNotificationOptionKey"
+        description.setOption(true as NSNumber, forKey: remoteChangeKey)
+        container.persistentStoreDescriptions = [description]
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }

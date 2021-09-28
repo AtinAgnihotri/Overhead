@@ -67,6 +67,7 @@
 		8523AEA926B4A171006EC205 /* PieceOfPie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieceOfPie.swift; sourceTree = "<group>"; };
 		8523AEAA26B4A171006EC205 /* PieChartWithLegend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartWithLegend.swift; sourceTree = "<group>"; };
 		85337B0F2702133F00EFABB4 /* DetailedExpenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedExpenseViewModel.swift; sourceTree = "<group>"; };
+		85339C7827038A08006F5521 /* ExpenseTrackingApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExpenseTrackingApp.entitlements; sourceTree = "<group>"; };
 		85367B312689871B00B9C1C8 /* DetailedExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedExpenseView.swift; sourceTree = "<group>"; };
 		8554E0E426FE30D0003945EE /* AddExpenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseViewModel.swift; sourceTree = "<group>"; };
 		8554E0E726FE3251003945EE /* ExpenseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseType.swift; sourceTree = "<group>"; };
@@ -207,6 +208,7 @@
 		8566795D2688CE78007A731B /* ExpenseTrackingApp */ = {
 			isa = PBXGroup;
 			children = (
+				85339C7827038A08006F5521 /* ExpenseTrackingApp.entitlements */,
 				855FB9132703626700A0CB79 /* ExpenseTrackingAppRelease.entitlements */,
 				8554E0E626FE3226003945EE /* Models */,
 				85B2258626A4851A00A698A8 /* Managers */,
@@ -615,6 +617,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ExpenseTrackingApp/ExpenseTrackingApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ExpenseTrackingApp/Preview Content\"";
 				DEVELOPMENT_TEAM = T9DDB4H4HQ;

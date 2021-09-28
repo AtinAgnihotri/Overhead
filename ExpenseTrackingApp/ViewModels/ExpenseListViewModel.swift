@@ -8,6 +8,7 @@
 import Foundation
 import CoreData
 import SwiftUI
+import NotificationCenter
 
 class ExpenseListViewModel: ObservableObject {
     static private var shared = ExpenseListViewModel()
@@ -35,14 +36,26 @@ class ExpenseListViewModel: ObservableObject {
         getAllExpenses()
     }
     
-//    func updateExpense(expense: CDExpenseItem, name: String?, type: String?, amount: Double?, note: String?) {
-//        persistenceController.updateExpense(with: expen)
-//    }
-    
-    
     private init() {
         // Get items from DataModel on startup
         getAllExpenses()
+        setupRemoteChangeObservation()
+    }
+    
+    func setupRemoteChangeObservation() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(fetchChanges),
+            name: NSNotification.Name(rawValue: "NSPersistentStoreRemoteChangeNotification"),
+            object: persistenceController.container.persistentStoreCoordinator
+        )
+    }
+    
+    @objc func fetchChanges() {
+        print("Fetching Changes")
+        DispatchQueue.main.async { [weak self] in
+            self?.getAllExpenses()
+        }
     }
     
     static func getInstance() -> ExpenseListViewModel {
