@@ -47,6 +47,21 @@ struct DetailedExpenseView: View {
     
     var body: some View {
         Form {
+            if isEditing {
+                HStack {
+                    Text("Name:")
+                    TextField("Enter Name", text: $detailedExpenseVM.name)
+                        .introspectTextField { textField in
+                            textField.textAlignment = .right
+                            textField.contentHorizontalAlignment = .right
+                        }
+                        .padding(5)
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundColor(Color(UIColor.secondarySystemFill))
+                        )
+                }.secondaryListBackground()
+            }
             HStack {
                 Text("Amount:")
                 if isEditing {
@@ -80,17 +95,17 @@ struct DetailedExpenseView: View {
                     Spacer()
                     Text(detailedExpenseVM.type.rawValue)
                 }
-            }.tertiaryListBackground()
+            }.secondaryListBackground()
             HStack {
                 Text("Date:")
                 Spacer()
                 Text(detailedExpenseVM.date)
-            }.tertiaryListBackground()
+            }.secondaryListBackground()
             if showNote {
                 Section (header: Text("Note")) {
                     TextEditor(text: $detailedExpenseVM.note)
                         .disabled(!isEditing)
-                }.tertiaryListBackground()
+                }.secondaryListBackground()
             }
             
 

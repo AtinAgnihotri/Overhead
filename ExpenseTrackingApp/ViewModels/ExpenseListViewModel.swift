@@ -29,10 +29,12 @@ class ExpenseListViewModel: ObservableObject {
     
     func getAllExpenses() {
         // Fix for notification shimmer bug
-        let expenses = persistenceController.getAllExpenses().map(ExpenseItemViewModel.init)
-        if expenseList != expenses {
-            expenseList = expenses
-        }
+        expenseList = persistenceController.getAllExpenses().map(ExpenseItemViewModel.init)
+    }
+    
+    func setExpenses(to expenses: [ExpenseItemViewModel]) {
+        // Fix for notification shimmer bug
+        expenseList = expenses
     }
     
     func saveExpense(name: String, type: String, amount: Double, note: String) {
@@ -57,8 +59,11 @@ class ExpenseListViewModel: ObservableObject {
     
     @objc func fetchChanges() {
         print("Fetching Changes")
-        DispatchQueue.main.async { [weak self] in
-            self?.getAllExpenses()
+        let expenses = persistenceController.getAllExpenses().map(ExpenseItemViewModel.init)
+        if hasNewChanges(expenses) {
+            DispatchQueue.main.async { [weak self] in
+                self?.setExpenses(to: expenses)
+            }
         }
     }
     
@@ -79,6 +84,16 @@ class ExpenseListViewModel: ObservableObject {
 
             result[type, default: 0] += amount
         }
+    }
+    
+    func hasNewChanges(_ expenses: [ExpenseItemViewModel]) -> Bool{
+        if expenses.count != expenseList.count { return true }
+        for (oldExpenseVM, newExpenseVM) in zip(expenses, expenseList) {
+            if oldExpenseVM != newExpenseVM {
+                return true
+            }
+        }
+        return false
     }
     
 }
