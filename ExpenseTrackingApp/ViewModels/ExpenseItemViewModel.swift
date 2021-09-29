@@ -8,7 +8,9 @@
 import Foundation
 import CoreData
 
-struct ExpenseItemViewModel: Equatable {
+struct ExpenseItemViewModel: Equatable, Comparable {
+    
+    
     let expenseItem: CDExpenseItem
     
     init(expenseItem: CDExpenseItem) {
@@ -54,6 +56,10 @@ struct ExpenseItemViewModel: Equatable {
         let typeCheck = lhs.type == rhs.type
         let noteCheck = lhs.note == rhs.note
         return nameCheck && dateCheck && amountCheck && typeCheck && noteCheck
+    }
+    
+    static func < (lhs: ExpenseItemViewModel, rhs: ExpenseItemViewModel) -> Bool {
+        lhs.date < rhs.date
     }
     
     func updateItem(name: String?, type: ExpenseType?, amount: Double?, note: String?) {

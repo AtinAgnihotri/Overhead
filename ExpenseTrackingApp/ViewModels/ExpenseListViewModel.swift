@@ -29,7 +29,7 @@ class ExpenseListViewModel: ObservableObject {
     
     func getAllExpenses() {
         // Fix for notification shimmer bug
-        expenseList = persistenceController.getAllExpenses().map(ExpenseItemViewModel.init)
+        expenseList = persistenceController.getAllExpenses().map(ExpenseItemViewModel.init).sorted()
     }
     
     func setExpenses(to expenses: [ExpenseItemViewModel]) {
@@ -59,7 +59,7 @@ class ExpenseListViewModel: ObservableObject {
     
     @objc func fetchChanges() {
         print("Fetching Changes")
-        let expenses = persistenceController.getAllExpenses().map(ExpenseItemViewModel.init)
+        let expenses = persistenceController.getAllExpenses().map(ExpenseItemViewModel.init).sorted()
         if hasNewChanges(expenses) {
             DispatchQueue.main.async { [weak self] in
                 self?.setExpenses(to: expenses)
