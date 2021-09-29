@@ -52,7 +52,8 @@ struct ExpenseItemViewModel: Equatable {
         let dateCheck = lhs.date == rhs.date
         let amountCheck = lhs.amount == rhs.amount
         let typeCheck = lhs.type == rhs.type
-        return nameCheck && dateCheck && amountCheck && typeCheck
+        let noteCheck = lhs.note == rhs.note
+        return nameCheck && dateCheck && amountCheck && typeCheck && noteCheck
     }
     
     func updateItem(name: String?, type: ExpenseType?, amount: Double?, note: String?) {

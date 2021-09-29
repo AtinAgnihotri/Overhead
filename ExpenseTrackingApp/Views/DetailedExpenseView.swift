@@ -67,7 +67,7 @@ struct DetailedExpenseView: View {
                     Spacer()
                     Text(detailedExpenseVM.amount)
                 }
-            }
+            }.secondaryListBackground()
             HStack {
                 Text("Type:")
                 if detailedExpenseVM.isEditing {
@@ -80,17 +80,17 @@ struct DetailedExpenseView: View {
                     Spacer()
                     Text(detailedExpenseVM.type.rawValue)
                 }
-            }
+            }.tertiaryListBackground()
             HStack {
                 Text("Date:")
                 Spacer()
                 Text(detailedExpenseVM.date)
-            }
+            }.tertiaryListBackground()
             if showNote {
                 Section (header: Text("Note")) {
                     TextEditor(text: $detailedExpenseVM.note)
                         .disabled(!isEditing)
-                }
+                }.tertiaryListBackground()
             }
             
 

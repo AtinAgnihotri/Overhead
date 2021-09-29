@@ -28,7 +28,11 @@ class ExpenseListViewModel: ObservableObject {
     }
     
     func getAllExpenses() {
-        expenseList = persistenceController.getAllExpenses().map(ExpenseItemViewModel.init)
+        // Fix for notification shimmer bug
+        let expenses = persistenceController.getAllExpenses().map(ExpenseItemViewModel.init)
+        if expenseList != expenses {
+            expenseList = expenses
+        }
     }
     
     func saveExpense(name: String, type: String, amount: Double, note: String) {

@@ -65,7 +65,7 @@ struct ContentView: View {
             }
         }
         .onAppear {
-//            UIAppearanceUtils.shared.setTableViewAppearance()
+            UIAppearanceUtils.shared.setTableViewAppearance()
         }
     }
     

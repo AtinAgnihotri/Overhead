@@ -40,6 +40,20 @@ struct ClearBackgroundColor: ViewModifier {
     }
 }
 
+struct SecondaryListBackground: ViewModifier {
+    let secondaryBackgroundColor = Color(UIColor.secondarySystemFill)
+    func body(content: Content) -> some View {
+        content.listRowBackground(secondaryBackgroundColor)
+    }
+}
+
+struct TertiaryListBackground: ViewModifier {
+    let tertiaryBackgroundColor = Color(UIColor.tertiarySystemFill)
+    func body(content: Content) -> some View {
+        content.listRowBackground(tertiaryBackgroundColor)
+    }
+}
+
 struct AdaptsToSoftwareKeyboard: ViewModifier {
   @State var currentHeight: CGFloat = 0
 
@@ -84,6 +98,14 @@ extension View {
     
     func adaptsToKeyboard() -> some View {
         self.modifier(AdaptsToSoftwareKeyboard())
+    }
+    
+    func secondaryListBackground() -> some View {
+        self.modifier(SecondaryListBackground())
+    }
+    
+    func tertiaryListBackground() -> some View {
+        self.modifier(TertiaryListBackground())
     }
 }
 
