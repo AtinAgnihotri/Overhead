@@ -36,6 +36,7 @@ struct ExpenseListView: View {
                 .onAppear {
                     deselectRows()
                 }
+                .secondaryListBackground()
             }
             .onDelete(perform: removeItems)
             .buttonStyle(PlainButtonStyle())

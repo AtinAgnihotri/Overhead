@@ -90,7 +90,9 @@ struct DetailedExpenseView: View {
                         ForEach(ExpenseType.allCases, id:\.self) {
                             Text("\($0.rawValue)")
                         }
-                    }.foregroundColor(.blue)
+                    }
+//                    .pickerStyle(SegmentedPickerStyle())
+                    .foregroundColor(.blue)
                 } else {
                     Spacer()
                     Text(detailedExpenseVM.type.rawValue)
@@ -107,17 +109,18 @@ struct DetailedExpenseView: View {
                         .disabled(!isEditing)
                 }.secondaryListBackground()
             }
-            
-
         }.navigationBarTitle(expenseVM.name)
-        .navigationBarItems(trailing: HStack {
-            if detailedExpenseVM.isEditing {
-                CrossNavBarButton(action: discardChanges).padding()
-                TickNavBarButton(action: saveChanges)
-            } else {
-                DeleteNavBarButton(action: confirmDeletion).padding()
-                EditNavBarButton(action: didStartEditing)
-            }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(
+            leading: BackNavBarButton(action: dismissView),
+            trailing: HStack {
+                if detailedExpenseVM.isEditing {
+                    CrossNavBarButton(action: discardChanges).padding()
+                    TickNavBarButton(action: saveChanges)
+                } else {
+                    DeleteNavBarButton(action: confirmDeletion).padding()
+                    EditNavBarButton(action: didStartEditing)
+                }
         })
         .clearBackground()
         .alert(isPresented: $isShowingAlert, content: {
@@ -128,12 +131,13 @@ struct DetailedExpenseView: View {
                     return getDeletionConfirmationAlert()
             }
         })
-        .onDisappear {
-            didFinishEditing()
-        }
+//        .onDisappear {
+//            didFinishEditing()
+//        }
     }
     
     func dismissView() {
+        didFinishEditing()
         self.presentationMode.wrappedValue.dismiss()
     }
     

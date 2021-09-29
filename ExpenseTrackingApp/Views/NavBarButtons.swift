@@ -9,12 +9,19 @@ import SwiftUI
 
 struct SystemNavBarButton: View {
     var systemName: String
+    var label: String = ""
+    var labelWeight: Font.Weight = .medium
     var action: () -> Void
     
     var body: some View {
         Button(action: action) {
-            Image(systemName: systemName)
-                .font(.title2)
+            HStack {
+                Image(systemName: systemName)
+                    .font(.title2)
+                if !label.isEmpty {
+                    Text(label).fontWeight(labelWeight)
+                }
+            }
         }
     }
 }
@@ -78,5 +85,15 @@ struct CrossNavBarButton: View {
     var body: some View {
         SystemNavBarButton(systemName: "xmark.circle", action: action)
             .foregroundColor(.red)
+    }
+}
+
+struct BackNavBarButton: View {
+    var action: () -> Void
+    
+    var body: some View {
+        HStack {
+            SystemNavBarButton(systemName: "chevron.backward", label: "BACK", action: action)
+        }
     }
 }
