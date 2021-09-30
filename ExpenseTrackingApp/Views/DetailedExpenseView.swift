@@ -15,11 +15,16 @@ enum DetailedExpenseAlertTypes {
 struct DetailedExpenseView: View {
     
     @Environment(\.presentationMode) var presentationMode
+    
     @ObservedObject private var detailedExpenseVM: DetailedExpenseViewModel
+    @ObservedObject var keyboardUtil = KeyboardUtils()
+    
     @State private var alertTitle: String = ""
     @State private var alertMsg: String = ""
     @State private var alertType: DetailedExpenseAlertTypes = .validation
     @State private var isShowingAlert: Bool = false
+    @State private var tableView: UITableView?
+    @State private var textView: UITextView?
     
     var expenseVM: ExpenseItemViewModel
 
@@ -91,7 +96,6 @@ struct DetailedExpenseView: View {
                             Text("\($0.rawValue)")
                         }
                     }
-//                    .pickerStyle(SegmentedPickerStyle())
                     .foregroundColor(.blue)
                 } else {
                     Spacer()
@@ -106,10 +110,29 @@ struct DetailedExpenseView: View {
             if showNote {
                 Section (header: Text("Note")) {
                     TextEditor(text: $detailedExpenseVM.note)
+                        .introspectTextView { textView in
+                            self.textView = textView
+                        }
+                        .onChange(of: detailedExpenseVM.note) { _ in
+                            keyboardUtil.scrollWhenKeyboard(isShowing: true, for: tableView)
+                        }
+                        .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+                                keyboardUtil.scrollWhenKeyboard(isShowing: false, for: tableView)
+                            }
+                        .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidShowNotification)) { _ in
+                                if let textView = textView,
+                                   textView.isFirstResponder {
+                                    keyboardUtil.scrollWhenKeyboard(isShowing: true, for: tableView)
+                                }
+                            }
                         .disabled(!isEditing)
                 }.secondaryListBackground()
             }
-        }.navigationBarTitle(expenseVM.name)
+        }
+        .introspectTableView { tableView in
+            self.tableView = tableView
+        }
+        .navigationBarTitle(expenseVM.name)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(
             leading: BackNavBarButton(action: dismissView),
@@ -131,9 +154,6 @@ struct DetailedExpenseView: View {
                     return getDeletionConfirmationAlert()
             }
         })
-//        .onDisappear {
-//            didFinishEditing()
-//        }
     }
     
     func dismissView() {

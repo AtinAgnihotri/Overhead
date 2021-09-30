@@ -54,33 +54,91 @@ struct TertiaryListBackground: ViewModifier {
     }
 }
 
+//struct AdaptsToSoftwareKeyboard: ViewModifier {
+//  @State var currentHeight: CGFloat = 0
+//
+//  func body(content: Content) -> some View {
+//    content
+//      .padding(.bottom, currentHeight)
+//      .edgesIgnoringSafeArea(.bottom)
+//      .onAppear(perform: subscribeToKeyboardEvents)
+//  }
+//
+//  private func subscribeToKeyboardEvents() {
+//    NotificationCenter.Publisher(
+//      center: NotificationCenter.default,
+//      name: UIResponder.keyboardWillShowNotification
+//    ).compactMap { notification in
+//        notification.userInfo?["UIKeyboardFrameEndUserInfoKey"] as? CGRect
+//    }.map { rect in
+//      rect.height
+//    }.subscribe(Subscribers.Assign(object: self, keyPath: \.currentHeight))
+//
+//    NotificationCenter.Publisher(
+//      center: NotificationCenter.default,
+//      name: UIResponder.keyboardWillHideNotification
+//    ).compactMap { notification in
+//      CGFloat.zero
+//    }.subscribe(Subscribers.Assign(object: self, keyPath: \.currentHeight))
+//  }
+//}
+
+struct RunWhenKeyboardHides: ViewModifier {
+    let action: () -> Void
+    
+    init(action: @escaping () -> Void) {
+        self.action = action
+    }
+    
+    func body(content: Content) -> some View {
+        content
+            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+                    action()
+                }
+    }
+}
+
+struct RunWhenKeyboardShows: ViewModifier {
+    let action: () -> Void
+    
+    init(action: @escaping () -> Void) {
+        self.action = action
+    }
+    
+    func body(content: Content) -> some View {
+        content
+            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidShowNotification)) { _ in
+                    action()
+                }
+    }
+}
+
 struct AdaptsToSoftwareKeyboard: ViewModifier {
-  @State var currentHeight: CGFloat = 0
 
-  func body(content: Content) -> some View {
-    content
-      .padding(.bottom, currentHeight)
-      .edgesIgnoringSafeArea(.bottom)
-      .onAppear(perform: subscribeToKeyboardEvents)
-  }
+    @State var currentHeight: CGFloat = 0
+    @State private var cancelable: AnyCancellable?
+    
+    func body(content: Content) -> some View {
+        content
+            .padding(.bottom, self.currentHeight)
+            .edgesIgnoringSafeArea(self.currentHeight == 0 ? Edge.Set() : .bottom)
+            .onAppear(perform: subscribeToKeyboardEvents)
+    }
 
-  private func subscribeToKeyboardEvents() {
-    NotificationCenter.Publisher(
-      center: NotificationCenter.default,
-      name: UIResponder.keyboardWillShowNotification
-    ).compactMap { notification in
-        notification.userInfo?["UIKeyboardFrameEndUserInfoKey"] as? CGRect
-    }.map { rect in
-      rect.height
-    }.subscribe(Subscribers.Assign(object: self, keyPath: \.currentHeight))
+    private let keyboardWillOpen = NotificationCenter.default
+        .publisher(for: UIResponder.keyboardWillShowNotification)
+        .map { $0.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect }
+        .map { $0.height }
 
-    NotificationCenter.Publisher(
-      center: NotificationCenter.default,
-      name: UIResponder.keyboardWillHideNotification
-    ).compactMap { notification in
-      CGFloat.zero
-    }.subscribe(Subscribers.Assign(object: self, keyPath: \.currentHeight))
-  }
+    private let keyboardWillHide =  NotificationCenter.default
+        .publisher(for: UIResponder.keyboardWillHideNotification)
+        .map { _ in CGFloat.zero }
+
+    private func subscribeToKeyboardEvents() {
+        self.cancelable = Publishers.Merge(keyboardWillOpen, keyboardWillHide)
+            .subscribe(on: RunLoop.main)
+            .assign(to: \.self.currentHeight, on: self)
+    }
 }
 
 extension View {
@@ -106,6 +164,14 @@ extension View {
     
     func tertiaryListBackground() -> some View {
         self.modifier(TertiaryListBackground())
+    }
+    
+    func runWhenKeyboardHides(action: @escaping () -> Void) -> some View {
+        self.modifier(RunWhenKeyboardHides(action: action))
+    }
+    
+    func runWhenKeyboardShows(action: @escaping () -> Void) -> some View {
+        self.modifier(RunWhenKeyboardShows(action: action))
     }
 }
 

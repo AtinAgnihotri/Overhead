@@ -41,6 +41,8 @@
 		85A2F99F26FF81AE001818AC /* DevTestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99E26FF81AE001818AC /* DevTestUtils.swift */; };
 		85B2258226A4466E00A698A8 /* ShadedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2258126A4466E00A698A8 /* ShadedButton.swift */; };
 		85E7E613269986D100CBEEB0 /* ExpenseItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E7E612269986D100CBEEB0 /* ExpenseItemViewModel.swift */; };
+		85F9CC0A2704DB07007C2DF3 /* KeyboardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F9CC092704DB07007C2DF3 /* KeyboardUtils.swift */; };
+		85F9CC0C2705765E007C2DF3 /* ResponsiveTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F9CC0B2705765E007C2DF3 /* ResponsiveTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +104,8 @@
 		85A2F99E26FF81AE001818AC /* DevTestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevTestUtils.swift; sourceTree = "<group>"; };
 		85B2258126A4466E00A698A8 /* ShadedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadedButton.swift; sourceTree = "<group>"; };
 		85E7E612269986D100CBEEB0 /* ExpenseItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseItemViewModel.swift; sourceTree = "<group>"; };
+		85F9CC092704DB07007C2DF3 /* KeyboardUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardUtils.swift; sourceTree = "<group>"; };
+		85F9CC0B2705765E007C2DF3 /* ResponsiveTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsiveTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,6 +279,7 @@
 				85A2F99626FF0677001818AC /* NavBarButtons.swift */,
 				85A2F99826FF09E8001818AC /* ExpensePieChartView.swift */,
 				85A2F99C26FF8163001818AC /* ExpenseListView.swift */,
+				85F9CC0B2705765E007C2DF3 /* ResponsiveTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 				856679942688D176007A731B /* CustomViewModifiers.swift */,
 				8554E0E926FE4C82003945EE /* UIAppearanceUtils.swift */,
 				85A2F99E26FF81AE001818AC /* DevTestUtils.swift */,
+				85F9CC092704DB07007C2DF3 /* KeyboardUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -433,6 +439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85F9CC0A2704DB07007C2DF3 /* KeyboardUtils.swift in Sources */,
 				856679682688CE81007A731B /* PersistenceManager.swift in Sources */,
 				8554E0E526FE30D0003945EE /* AddExpenseViewModel.swift in Sources */,
 				85A2F99726FF0677001818AC /* NavBarButtons.swift in Sources */,
@@ -443,6 +450,7 @@
 				85B2258226A4466E00A698A8 /* ShadedButton.swift in Sources */,
 				856679612688CE79007A731B /* ContentView.swift in Sources */,
 				85337B102702133F00EFABB4 /* DetailedExpenseViewModel.swift in Sources */,
+				85F9CC0C2705765E007C2DF3 /* ResponsiveTextField.swift in Sources */,
 				856679A32688DE37007A731B /* AddExpenseView.swift in Sources */,
 				8523AEAC26B4A171006EC205 /* Legend.swift in Sources */,
 				8554E0EA26FE4C82003945EE /* UIAppearanceUtils.swift in Sources */,

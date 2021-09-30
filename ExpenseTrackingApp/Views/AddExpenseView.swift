@@ -11,15 +11,19 @@ import Combine
 
 struct AddExpenseView: View {
     @ObservedObject var addExpenseVM = AddExpenseViewModel()
-//    let expenseTypes = TypeManager.shared.types
+    @ObservedObject var keyboardUtil = KeyboardUtils()
     
+    @State private var tableView: UITableView?
+    @State private var textView: UITextView?
     @State private var showingAlert = false
     @State private var alertTitle = ""
     @State private var alertMsg = ""
-    
     @State private var formAppeared = false
+
     
     @Environment(\.presentationMode) var presentationMode
+    
+    @State private var noteRect: CGRect?
     
     var body: some View {
         NavigationView {
@@ -27,7 +31,7 @@ struct AddExpenseView: View {
                 Form {
                     Section (header: Text("Name of the expense")
                                 .font(.headline)) {
-                        TextField("Name", text: $addExpenseVM.name)
+                        ResponsiveTextFeild(title: "Name", text: $addExpenseVM.name)
                             .introspectTextField{ textField in
                                 if formAppeared {
                                     textField.becomeFirstResponder()
@@ -37,7 +41,7 @@ struct AddExpenseView: View {
                     }
                     Section (header: Text("Amount spent")
                                 .font(.headline)) {
-                        TextField("Amount", text: $addExpenseVM.amount)
+                        ResponsiveTextFeild(title: "Amount", text: $addExpenseVM.amount)
                             .keyboardType(.decimalPad)
                     }
                     Section (header: Text("Type of Expense")
@@ -48,13 +52,32 @@ struct AddExpenseView: View {
                             }
                         }.pickerStyle(SegmentedPickerStyle())
                     }
-                    Section (header: Text("Note (Optional)")
+                    Section (header: Text("Type of Expense")
                                 .font(.headline)) {
                         TextEditor(text: $addExpenseVM.note)
+                            .introspectTextView { textView in
+                                self.textView = textView
+                            }
+                            .onChange(of: addExpenseVM.note) { _ in
+                                keyboardUtil.scrollWhenKeyboard(isShowing: true, for: tableView)
+
+                            }
+                            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+                                    keyboardUtil.scrollWhenKeyboard(isShowing: false, for: tableView)
+                                }
+                            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidShowNotification)) { _ in
+                                    if let textView = textView,
+                                       textView.isFirstResponder {
+                                        keyboardUtil.scrollWhenKeyboard(isShowing: true, for: tableView)
+                                    }
+                                }
                     }
                 }
-                .adaptsToKeyboard()
-            }.navigationBarTitle("Add Expanse")
+                .introspectTableView { tableView in
+                    self.tableView = tableView
+                }
+            }
+            .navigationBarTitle("Add Expanse")
             .navigationBarItems(leading: Button(action: dismissView) {
                                     Text("Cancel").foregroundColor(.red)
                                 },
@@ -66,7 +89,8 @@ struct AddExpenseView: View {
             .alert(isPresented: $showingAlert) {
                     Alert(title: Text(alertTitle), message: Text(alertMsg), dismissButton: .default(Text("OK")))
             }
-        }.transition(.scale)
+        }
+        .transition(.scale)
         .onAppear {
             formAppeared = true
         }
@@ -81,7 +105,6 @@ struct AddExpenseView: View {
     func addExpense() {
         addExpenseVM.addExpense(completion: dismissView, onFail: showError)
     }
-    
     
     func dismissView() {
         self.presentationMode.wrappedValue.dismiss()
