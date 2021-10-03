@@ -10,7 +10,7 @@ import Introspect
 
 
 struct ExpenseListView: View {
-    @ObservedObject private var expenseListVM: ExpenseListViewModel
+    @ObservedObject private var expenseListVM = ExpenseListViewModel()
     @State private var tableView: UITableView?
 
     private func deselectRows() {
@@ -20,9 +20,9 @@ struct ExpenseListView: View {
         }
     }
     
-    init(_ expenseListVM: ExpenseListViewModel) {
-        self.expenseListVM = expenseListVM
-    }
+//    init() {
+//        self.expenseListVM = ExpenseManager.shared.expenseList
+//    }
     
     var body: some View {
         List {
@@ -62,6 +62,7 @@ struct ExpenseListView: View {
 
 struct ExpenseListView_Previews: PreviewProvider {
     static var previews: some View {
-        ExpenseListView(DevTestUtils.shared.getExpenseListVM())
+//        ExpenseListView(DevTestUtils.shared.getExpenseListVM())
+        ExpenseListView()
     }
 }

@@ -11,8 +11,8 @@ class ExpensePieChartViewModel: ObservableObject {
     
     @Published var expenseList: [ExpenseItemViewModel]
     
-    init(with expenseList: [ExpenseItemViewModel]) {
-        self.expenseList = expenseList
+    init() {
+        self.expenseList = ExpenseManager.shared.expenseList
     }
     
     var total: Double {

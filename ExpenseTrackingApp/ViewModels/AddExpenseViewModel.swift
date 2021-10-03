@@ -32,7 +32,7 @@ class AddExpenseViewModel: ObservableObject {
             onFail("Invalid Amount", "Please enter a valid amount")
             return
         }
-        ExpenseListViewModel.getInstance().saveExpense(name: name, type: type.rawValue, amount: amount, note: note)
+        ExpenseManager.shared.saveExpense(name: name, type: type.rawValue, amount: amount, note: note)
         completion()
     }
     

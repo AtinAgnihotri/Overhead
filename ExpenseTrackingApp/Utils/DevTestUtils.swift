@@ -14,14 +14,14 @@ class DevTestUtils {
         
     }
     
-    func getExpenseListVM() -> ExpenseListViewModel {
+    func getExpenseListVM() -> ExpenseManager {
         let expense = CDExpenseItem(context: PersistenceManager.viewContext)
         expense.name = "Test Expense"
         expense.amount = 1.22
         expense.date = Date()
         expense.type = "Personal"
         let expenseVM = ExpenseItemViewModel(expenseItem: expense)
-        let expenseListVM = ExpenseListViewModel.getInstance()
+        let expenseListVM = ExpenseManager.shared
         expenseListVM.expenseList = [expenseVM]
         return expenseListVM
     }

@@ -30,11 +30,12 @@
 		856679812688CE82007A731B /* ExpenseTrackingAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679802688CE82007A731B /* ExpenseTrackingAppUITests.swift */; };
 		856679952688D177007A731B /* CustomViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679942688D176007A731B /* CustomViewModifiers.swift */; };
 		856679972688D336007A731B /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679962688D336007A731B /* String+Extensions.swift */; };
-		8566799D2688D46A007A731B /* ExpenseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566799C2688D46A007A731B /* ExpenseListViewModel.swift */; };
+		8566799D2688D46A007A731B /* ExpenseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566799C2688D46A007A731B /* ExpenseManager.swift */; };
 		8566799F2688D4ED007A731B /* AddItemImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566799E2688D4ED007A731B /* AddItemImage.swift */; };
 		856679A12688DD08007A731B /* CenteredFormButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679A02688DD08007A731B /* CenteredFormButton.swift */; };
 		856679A32688DE37007A731B /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679A22688DE36007A731B /* AddExpenseView.swift */; };
 		856679A52688E013007A731B /* ExpenseListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679A42688E013007A731B /* ExpenseListItem.swift */; };
+		857582B62709E6500062FDD0 /* ExpenseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857582B52709E6500062FDD0 /* ExpenseListViewModel.swift */; };
 		8589A239270356860033B791 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8589A238270356860033B791 /* UIApplication+Extensions.swift */; };
 		85A2F99726FF0677001818AC /* NavBarButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99626FF0677001818AC /* NavBarButtons.swift */; };
 		85A2F99926FF09E8001818AC /* ExpensePieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99826FF09E8001818AC /* ExpensePieChartView.swift */; };
@@ -94,11 +95,12 @@
 		856679822688CE82007A731B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		856679942688D176007A731B /* CustomViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewModifiers.swift; sourceTree = "<group>"; };
 		856679962688D336007A731B /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
-		8566799C2688D46A007A731B /* ExpenseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListViewModel.swift; sourceTree = "<group>"; };
+		8566799C2688D46A007A731B /* ExpenseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseManager.swift; sourceTree = "<group>"; };
 		8566799E2688D4ED007A731B /* AddItemImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemImage.swift; sourceTree = "<group>"; };
 		856679A02688DD08007A731B /* CenteredFormButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredFormButton.swift; sourceTree = "<group>"; };
 		856679A22688DE36007A731B /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
 		856679A42688E013007A731B /* ExpenseListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListItem.swift; sourceTree = "<group>"; };
+		857582B52709E6500062FDD0 /* ExpenseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListViewModel.swift; sourceTree = "<group>"; };
 		8589A238270356860033B791 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		85A2F99626FF0677001818AC /* NavBarButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButtons.swift; sourceTree = "<group>"; };
 		85A2F99826FF09E8001818AC /* ExpensePieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensePieChartView.swift; sourceTree = "<group>"; };
@@ -259,11 +261,11 @@
 		8566798E2688CFA9007A731B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				8566799C2688D46A007A731B /* ExpenseListViewModel.swift */,
 				85E7E612269986D100CBEEB0 /* ExpenseItemViewModel.swift */,
 				8554E0E426FE30D0003945EE /* AddExpenseViewModel.swift */,
 				85337B0F2702133F00EFABB4 /* DetailedExpenseViewModel.swift */,
 				8564902C2706E550007FB202 /* ExpensePieChartViewModel.swift */,
+				857582B52709E6500062FDD0 /* ExpenseListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -303,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				856679672688CE81007A731B /* PersistenceManager.swift */,
+				8566799C2688D46A007A731B /* ExpenseManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -461,8 +464,9 @@
 				85A2F99D26FF8163001818AC /* ExpenseListView.swift in Sources */,
 				85E7E613269986D100CBEEB0 /* ExpenseItemViewModel.swift in Sources */,
 				8564902D2706E550007FB202 /* ExpensePieChartViewModel.swift in Sources */,
-				8566799D2688D46A007A731B /* ExpenseListViewModel.swift in Sources */,
+				8566799D2688D46A007A731B /* ExpenseManager.swift in Sources */,
 				8566795F2688CE79007A731B /* ExpenseTrackingAppApp.swift in Sources */,
+				857582B62709E6500062FDD0 /* ExpenseListViewModel.swift in Sources */,
 				856679A12688DD08007A731B /* CenteredFormButton.swift in Sources */,
 				8589A239270356860033B791 /* UIApplication+Extensions.swift in Sources */,
 				856679A52688E013007A731B /* ExpenseListItem.swift in Sources */,

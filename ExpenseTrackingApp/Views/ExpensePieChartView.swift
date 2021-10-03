@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct ExpensePieChartView: View {
-    @ObservedObject private var expensePieChartVM: ExpensePieChartViewModel
+    @ObservedObject private var expensePieChartVM = ExpensePieChartViewModel()
     private var width: CGFloat
     private var height: CGFloat
     
-    init(_ expenseListVM: ExpenseListViewModel, width: CGFloat, height: CGFloat) {
-        self.expensePieChartVM = ExpensePieChartViewModel(with: expenseListVM.expenseList)
+//    init(_ expenseManager: ExpenseManager, width: CGFloat, height: CGFloat) {
+    init(width: CGFloat, height: CGFloat) {
+//        self.expensePieChartVM = ExpensePieChartViewModel(with: expenseListVM.expenseList)
+//        let expenseManager = ExpenseManager.shared
+//        self.expensePieChartVM = ExpensePieChartViewModel(with: expenseManager.expenseList)
         self.width = width
         self.height = height
     }
@@ -43,10 +46,10 @@ struct ExpensePieChartView_Previews: PreviewProvider {
         expense.date = Date()
         expense.type = "Personal"
         let expenseVM = ExpenseItemViewModel(expenseItem: expense)
-        let expenseListVM = ExpenseListViewModel.getInstance()
+        let expenseListVM = ExpenseManager.shared
         expenseListVM.expenseList = [expenseVM]
         return GeometryReader { geo in
-            ExpensePieChartView(expenseListVM, width: geo.size.width, height: geo.size.height * 0.4)
+            ExpensePieChartView(width: geo.size.width, height: geo.size.height * 0.4)
         }
     }
 }

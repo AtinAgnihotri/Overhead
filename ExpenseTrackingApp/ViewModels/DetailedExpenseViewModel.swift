@@ -44,7 +44,7 @@ class DetailedExpenseViewModel: ObservableObject {
     
     func deleteItem(completion: () -> Void) {
         expenseVM.deleteItem()
-        ExpenseListViewModel.getInstance().getAllExpenses()
+        ExpenseManager.shared.getAllExpenses()
         completion()
     }
     

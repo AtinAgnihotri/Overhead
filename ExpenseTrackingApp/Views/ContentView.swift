@@ -20,7 +20,7 @@ enum ActiveSheet: Identifiable {
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
-    @ObservedObject var expenseListVM = ExpenseListViewModel.getInstance()
+    @ObservedObject var expenseManager = ExpenseManager.shared
     @State var activeSheet: ActiveSheet?
     
     @State private var tableView: UITableView?
@@ -34,14 +34,13 @@ struct ContentView: View {
         NavigationView {
             GeometryReader { geo in
                 VStack {
-                    if !expenseListVM.expenseList.isEmpty {
+                    if !expenseManager.expenseList.isEmpty {
                         Spacer(minLength: geo.size.height * 0.02)
-                        ExpensePieChartView(expenseListVM,
-                                            width: geo.size.width * 0.95,
+                        ExpensePieChartView(width: geo.size.width * 0.95,
                                         height: geo.size.height * 0.4)
                     }
                     Spacer()
-                    ExpenseListView(expenseListVM)
+                    ExpenseListView()
                 }
             }
             .navigationBarTitle("Expense Tracker")
@@ -70,7 +69,7 @@ struct ContentView: View {
     }
     
     func removeItems(at offset: IndexSet) {
-        expenseListVM.deleteExpenses(at: offset)
+        expenseManager.deleteExpenses(at: offset)
     }
     
     func addItem() {
@@ -87,7 +86,7 @@ struct ContentView_Previews: PreviewProvider {
         expense.date = Date()
         expense.type = "Personal"
         let expenseVM = ExpenseItemViewModel(expenseItem: expense)
-        let expenseListVM = ExpenseListViewModel.getInstance()
+        let expenseListVM = ExpenseManager.shared
         expenseListVM.expenseList = [expenseVM]
         return ContentView().environment(\.managedObjectContext, PersistenceManager.preview.container.viewContext)
     }

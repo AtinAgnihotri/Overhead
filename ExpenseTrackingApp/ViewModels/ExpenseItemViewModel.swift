@@ -76,7 +76,7 @@ struct ExpenseItemViewModel: Equatable, Comparable {
             expenseItem.note = note
         }
         PersistenceManager.shared.saveContext()
-        ExpenseListViewModel.getInstance().getAllExpenses()
+        ExpenseManager.shared.getAllExpenses()
     }
     
     func deleteItem() {
