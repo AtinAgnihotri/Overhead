@@ -34,7 +34,7 @@ struct ContentView: View {
         NavigationView {
             GeometryReader { geo in
                 VStack {
-                    if expenseListVM.expenseList.count != 0 {
+                    if !expenseListVM.expenseList.isEmpty {
                         Spacer(minLength: geo.size.height * 0.02)
                         ExpensePieChartView(expenseListVM,
                                             width: geo.size.width * 0.95,

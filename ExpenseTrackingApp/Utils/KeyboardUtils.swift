@@ -30,16 +30,14 @@ final class KeyboardUtils: ObservableObject {
             .assign(to: \.self.keyboardHeight, on: self)
     }
     
-    func scrollWhenKeyboard(isShowing: Bool, for tableView: UITableView?) {
+    func scrollWhenKeyboard(for tableView: UITableView?) {
         var offset = CGPoint(x: 0, y: 0)
-        if isShowing {
-            if let tableView = tableView {
-                let scrolledHeight = tableView.contentSize.height - tableView.bounds.size.height
-                offset = CGPoint(x: 0, y: scrolledHeight)
-            }
+        if let tableView = tableView {
+            let scrolledHeight = tableView.contentSize.height - tableView.bounds.size.height
+            offset = CGPoint(x: 0, y: scrolledHeight)
+            tableView.setContentOffset(offset, animated: true)
         }
-        print("Setting content offset to \(offset)")
-        tableView?.setContentOffset(offset, animated: true)
+        
     }
     
 }

@@ -59,16 +59,16 @@ struct AddExpenseView: View {
                                 self.textView = textView
                             }
                             .onChange(of: addExpenseVM.note) { _ in
-                                keyboardUtil.scrollWhenKeyboard(isShowing: true, for: tableView)
+                                keyboardUtil.scrollWhenKeyboard(for: tableView)
 
                             }
                             .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
-                                    keyboardUtil.scrollWhenKeyboard(isShowing: false, for: tableView)
+                                    keyboardUtil.scrollWhenKeyboard(for: tableView)
                                 }
                             .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidShowNotification)) { _ in
                                     if let textView = textView,
                                        textView.isFirstResponder {
-                                        keyboardUtil.scrollWhenKeyboard(isShowing: true, for: tableView)
+                                        keyboardUtil.scrollWhenKeyboard(for: tableView)
                                     }
                                 }
                     }

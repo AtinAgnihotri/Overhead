@@ -8,23 +8,23 @@
 import SwiftUI
 
 struct ExpensePieChartView: View {
-    @ObservedObject private var expenseListVM: ExpenseListViewModel
+    @ObservedObject private var expensePieChartVM: ExpensePieChartViewModel
     private var width: CGFloat
     private var height: CGFloat
     
     init(_ expenseListVM: ExpenseListViewModel, width: CGFloat, height: CGFloat) {
-        self.expenseListVM = expenseListVM
+        self.expensePieChartVM = ExpensePieChartViewModel(with: expenseListVM.expenseList)
         self.width = width
         self.height = height
     }
     
     var body: some View {
         Section {
-            PieChartWithLegend(chartData: expenseListVM.pieChartData,
+            PieChartWithLegend(chartData: expensePieChartVM.pieChartData,
                                legendWidth: 100,
                                chartColors: ExpenseType.chartColors,
                                circlet: true,
-                               centerText: "$\(expenseListVM.total, specifier: "%.2f")")
+                               centerText: "$\(expensePieChartVM.total, specifier: "%.2f")")
                 .frame(width: width, height: height)
                 .aspectRatio(contentMode: .fit)
                 .padding(5)
@@ -33,7 +33,6 @@ struct ExpensePieChartView: View {
                 .animation(.easeInOut(duration: 1))
         }
         .padding(.vertical)
-//        .background(Color.green)
     }
 }
 struct ExpensePieChartView_Previews: PreviewProvider {
