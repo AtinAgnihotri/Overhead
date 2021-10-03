@@ -36,6 +36,7 @@
 		856679A32688DE37007A731B /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679A22688DE36007A731B /* AddExpenseView.swift */; };
 		856679A52688E013007A731B /* ExpenseListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679A42688E013007A731B /* ExpenseListItem.swift */; };
 		857582B62709E6500062FDD0 /* ExpenseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857582B52709E6500062FDD0 /* ExpenseListViewModel.swift */; };
+		857582BA270A2D1A0062FDD0 /* ExpenseCompanion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857582B9270A2D1A0062FDD0 /* ExpenseCompanion.swift */; };
 		8589A239270356860033B791 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8589A238270356860033B791 /* UIApplication+Extensions.swift */; };
 		85A2F99726FF0677001818AC /* NavBarButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99626FF0677001818AC /* NavBarButtons.swift */; };
 		85A2F99926FF09E8001818AC /* ExpensePieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99826FF09E8001818AC /* ExpensePieChartView.swift */; };
@@ -101,6 +102,7 @@
 		856679A22688DE36007A731B /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
 		856679A42688E013007A731B /* ExpenseListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListItem.swift; sourceTree = "<group>"; };
 		857582B52709E6500062FDD0 /* ExpenseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListViewModel.swift; sourceTree = "<group>"; };
+		857582B9270A2D1A0062FDD0 /* ExpenseCompanion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCompanion.swift; sourceTree = "<group>"; };
 		8589A238270356860033B791 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		85A2F99626FF0677001818AC /* NavBarButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButtons.swift; sourceTree = "<group>"; };
 		85A2F99826FF09E8001818AC /* ExpensePieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensePieChartView.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				8554E0E726FE3251003945EE /* ExpenseType.swift */,
+				857582B9270A2D1A0062FDD0 /* ExpenseCompanion.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				8566796B2688CE81007A731B /* ExpenseTrackingApp.xcdatamodeld in Sources */,
 				8554E0E826FE3251003945EE /* ExpenseType.swift in Sources */,
 				85367B322689871B00B9C1C8 /* DetailedExpenseView.swift in Sources */,
+				857582BA270A2D1A0062FDD0 /* ExpenseCompanion.swift in Sources */,
 				8523AEAF26B4A171006EC205 /* PieChartWithLegend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

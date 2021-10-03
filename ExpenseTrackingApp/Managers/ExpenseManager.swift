@@ -56,7 +56,8 @@ class ExpenseManager: ObservableObject {
         )
     }
     
-    @objc func fetchChanges() {
+    
+    @objc func fetchChanges(_ notification: Notification) {
         print("Fetching Changes")
         let expenses = persistenceController.getAllExpenses().map(ExpenseItemViewModel.init).sorted()
         if hasNewChanges(expenses) {
