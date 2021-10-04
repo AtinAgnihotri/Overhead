@@ -14,6 +14,22 @@ class ExpenseManager: ObservableObject {
     static public let shared = ExpenseManager()
     
     private let persistenceController = PersistenceManager.shared
+    private weak var settingsManager = SettingsManager.shared
+    
+    var total: Double {
+        expenseList.reduce(0) { value, expense in
+            value + expense.amount
+        }
+    }
+    
+    var isLimitExceeded : Bool {
+        if let limit = settingsManager?.monthyLimit,
+           limit != 0,
+           limit < total {
+            return true
+        }
+        return false
+    }
     
     @Published var expenseList = [ExpenseItemViewModel]()
     

@@ -30,4 +30,12 @@ class ExpensePieChartViewModel: ObservableObject {
         }
     }
     
+    var isLimitExceeded: Bool {
+        let limit = SettingsManager.shared.monthyLimit
+        if limit != 0 && limit < total {
+            return true
+        }
+        return false
+    }
+    
 }

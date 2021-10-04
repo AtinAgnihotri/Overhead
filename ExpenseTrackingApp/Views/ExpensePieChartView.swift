@@ -12,13 +12,19 @@ struct ExpensePieChartView: View {
     private var width: CGFloat
     private var height: CGFloat
     
-//    init(_ expenseManager: ExpenseManager, width: CGFloat, height: CGFloat) {
     init(width: CGFloat, height: CGFloat) {
-//        self.expensePieChartVM = ExpensePieChartViewModel(with: expenseListVM.expenseList)
-//        let expenseManager = ExpenseManager.shared
-//        self.expensePieChartVM = ExpensePieChartViewModel(with: expenseManager.expenseList)
         self.width = width
         self.height = height
+    }
+    
+    var totalText: LocalizedStringKey {
+        let currency = SettingsManager.shared.currency
+        let total = expensePieChartVM.total
+        return "\(currency)\(total, specifier: "%.2f")"
+    }
+    
+    var totalColor: Color {
+        expensePieChartVM.isLimitExceeded ? .red : .primary
     }
     
     var body: some View {
@@ -27,7 +33,8 @@ struct ExpensePieChartView: View {
                                legendWidth: 100,
                                chartColors: ExpenseType.chartColors,
                                circlet: true,
-                               centerText: "$\(expensePieChartVM.total, specifier: "%.2f")")
+                               centerText: totalText,
+                               centerTextColor: totalColor)
                 .frame(width: width, height: height)
                 .aspectRatio(contentMode: .fit)
                 .padding(5)

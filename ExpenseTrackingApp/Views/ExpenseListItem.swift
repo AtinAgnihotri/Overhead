@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ExpenseListItem: View {
-    var currecySymbol: String = "$"
+    var currecySymbol: String = SettingsManager.shared.currency
     var expenseItem: ExpenseItemViewModel
     
     init(_ expenseItem: ExpenseItemViewModel) {
