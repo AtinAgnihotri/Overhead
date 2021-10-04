@@ -7,7 +7,12 @@
         <attribute name="note" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="CDUserPrefs" representedClassName="CDUserPrefs" syncable="YES" codeGenerationType="class">
+        <attribute name="currency" optional="YES" attributeType="String"/>
+        <attribute name="monthyLimit" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+    </entity>
     <elements>
         <element name="CDExpenseItem" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="CDUserPrefs" positionX="-63" positionY="18" width="128" height="59"/>
     </elements>
 </model>

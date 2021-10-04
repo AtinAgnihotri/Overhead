@@ -8,7 +8,11 @@
 import Foundation
 
 class SettingsViewModel: ObservableObject {
-    @Published var currency = "$"
+    @Published var currency = "$" {
+        didSet {
+            print(currency)
+        }
+    }
     @Published var spendingLimit = ""
     
     init() {

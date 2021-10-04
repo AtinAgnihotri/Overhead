@@ -26,6 +26,19 @@ struct SystemNavBarButton: View {
     }
 }
 
+struct TextBarButton: View {
+    var label: String
+    var font: Font = .title2
+    var action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            Text(label)
+                .font(font)
+        }
+    }
+}
+
 struct AddNavBarButton: View {
     var action: () -> Void
     
@@ -63,10 +76,7 @@ struct SettingsNavBarButton: View {
     var action: () -> Void
     
     var body: some View {
-        Button(action: action) {
-            Text("Settings")
-                .font(.title2)
-        }
+        TextBarButton(label: "Settings", action: action)
     }
 }
 
@@ -95,5 +105,13 @@ struct BackNavBarButton: View {
         HStack {
             SystemNavBarButton(systemName: "chevron.backward", label: "BACK", action: action)
         }
+    }
+}
+
+struct DoneNavBarButton: View {
+    var action: () -> Void
+    
+    var body: some View {
+        TextBarButton(label: "Done", action: action)
     }
 }

@@ -44,23 +44,22 @@ struct ContentView: View {
                 }
             }
             .navigationBarTitle("Expense Tracker")
-//            .navigationBarItems(leading: SettingsNavBarButton {
-//                                    print("Settings coming soon")
-//                                },
+            .navigationBarItems(leading: SettingsNavBarButton(action: showSettings),
+                                trailing: AddNavBarButton(action: addItem))
 //                                trailing: HStack {
 //                                    SearchNavBarButton {
 //                                        print("Search coming soon")
 //                                    }.padding()
 //                                    AddNavBarButton(action: addItem)
 //                                })
-            .navigationBarItems(trailing: AddNavBarButton(action: addItem))
+//            .navigationBarItems(trailing: AddNavBarButton(action: addItem))
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationViewStyle(StackNavigationViewStyle())
         .sheet(item: $activeSheet) { item in
             switch item {
                 case .add_expense: AddExpenseView()
-                case .settings: AddExpenseView() // Add SettingsView here later
+                case .settings: SettingsView() // Add SettingsView here later
             }
         }
         .onAppear {
@@ -74,6 +73,10 @@ struct ContentView: View {
     
     func addItem() {
         activeSheet = .add_expense
+    }
+    
+    func showSettings() {
+        activeSheet = .settings
     }
 }
 

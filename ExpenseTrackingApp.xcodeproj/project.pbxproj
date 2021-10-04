@@ -38,6 +38,8 @@
 		857582B62709E6500062FDD0 /* ExpenseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857582B52709E6500062FDD0 /* ExpenseListViewModel.swift */; };
 		857582BA270A2D1A0062FDD0 /* ExpenseCompanion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857582B9270A2D1A0062FDD0 /* ExpenseCompanion.swift */; };
 		857582BE270AB5700062FDD0 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857582BD270AB5700062FDD0 /* SettingsViewModel.swift */; };
+		857582C0270AB6780062FDD0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857582BF270AB6780062FDD0 /* SettingsView.swift */; };
+		857582C2270B3ED30062FDD0 /* CurrencySelectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857582C1270B3ED30062FDD0 /* CurrencySelectionCard.swift */; };
 		8589A239270356860033B791 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8589A238270356860033B791 /* UIApplication+Extensions.swift */; };
 		85A2F99726FF0677001818AC /* NavBarButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99626FF0677001818AC /* NavBarButtons.swift */; };
 		85A2F99926FF09E8001818AC /* ExpensePieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99826FF09E8001818AC /* ExpensePieChartView.swift */; };
@@ -105,6 +107,8 @@
 		857582B52709E6500062FDD0 /* ExpenseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListViewModel.swift; sourceTree = "<group>"; };
 		857582B9270A2D1A0062FDD0 /* ExpenseCompanion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCompanion.swift; sourceTree = "<group>"; };
 		857582BD270AB5700062FDD0 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		857582BF270AB6780062FDD0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		857582C1270B3ED30062FDD0 /* CurrencySelectionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectionCard.swift; sourceTree = "<group>"; };
 		8589A238270356860033B791 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		85A2F99626FF0677001818AC /* NavBarButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButtons.swift; sourceTree = "<group>"; };
 		85A2F99826FF09E8001818AC /* ExpensePieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensePieChartView.swift; sourceTree = "<group>"; };
@@ -291,6 +295,8 @@
 				85A2F99826FF09E8001818AC /* ExpensePieChartView.swift */,
 				85A2F99C26FF8163001818AC /* ExpenseListView.swift */,
 				85F9CC0B2705765E007C2DF3 /* ResponsiveTextField.swift */,
+				857582BF270AB6780062FDD0 /* SettingsView.swift */,
+				857582C1270B3ED30062FDD0 /* CurrencySelectionCard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -451,6 +457,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				857582C0270AB6780062FDD0 /* SettingsView.swift in Sources */,
 				85F9CC0A2704DB07007C2DF3 /* KeyboardUtils.swift in Sources */,
 				856679682688CE81007A731B /* PersistenceManager.swift in Sources */,
 				8554E0E526FE30D0003945EE /* AddExpenseViewModel.swift in Sources */,
@@ -483,6 +490,7 @@
 				8566796B2688CE81007A731B /* ExpenseTrackingApp.xcdatamodeld in Sources */,
 				8554E0E826FE3251003945EE /* ExpenseType.swift in Sources */,
 				85367B322689871B00B9C1C8 /* DetailedExpenseView.swift in Sources */,
+				857582C2270B3ED30062FDD0 /* CurrencySelectionCard.swift in Sources */,
 				857582BA270A2D1A0062FDD0 /* ExpenseCompanion.swift in Sources */,
 				8523AEAF26B4A171006EC205 /* PieChartWithLegend.swift in Sources */,
 			);

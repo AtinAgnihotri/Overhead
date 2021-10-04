@@ -138,5 +138,15 @@ struct PersistenceManager {
         saveContext()
     }
     
+    func getPreferences() -> CDUserPrefs? {
+        let request: NSFetchRequest<CDUserPrefs> = CDUserPrefs.fetchRequest()
+        do {
+            return try PersistenceManager.viewContext.fetch(request).first
+        } catch {
+            print(error.localizedDescription)
+        }
+        return nil
+    }
+    
     // Once we send in the CDExpenseItem, if we change it in detail view, and then save, that will do the update operation
 }

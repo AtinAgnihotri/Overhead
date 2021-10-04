@@ -8,15 +8,40 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
+    @ObservedObject private var settingsVM = SettingsViewModel()
+    
+    private var currencies = ["د.إ", "$", "৳", "R$", "ب.د", "₣", "¥", "₡", "kr", "€", "ლ", "₵", "D", "L", "Kn", "G", "Rp", "₪", "₹", "Sh", "₩", "د.ك", "Rs"]
     
     var body: some View {
         NavigationView {
-            List {
-                Picker(<#T##titleKey: LocalizedStringKey##LocalizedStringKey#>, selection: <#T##Binding<_>#>, content: <#T##() -> _#>)
-            }
-            .navigationBarTitle("Settings")
+            VStack {
+//            List {
+//                Picker("Currency:", selection: $settingsVM.currency) {
+//                    ForEach(currencies, id:\.self) { currency in
+//                        HStack {
+//                            Text("currency")
+//                            Spacer()
+//                            Text(currency)
+//                        }.padding()
+//                    }
+//                }.padding()
+//                .pickerStyle(MenuPickerStyle())
+//                .secondaryListBackground()
+                Form {
+                    CurrencySelectionCard(currency: $settingsVM.currency)
+                }
+            }.navigationBarTitle("Settings")
+            .navigationBarItems(trailing: DoneNavBarButton(action: dismissView))
         }
     }
+    
+    func dismissView() {
+        self.presentationMode.wrappedValue.dismiss()
+    }
+    
+    
 }
 
 struct SettingsView_Previews: PreviewProvider {
