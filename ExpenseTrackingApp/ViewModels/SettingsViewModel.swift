@@ -19,17 +19,11 @@ class SettingsViewModel: ObservableObject {
     
     var initialised = false
     
-//    private weak var settingsManager = SettingsManager.shared
     private let settingsManager = SettingsManager.shared
     
     init() {
-//        self.currency = SettingsManager.shared.currency
-        print("Reaches here 1")
         self.currency = settingsManager.currency
-        print("Reaches here 2")
         initialised = true
-        print("Reaches here 3")
     }
-    
     
 }

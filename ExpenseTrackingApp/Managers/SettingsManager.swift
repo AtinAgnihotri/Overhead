@@ -33,17 +33,26 @@ class SettingsManager: ObservableObject {
         if cdUserPref == nil {
             persistenceManager.setPreferences(to: self.userPref)
         }
+        setupRemoteChangeObservation()
     }
     
-//    private func setupRemoteChangeObservation() {
-//        NotificationCenter.default.addObserver(
-//            self,
-//            selector: #selector(fetchUserPrefChanges),
-//            name: NSNotification.Name(rawValue: "NSPersistentStoreRemoteChangeNotification"),
-//            object: persistenceManager.container.persistentStoreCoordinator
-//        )
-//    }
+    private func setupRemoteChangeObservation() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(fetchUserPrefChanges),
+            name: NSNotification.Name(rawValue: "NSPersistentStoreRemoteChangeNotification"),
+            object: persistenceManager.container.persistentStoreCoordinator
+        )
+    }
     
+    @objc private func fetchUserPrefChanges() {
+        if let newCDUserPref = persistenceManager.getPreferences() {
+            let newPrefs = UserPrefsCompanion(newCDUserPref)
+            if newPrefs != userPref {
+                userPref = newPrefs
+            }
+        }
+    }
     
     func setCurrency(to denomination: String) {
         userPref = UserPrefsCompanion(currency: denomination, monthlyLimit: userPref.monthlyLimit)
