@@ -148,5 +148,14 @@ struct PersistenceManager {
         return nil
     }
     
+    func setPreferences(to userPref: UserPrefsCompanion) {
+        let request: NSFetchRequest<CDUserPrefs> = CDUserPrefs.fetchRequest()
+        if let pref = try? PersistenceManager.viewContext.fetch(request).first {
+            pref.currency = userPref.currency
+            pref.monthyLimit = NSDecimalNumber(decimal: Decimal(userPref.monthlyLimit))
+            saveContext()
+        }
+    }
+    
     // Once we send in the CDExpenseItem, if we change it in detail view, and then save, that will do the update operation
 }
