@@ -9,7 +9,6 @@ import Foundation
 
 struct ExpenseCompanion: Equatable, Comparable {
     
-    
     let name: String
     let amount: Double
     let type: ExpenseType
