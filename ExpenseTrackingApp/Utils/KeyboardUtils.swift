@@ -12,6 +12,15 @@ import SwiftUI
 final class KeyboardUtils: ObservableObject {
     
     @Published private(set) var keyboardHeight: CGFloat = 0
+    @Published var keyboardClosed = false {
+        didSet {
+            if keyboardClosed {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                    self?.keyboardClosed = false
+                }
+            }
+        }
+    }
     var adjustmentCallback: ((UITableView) -> Void)?
     
     private var cancellable: AnyCancellable?
@@ -38,6 +47,10 @@ final class KeyboardUtils: ObservableObject {
             tableView.setContentOffset(offset, animated: true)
         }
         
+    }
+    
+    @objc func closeAllKeyboards() {
+        keyboardClosed = true
     }
     
 }

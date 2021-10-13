@@ -15,6 +15,7 @@ struct AddExpenseView: View {
     
     @State private var tableView: UITableView?
     @State private var textView: UITextView?
+    @State private var amountTextField: UITextField?
     @State private var showingAlert = false
     @State private var alertTitle = ""
     @State private var alertMsg = ""
@@ -43,6 +44,13 @@ struct AddExpenseView: View {
                                 .font(.headline)) {
                         ResponsiveTextFeild(title: "Amount", text: $addExpenseVM.amount)
                             .keyboardType(.decimalPad)
+                            .introspectTextField { textField in
+                                setDoneOnKeyboard(on: textField)
+                                amountTextField = textField
+                            }
+                            .onChange(of: keyboardUtil.keyboardClosed) { _ in
+                                amountTextField?.resignFirstResponder()
+                            }
                     }
                     Section (header: Text("Type of Expense")
                                 .font(.headline)) {
@@ -109,6 +117,16 @@ struct AddExpenseView: View {
     func dismissView() {
         self.presentationMode.wrappedValue.dismiss()
     }
+    
+    func setDoneOnKeyboard(on textField: UITextField) {
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: keyboardUtil, action: #selector(keyboardUtil.closeAllKeyboards) )
+        keyboardToolbar.items = [flexBarButton, doneBarButton]
+        textField.inputAccessoryView = keyboardToolbar
+    }
+
 }
 
 struct AddExpenseView_Previews: PreviewProvider {
