@@ -29,6 +29,7 @@ struct PieChartWithLegend: View {
     let centerColor: Color
     let centerTextColor: Color
     let centerTextFont: Font
+    let centerTextFontWeight: Font.Weight
     
     let legendTitle: String
     let withBorder: Bool
@@ -37,6 +38,7 @@ struct PieChartWithLegend: View {
     let cubeSize: CGSize
     let borderWidth: CGFloat
     let borderColor: Color
+    
     
     var dataColors: [String: Color] {
         if let colors = chartColors {
@@ -64,6 +66,7 @@ struct PieChartWithLegend: View {
          centerColor: Color = Color(UIColor.tertiarySystemFill),
          centerTextColor: Color = Color.primary,
          centerTextFont: Font = .caption,
+         centerTextFontWeight: Font.Weight = .regular,
          title legendTitle: String = "Legend",
          withBorder: Bool = true,
          font: Font = .caption,
@@ -87,6 +90,7 @@ struct PieChartWithLegend: View {
         self.centerColor = centerColor
         self.centerTextColor = centerTextColor
         self.centerTextFont = centerTextFont
+        self.centerTextFontWeight = centerTextFontWeight
         self.legendTitle = legendTitle
         self.withBorder = withBorder
         self.legendFont = font
@@ -118,7 +122,7 @@ struct PieChartWithLegend: View {
     }
     
     func getPieChart() -> some View {
-        PieChart(chartData: chartData, chartColors: dataColors, font: percentFont, percentColor: percentColor, circlet: circlet, centerText: centerText, centerColor: centerColor, centerTextColor: centerTextColor, centerTextFont: centerTextFont)
+        PieChart(chartData: chartData, chartColors: dataColors, font: percentFont, percentColor: percentColor, circlet: circlet, centerText: centerText, centerColor: centerColor, centerTextColor: centerTextColor, centerTextFont: centerTextFont, centerTextFontWeight: centerTextFontWeight)
     }
     
     func getLegend() -> some View {

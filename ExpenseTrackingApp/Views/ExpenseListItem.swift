@@ -24,7 +24,7 @@ struct ExpenseListItem: View {
                     .font(.subheadline)
             }
             Spacer()
-            Text("\(currecySymbol)\(expenseItem.amount, specifier: "%g")")
+            Text("\(currecySymbol) \(expenseItem.amount, specifier: "%g")")
                 .font(.title)
         }
         .buttonStyle(PlainButtonStyle())

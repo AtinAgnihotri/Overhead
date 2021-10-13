@@ -20,11 +20,19 @@ struct ExpensePieChartView: View {
     var totalText: LocalizedStringKey {
         let currency = SettingsManager.shared.currency
         let total = expensePieChartVM.total
-        return "\(currency)\(total, specifier: "%.2f")"
+        return "\(currency) \(total, specifier: "%.2f")"
     }
     
     var totalColor: Color {
         expensePieChartVM.isLimitExceeded ? .red : .primary
+    }
+    
+    var totalFont: Font {
+        expensePieChartVM.isLimitExceeded ? .callout : .caption
+    }
+    
+    var totalFontWeight: Font.Weight {
+        expensePieChartVM.isLimitExceeded ? .bold : .regular
     }
     
     var body: some View {
@@ -34,7 +42,9 @@ struct ExpensePieChartView: View {
                                chartColors: ExpenseType.chartColors,
                                circlet: true,
                                centerText: totalText,
-                               centerTextColor: totalColor)
+                               centerTextColor: totalColor,
+                               centerTextFont: totalFont,
+                               centerTextFontWeight: totalFontWeight)
                 .frame(width: width, height: height)
                 .aspectRatio(contentMode: .fit)
                 .padding(5)

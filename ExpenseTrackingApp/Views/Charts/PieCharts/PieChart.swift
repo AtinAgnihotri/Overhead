@@ -23,6 +23,7 @@ struct PieChart: View {
     let centerColor: Color
     let centerTextColor: Color
     let centerTextFont: Font
+    let centerTextFontWeight: Font.Weight
     
     let chartColors: [String: Color]?
     
@@ -50,7 +51,8 @@ struct PieChart: View {
          centerText: LocalizedStringKey? = nil,
          centerColor: Color = Color(UIColor.tertiarySystemFill),
          centerTextColor: Color = .primary,
-         centerTextFont: Font = .caption) {
+         centerTextFont: Font = .caption,
+         centerTextFontWeight: Font.Weight = .regular) {
         total = Array(chartData.values).reduce(0, +)
         var percentageData = chartData
         for key in percentageData.keys {
@@ -65,6 +67,7 @@ struct PieChart: View {
         self.centerColor = centerColor
         self.centerTextColor = centerTextColor
         self.centerTextFont = centerTextFont
+        self.centerTextFontWeight = centerTextFontWeight
     }
     
     var body: some View {
@@ -95,6 +98,7 @@ struct PieChart: View {
             if let centerText = centerText {
                 Text(centerText)
                     .font(centerTextFont)
+                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .foregroundColor(centerTextColor)
             }
         }

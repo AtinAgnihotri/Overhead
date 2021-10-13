@@ -21,32 +21,16 @@ struct SettingsView: View {
     @State private var showingAlert = false
     
     
+    
+    
     var body: some View {
         NavigationView {
 
             VStack {
                 Form {
                     CurrencySelectionCard(currency: $settingsVM.currency)
-                    Button(action: confirmDeleteAll) {
-                        HStack {
-                            Spacer()
-                            Text("Clear All")
-                                .fontWeight(.bold)
-                                .foregroundColor(.primary)
-                                .colorInvert()
-                            Spacer()
-                        }
-                        .padding(.vertical)
-                    }
-                    .background(Color.red)
-                    .frame(alignment: .center)
-                    CenteredFormButton(text: "Clear All", backgroundColor: .red, action: clearAllExpenses).clearBackground()
-                    ShadedButton(text: "Clear All", backgroundColor: .red, gradientColor: .red, action: clearAllExpenses)
-                        .frame(maxWidth: .infinity)
-                    Section {
-                        ShadedButton(text: "Clear All", backgroundColor: .red, gradientColor: .red, action: clearAllExpenses)
-                            .frame(maxWidth: .infinity)
-                    }
+                    LimitsSelectionCard()
+                    
                 }
                 ShadedButton(text: "Clear All", backgroundColor: .red, gradientColor: .red, action: clearAllExpenses)
                     .frame(maxWidth: .infinity)

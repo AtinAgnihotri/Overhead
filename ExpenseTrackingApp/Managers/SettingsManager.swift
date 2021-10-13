@@ -64,7 +64,7 @@ class SettingsManager: ObservableObject {
         userPref = UserPrefsCompanion(currency: denomination, monthlyLimit: userPref.monthlyLimit)
     }
     
-    func setMonthlyLimit(to limit: Double) {
+    func setMonthlyLimit(to limit: Double?) {
         userPref = UserPrefsCompanion(currency: userPref.currency, monthlyLimit: limit)
     }
     

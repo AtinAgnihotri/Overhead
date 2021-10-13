@@ -165,6 +165,8 @@ struct PersistenceManager {
         pref.currency = userPref.currency
         if let monthlyLimit = userPref.monthlyLimit {
             pref.monthyLimit = NSDecimalNumber(decimal: Decimal(monthlyLimit))
+        } else {
+            pref.monthyLimit = nil
         }
         saveContext()
     }

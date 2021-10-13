@@ -17,11 +17,11 @@ extension ExpenseType {
     var displayColor: Color {
         switch self {
             case .personal:
-                return .red
+                return Color(red: 230/255, green: 126/255, blue: 34/255)
             case .business:
-                return .blue
+                return Color(red: 22/255, green: 160/255, blue: 133/255)
             case .other:
-                return .orange
+                return Color(red: 155/255, green: 89/255, blue: 182/255)
         }
     }
 }
