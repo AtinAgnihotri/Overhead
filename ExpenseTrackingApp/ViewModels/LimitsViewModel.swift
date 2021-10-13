@@ -15,9 +15,16 @@ class LimitsViewModel: ObservableObject {
             updateLimit()
         }
     }
+    @Published var setReminder = false
+    @Published var selectedDay: String = "Mon"
+    
+    let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     
     private let settingsManager = SettingsManager.shared
     var initialised = false
+    
+    @Published var pickedDays = Set<String>()
+    @Published var pickedDate = Date()
     
     var monthlyLimit: String {
         var str = "No Set Limit"
@@ -56,6 +63,18 @@ class LimitsViewModel: ObservableObject {
     func resetLimit() {
         settingsManager.setMonthlyLimit(to: nil)
         spendingLimit = ""
+    }
+    
+    func hasDay(_ day: String) -> Bool {
+        pickedDays.contains(day)
+    }
+    
+    func toggleDay(_ day: String) {
+        if hasDay(day) {
+            pickedDays.remove(day)
+        } else {
+            pickedDays.insert(day)
+        }
     }
     
 }

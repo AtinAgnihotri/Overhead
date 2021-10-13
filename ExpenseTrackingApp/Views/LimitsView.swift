@@ -17,6 +17,7 @@ struct LimitsView: View {
         limitsVM.isEditingLimit ? .blue : .red
     }
     
+    
     var body: some View {
         VStack {
             Form {
@@ -35,9 +36,35 @@ struct LimitsView: View {
                             Text(limitsVM.monthlyLimit)
                                 .frame(alignment: .trailing)
                         }
-                    }
+//                        DatePicker("", selection: $limitsVM.pickedDate, displayedComponents:  )
                         
+                    }
                 }.secondaryListBackground()
+                
+                if limitsVM.hasLimitSet {
+                    Section(header: Text("Reminders")) {
+                        Toggle("Set Reminder?", isOn: $limitsVM.setReminder)
+                            .secondaryListBackground()
+                    }
+                    if limitsVM.setReminder {
+                        Section {
+                            DayPicker()
+                            
+                            DatePicker("Select Time", selection: $limitsVM.pickedDate, displayedComponents: .hourAndMinute)
+                                .labelsHidden()
+                                .datePickerStyle(WheelDatePickerStyle())
+                                .secondaryListBackground()
+                            
+                            HStack {
+                                Spacer()
+                                Button("Save") {
+                                    print("Save coming soon")
+                                }
+                                Spacer()
+                            }.secondaryListBackground()
+                        }
+                    }
+                }
             }.navigationBarItems(trailing: HStack {
                 Button(action: limitsVM.resetLimit) {
                     Text("Reset")
@@ -51,6 +78,10 @@ struct LimitsView: View {
     
     func didPressEditButton() {
         limitsVM.isEditingLimit.toggle()
+    }
+    
+    func didSelectDay(_ day: String) {
+        
     }
     
 }
