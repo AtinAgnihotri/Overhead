@@ -7,38 +7,85 @@
 
 import SwiftUI
 
+enum AlertType {
+    case deleteAll
+}
+
 struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @ObservedObject private var settingsVM = SettingsViewModel()
+    @State private var alertType: AlertType = .deleteAll
+    @State private var alertTitle = ""
+    @State private var alertMsg = ""
+    @State private var showingAlert = false
     
-    private var currencies = ["د.إ", "$", "৳", "R$", "ب.د", "₣", "¥", "₡", "kr", "€", "ლ", "₵", "D", "L", "Kn", "G", "Rp", "₪", "₹", "Sh", "₩", "د.ك", "Rs"]
     
     var body: some View {
         NavigationView {
+
             VStack {
-//            List {
-//                Picker("Currency:", selection: $settingsVM.currency) {
-//                    ForEach(currencies, id:\.self) { currency in
-//                        HStack {
-//                            Text("currency")
-//                            Spacer()
-//                            Text(currency)
-//                        }.padding()
-//                    }
-//                }.padding()
-//                .pickerStyle(MenuPickerStyle())
-//                .secondaryListBackground()
                 Form {
                     CurrencySelectionCard(currency: $settingsVM.currency)
+                    Button(action: confirmDeleteAll) {
+                        HStack {
+                            Spacer()
+                            Text("Clear All")
+                                .fontWeight(.bold)
+                                .foregroundColor(.primary)
+                                .colorInvert()
+                            Spacer()
+                        }
+                        .padding(.vertical)
+                    }
+                    .background(Color.red)
+                    .frame(alignment: .center)
+                    CenteredFormButton(text: "Clear All", backgroundColor: .red, action: clearAllExpenses).clearBackground()
+                    ShadedButton(text: "Clear All", backgroundColor: .red, gradientColor: .red, action: clearAllExpenses)
+                        .frame(maxWidth: .infinity)
+                    Section {
+                        ShadedButton(text: "Clear All", backgroundColor: .red, gradientColor: .red, action: clearAllExpenses)
+                            .frame(maxWidth: .infinity)
+                    }
                 }
+                ShadedButton(text: "Clear All", backgroundColor: .red, gradientColor: .red, action: clearAllExpenses)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+            
             }.navigationBarTitle("Settings")
             .navigationBarItems(trailing: DoneNavBarButton(action: dismissView))
+            .alert(isPresented: $showingAlert) {
+               showAlert()
+            }
         }
     }
     
     func dismissView() {
         self.presentationMode.wrappedValue.dismiss()
+    }
+    
+    func confirmDeleteAll() {
+        alertType = .deleteAll
+        showingAlert = true
+    }
+    
+    func showAlert() -> Alert {
+        switch alertType {
+            case .deleteAll: return showDeletionAlert()
+        }
+    }
+    
+    func showDeletionAlert() -> Alert {
+        Alert(title: Text("Confirm Deletion"),
+              message: Text("Are you sure you want to delete all the expenses?"),
+              primaryButton: .destructive(Text("Confirm"), action: settingsVM.clearAllExpenses),
+              secondaryButton: .cancel())
+    }
+    
+    func clearAllExpenses() {
+        settingsVM.clearAllExpenses()
+        dismissView()
     }
     
     

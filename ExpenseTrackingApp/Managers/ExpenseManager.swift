@@ -93,4 +93,13 @@ class ExpenseManager: ObservableObject {
         return false
     }
     
+    func deleteAllExpenses() {
+        expenseList.forEach { expense in
+            let id = expense.id
+            persistenceController.deleteExpense(id: id)
+        }
+        expenseList.removeAll(keepingCapacity: true)
+        getAllExpenses()
+    }
+    
 }

@@ -15,15 +15,19 @@ class SettingsManager: ObservableObject {
     @Published var userPref: UserPrefsCompanion {
         didSet {
             persistenceManager.setPreferences(to: userPref)
-            ExpenseManager.shared.getAllExpenses()
+            DispatchQueue.main.async {
+                ExpenseManager.shared.getAllExpenses()
+            }
+//            ExpenseManager.shared.getAllExpenses()
         }
     }
+    
     
     var currency: String {
         userPref.currency
     }
     
-    var monthyLimit: Double {
+    var monthyLimit: Double? {
         userPref.monthlyLimit
     }
     
@@ -49,7 +53,9 @@ class SettingsManager: ObservableObject {
         if let newCDUserPref = persistenceManager.getPreferences() {
             let newPrefs = UserPrefsCompanion(newCDUserPref)
             if newPrefs != userPref {
-                userPref = newPrefs
+                DispatchQueue.main.async { [weak self] in
+                    self?.userPref = newPrefs
+                }
             }
         }
     }

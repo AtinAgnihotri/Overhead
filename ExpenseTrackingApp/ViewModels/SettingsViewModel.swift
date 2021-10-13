@@ -9,13 +9,8 @@ import Foundation
 
 class SettingsViewModel: ObservableObject {
     @Published var currency = "$" {
-        didSet {
-            if initialised {
-                SettingsManager.shared.setCurrency(to: currency)
-            }
-        }
+        didSet { updateCurrency() }
     }
-    @Published var spendingLimit = ""
     
     var initialised = false
     
@@ -24,6 +19,18 @@ class SettingsViewModel: ObservableObject {
     init() {
         self.currency = settingsManager.currency
         initialised = true
+        
     }
+    
+    func clearAllExpenses() {
+        ExpenseManager.shared.deleteAllExpenses()
+    }
+    
+    func updateCurrency() {
+        if initialised {
+            settingsManager.setCurrency(to: currency)
+        }
+    }
+
     
 }

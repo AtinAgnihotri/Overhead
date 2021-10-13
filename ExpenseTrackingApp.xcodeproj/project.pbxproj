@@ -41,6 +41,7 @@
 		857582C0270AB6780062FDD0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857582BF270AB6780062FDD0 /* SettingsView.swift */; };
 		857582C2270B3ED30062FDD0 /* CurrencySelectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857582C1270B3ED30062FDD0 /* CurrencySelectionCard.swift */; };
 		8589A239270356860033B791 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8589A238270356860033B791 /* UIApplication+Extensions.swift */; };
+		858EC0A62717324300E1D904 /* LimitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858EC0A52717324300E1D904 /* LimitsViewModel.swift */; };
 		85A2F99726FF0677001818AC /* NavBarButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99626FF0677001818AC /* NavBarButtons.swift */; };
 		85A2F99926FF09E8001818AC /* ExpensePieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99826FF09E8001818AC /* ExpensePieChartView.swift */; };
 		85A2F99D26FF8163001818AC /* ExpenseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99C26FF8163001818AC /* ExpenseListView.swift */; };
@@ -112,6 +113,7 @@
 		857582BF270AB6780062FDD0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		857582C1270B3ED30062FDD0 /* CurrencySelectionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectionCard.swift; sourceTree = "<group>"; };
 		8589A238270356860033B791 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
+		858EC0A52717324300E1D904 /* LimitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitsViewModel.swift; sourceTree = "<group>"; };
 		85A2F99626FF0677001818AC /* NavBarButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButtons.swift; sourceTree = "<group>"; };
 		85A2F99826FF09E8001818AC /* ExpensePieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensePieChartView.swift; sourceTree = "<group>"; };
 		85A2F99C26FF8163001818AC /* ExpenseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListView.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				8564902C2706E550007FB202 /* ExpensePieChartViewModel.swift */,
 				857582B52709E6500062FDD0 /* ExpenseListViewModel.swift */,
 				857582BD270AB5700062FDD0 /* SettingsViewModel.swift */,
+				858EC0A52717324300E1D904 /* LimitsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				85EB1A13270B478A0088F168 /* UserPrefsCompanion.swift in Sources */,
 				8564902D2706E550007FB202 /* ExpensePieChartViewModel.swift in Sources */,
 				8566799D2688D46A007A731B /* ExpenseManager.swift in Sources */,
+				858EC0A62717324300E1D904 /* LimitsViewModel.swift in Sources */,
 				8566795F2688CE79007A731B /* ExpenseTrackingAppApp.swift in Sources */,
 				857582B62709E6500062FDD0 /* ExpenseListViewModel.swift in Sources */,
 				856679A12688DD08007A731B /* CenteredFormButton.swift in Sources */,

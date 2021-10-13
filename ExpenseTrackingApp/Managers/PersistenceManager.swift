@@ -163,7 +163,9 @@ struct PersistenceManager {
         let savedPref = try? PersistenceManager.viewContext.fetch(request).first
         let pref =  savedPref ?? CDUserPrefs(context: PersistenceManager.viewContext)
         pref.currency = userPref.currency
-        pref.monthyLimit = NSDecimalNumber(decimal: Decimal(userPref.monthlyLimit))
+        if let monthlyLimit = userPref.monthlyLimit {
+            pref.monthyLimit = NSDecimalNumber(decimal: Decimal(monthlyLimit))
+        }
         saveContext()
     }
     

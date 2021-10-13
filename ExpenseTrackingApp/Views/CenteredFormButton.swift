@@ -15,13 +15,14 @@ struct CenteredFormButton: View {
     var body: some View {
         Button(text) {
             action()
-        }.padding()
+        }
+        .padding(.vertical)
         .centerItemInForm()
         .font(.headline)
         .background(backgroundColor)
         .foregroundColor(.white)
         .clipShape(RoundedRectangle(cornerRadius: 10))
-        .listRowBackground(Color(UIColor.tertiarySystemFill))
+//        .listRowBackground(Color(UIColor.tertiarySystemFill))
     }
 }
 

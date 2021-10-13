@@ -9,16 +9,20 @@ import Foundation
 
 struct UserPrefsCompanion: Equatable {
     let currency: String
-    let monthlyLimit: Double
+    let monthlyLimit: Double?
     
-    init(currency: String, monthlyLimit: Double) {
+    init(currency: String, monthlyLimit: Double?) {
         self.currency = currency
         self.monthlyLimit = monthlyLimit
     }
     
     init(_ userPrefs: CDUserPrefs?) {
         self.currency = userPrefs?.currency ?? "$"
-        self.monthlyLimit = Double(truncating: userPrefs?.monthyLimit ?? 0)
+        if let monthlyLimit = userPrefs?.monthyLimit {
+            self.monthlyLimit = Double(truncating: monthlyLimit)
+        } else {
+            self.monthlyLimit = nil
+        }
     }
     
     static func ==(lhs: UserPrefsCompanion, rhs: UserPrefsCompanion) -> Bool {
