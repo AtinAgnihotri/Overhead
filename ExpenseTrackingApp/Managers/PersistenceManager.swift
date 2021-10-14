@@ -68,6 +68,8 @@ struct PersistenceManager {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+        
+//        defer { setupPreferencesForFirstLaunch() }
     }
     
     func getExpenseByID(id: NSManagedObjectID) -> CDExpenseItem? {
@@ -140,6 +142,12 @@ struct PersistenceManager {
     
     func getPreferences() -> CDUserPrefs? {
         let request: NSFetchRequest<CDUserPrefs> = CDUserPrefs.fetchRequest()
+        if let fetchster = try? PersistenceManager.viewContext.fetch(request) {
+            fetchster.forEach { fetcher in
+                print("Jenga, \(fetcher.currency), \(fetcher.monthyLimit)")
+            }
+        }
+        
         do {
             return try PersistenceManager.viewContext.fetch(request).first
         } catch {
@@ -169,6 +177,35 @@ struct PersistenceManager {
             pref.monthyLimit = nil
         }
         saveContext()
+    }
+    
+    func setupDefaultPreferences() {
+        let pref =  CDUserPrefs(context: PersistenceManager.viewContext)
+        pref.currency = "$"
+        pref.monthyLimit = 0
+        saveContext()
+    }
+    
+    func setupPreferencesForFirstLaunch() {
+        let request: NSFetchRequest<CDUserPrefs> = CDUserPrefs.fetchRequest()
+        if let savedPrefs = try? PersistenceManager.viewContext.fetch(request) {
+            if savedPrefs.isEmpty {
+                setupDefaultPreferences()
+            }
+        } else {
+            setupDefaultPreferences()
+        }
+    }
+    
+    func resetPreferences() {
+        let request: NSFetchRequest<CDUserPrefs> = CDUserPrefs.fetchRequest()
+        if let savedPrefs = try? PersistenceManager.viewContext.fetch(request) {
+            savedPrefs.forEach { pref in
+                PersistenceManager.viewContext.delete(pref)
+            }
+        }
+        saveContext()
+        print("Reaches here")
     }
     
     // Once we send in the CDExpenseItem, if we change it in detail view, and then save, that will do the update operation

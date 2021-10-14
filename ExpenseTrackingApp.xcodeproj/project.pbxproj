@@ -44,7 +44,6 @@
 		858EC0A62717324300E1D904 /* LimitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858EC0A52717324300E1D904 /* LimitsViewModel.swift */; };
 		858EC0A8271745D900E1D904 /* LimitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858EC0A7271745D800E1D904 /* LimitsView.swift */; };
 		858EC0AA27174B0100E1D904 /* LimitsSelectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858EC0A927174B0100E1D904 /* LimitsSelectionCard.swift */; };
-		858EC0AC2717600B00E1D904 /* DayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858EC0AB2717600A00E1D904 /* DayPicker.swift */; };
 		85A2F99726FF0677001818AC /* NavBarButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99626FF0677001818AC /* NavBarButtons.swift */; };
 		85A2F99926FF09E8001818AC /* ExpensePieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99826FF09E8001818AC /* ExpensePieChartView.swift */; };
 		85A2F99D26FF8163001818AC /* ExpenseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99C26FF8163001818AC /* ExpenseListView.swift */; };
@@ -119,7 +118,6 @@
 		858EC0A52717324300E1D904 /* LimitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitsViewModel.swift; sourceTree = "<group>"; };
 		858EC0A7271745D800E1D904 /* LimitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitsView.swift; sourceTree = "<group>"; };
 		858EC0A927174B0100E1D904 /* LimitsSelectionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitsSelectionCard.swift; sourceTree = "<group>"; };
-		858EC0AB2717600A00E1D904 /* DayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPicker.swift; sourceTree = "<group>"; };
 		85A2F99626FF0677001818AC /* NavBarButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButtons.swift; sourceTree = "<group>"; };
 		85A2F99826FF09E8001818AC /* ExpensePieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensePieChartView.swift; sourceTree = "<group>"; };
 		85A2F99C26FF8163001818AC /* ExpenseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListView.swift; sourceTree = "<group>"; };
@@ -313,7 +311,6 @@
 				857582C1270B3ED30062FDD0 /* CurrencySelectionCard.swift */,
 				858EC0A7271745D800E1D904 /* LimitsView.swift */,
 				858EC0A927174B0100E1D904 /* LimitsSelectionCard.swift */,
-				858EC0AB2717600A00E1D904 /* DayPicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -493,7 +490,6 @@
 				8523AEAC26B4A171006EC205 /* Legend.swift in Sources */,
 				8554E0EA26FE4C82003945EE /* UIAppearanceUtils.swift in Sources */,
 				8523AEAB26B4A171006EC205 /* LegendItem.swift in Sources */,
-				858EC0AC2717600B00E1D904 /* DayPicker.swift in Sources */,
 				858EC0AA27174B0100E1D904 /* LimitsSelectionCard.swift in Sources */,
 				85A2F99D26FF8163001818AC /* ExpenseListView.swift in Sources */,
 				85E7E613269986D100CBEEB0 /* ExpenseItemViewModel.swift in Sources */,

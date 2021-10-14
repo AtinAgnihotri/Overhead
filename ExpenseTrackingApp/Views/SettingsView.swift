@@ -31,6 +31,10 @@ struct SettingsView: View {
                     CurrencySelectionCard(currency: $settingsVM.currency)
                     LimitsSelectionCard()
                     
+                    Button("Reset Preferences") {
+                        PersistenceManager.shared.resetPreferences()
+                    }
+                    
                 }
                 ShadedButton(text: "Clear All", backgroundColor: .red, gradientColor: .red, action: clearAllExpenses)
                     .frame(maxWidth: .infinity)

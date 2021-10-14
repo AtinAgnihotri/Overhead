@@ -34,9 +34,6 @@ class SettingsManager: ObservableObject {
     private init() {
         let cdUserPref = persistenceManager.getPreferences()
         self.userPref = UserPrefsCompanion(cdUserPref)
-        if cdUserPref == nil {
-            persistenceManager.setPreferences(to: self.userPref)
-        }
         setupRemoteChangeObservation()
     }
     
@@ -51,7 +48,9 @@ class SettingsManager: ObservableObject {
     
     @objc private func fetchUserPrefChanges() {
         if let newCDUserPref = persistenceManager.getPreferences() {
+            print()
             let newPrefs = UserPrefsCompanion(newCDUserPref)
+            print("Jenga, \(newPrefs.currency), \(newPrefs.monthlyLimit)")
             if newPrefs != userPref {
                 DispatchQueue.main.async { [weak self] in
                     self?.userPref = newPrefs
