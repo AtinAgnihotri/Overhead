@@ -41,7 +41,6 @@ extension RemindersDays {
 }
 
 struct LimitReminder: Codable {
-    let name: String
     let id: String
     let day: RemindersDays
     let time: Date

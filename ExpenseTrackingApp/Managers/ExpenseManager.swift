@@ -67,7 +67,7 @@ class ExpenseManager: ObservableObject {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(fetchChanges),
-            name: NSNotification.Name(rawValue: "NSPersistentStoreRemoteChangeNotification"),
+            name: NSNotification.Name(rawValue: Constants.CoreDataKeys.CLOUDKIT_CHANGE_NOTIFICATION),
             object: persistenceController.container.persistentStoreCoordinator
         )
     }

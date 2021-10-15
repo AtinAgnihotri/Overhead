@@ -58,9 +58,7 @@ struct LimitsView: View {
                             .labelsHidden()
                         HStack {
                             Spacer()
-                            Button("Save") {
-                                print("Save coming soon")
-                            }
+                            Button("Save", action: limitsVM.saveReminders)
                             Spacer()
                         }
                     }.secondaryListBackground()

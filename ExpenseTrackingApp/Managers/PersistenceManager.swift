@@ -218,7 +218,7 @@ struct PersistenceManager {
         
     }
     
-    func getReminders() -> (Bool, [LimitReminder]) {
+    func getReminders() -> (setReminders: Bool, limitReminders: [LimitReminder]) {
         let setReminders = userDefaults.bool(forKey: Constants.UserPrefKeys.REMINDERS_ON_KEY)
         var limitReminders = [LimitReminder]()
         if let data = userDefaults.data(forKey: Constants.UserPrefKeys.REMINDERS_STORE_KEY) {

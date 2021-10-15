@@ -51,6 +51,7 @@
 		85A9F9B92718B74A0060F5FD /* DayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A9F9B82718B74A0060F5FD /* DayPicker.swift */; };
 		85A9F9BB27197F9A0060F5FD /* LimitReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A9F9BA27197F9A0060F5FD /* LimitReminder.swift */; };
 		85A9F9BD2719D5550060F5FD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A9F9BC2719D5550060F5FD /* Constants.swift */; };
+		85A9F9BF271A11960060F5FD /* ForegroundNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A9F9BE271A11960060F5FD /* ForegroundNotificationHandler.swift */; };
 		85B2258226A4466E00A698A8 /* ShadedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2258126A4466E00A698A8 /* ShadedButton.swift */; };
 		85E7E613269986D100CBEEB0 /* ExpenseItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E7E612269986D100CBEEB0 /* ExpenseItemViewModel.swift */; };
 		85EB1A13270B478A0088F168 /* UserPrefsCompanion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EB1A12270B478A0088F168 /* UserPrefsCompanion.swift */; };
@@ -128,6 +129,7 @@
 		85A9F9B82718B74A0060F5FD /* DayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPicker.swift; sourceTree = "<group>"; };
 		85A9F9BA27197F9A0060F5FD /* LimitReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitReminder.swift; sourceTree = "<group>"; };
 		85A9F9BC2719D5550060F5FD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		85A9F9BE271A11960060F5FD /* ForegroundNotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForegroundNotificationHandler.swift; sourceTree = "<group>"; };
 		85B2258126A4466E00A698A8 /* ShadedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadedButton.swift; sourceTree = "<group>"; };
 		85E7E612269986D100CBEEB0 /* ExpenseItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseItemViewModel.swift; sourceTree = "<group>"; };
 		85EB1A12270B478A0088F168 /* UserPrefsCompanion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPrefsCompanion.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				856679672688CE81007A731B /* PersistenceManager.swift */,
 				8566799C2688D46A007A731B /* ExpenseManager.swift */,
 				85EB1A14270B48290088F168 /* SettingsManager.swift */,
+				85A9F9BE271A11960060F5FD /* ForegroundNotificationHandler.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				8566796B2688CE81007A731B /* ExpenseTrackingApp.xcdatamodeld in Sources */,
 				8554E0E826FE3251003945EE /* ExpenseType.swift in Sources */,
 				85367B322689871B00B9C1C8 /* DetailedExpenseView.swift in Sources */,
+				85A9F9BF271A11960060F5FD /* ForegroundNotificationHandler.swift in Sources */,
 				857582C2270B3ED30062FDD0 /* CurrencySelectionCard.swift in Sources */,
 				857582BA270A2D1A0062FDD0 /* ExpenseCompanion.swift in Sources */,
 				8523AEAF26B4A171006EC205 /* PieChartWithLegend.swift in Sources */,

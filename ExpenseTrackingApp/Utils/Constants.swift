@@ -9,8 +9,13 @@ import Foundation
 
 struct Constants {
     
+    struct Global {
+        static let appName = "Expense Tracking App"
+    }
+    
     struct CoreDataKeys {
         static let COREDATA_CLOUDKIT_CONTAINER = "iCloud.ExpenseTrackingApp"
+        static let CLOUDKIT_CHANGE_NOTIFICATION = "NSPersistentStoreRemoteChangeNotification"
     }
     
     struct UserPrefKeys {
