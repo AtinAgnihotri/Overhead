@@ -19,12 +19,14 @@ struct DayPicker: View {
     
     var body: some View {
         HStack {
+            Spacer()
             ForEach(days, id: \.self) { day in
                 Button(action: {
                     didClick(on: day)
                 }, label: {
                     Text(day)
-                        .padding(5)
+                        .padding(3)
+//                        .padding()
                         .background(switchBackground(for: day))
                         .clipShape(RoundedRectangle(cornerRadius: 5))
                         
@@ -32,6 +34,7 @@ struct DayPicker: View {
                 .buttonStyle(PlainButtonStyle())
             }
             .secondaryListBackground()
+            Spacer()
         }
         .secondaryListBackground()
     }

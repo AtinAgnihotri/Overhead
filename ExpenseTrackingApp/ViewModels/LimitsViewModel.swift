@@ -53,7 +53,13 @@ class LimitsViewModel: ObservableObject {
     
     func getDayString(from reminders: [LimitReminder]) -> String {
         let days = reminders.map { $0.day.rawValue }
-        return days.joined(separator: ", ")
+        var sortedDays = [String]()
+        for day in ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] {
+            if days.contains(day) {
+                sortedDays.append(day)
+            }
+        }
+        return sortedDays.joined(separator: ", ")
     }
     
     
@@ -99,6 +105,7 @@ class LimitsViewModel: ObservableObject {
     
     func resetLimit() {
         settingsManager.setMonthlyLimit(to: nil)
+        setReminder = false
         spendingLimit = ""
     }
     
@@ -121,6 +128,7 @@ class LimitsViewModel: ObservableObject {
         settingsManager.reminders = selectedDays.map {
             LimitReminder(id: UUID().uuidString, day: RemindersDays(rawValue: $0)!, time: selectedTime)
         }
+        setReminder = setReminder // A hack to update the view
     }
     
 }
