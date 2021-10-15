@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UserNotifications
 
 class SettingsManager: ObservableObject {
     static let shared = SettingsManager()
@@ -22,6 +23,17 @@ class SettingsManager: ObservableObject {
         }
     }
     
+    private var setReminders = false {
+        didSet {
+            persistenceManager.setReminders(areOn: setReminders, reminders: reminders)
+        }
+    }
+    
+    private var reminders = [LimitReminder]() {
+        didSet {
+            persistenceManager.setReminders(areOn: setReminders, reminders: reminders)
+        }
+    }
     
     var currency: String {
         userPref.currency
@@ -50,7 +62,6 @@ class SettingsManager: ObservableObject {
         if let newCDUserPref = persistenceManager.getPreferences() {
             print()
             let newPrefs = UserPrefsCompanion(newCDUserPref)
-            print("Jenga, \(newPrefs.currency), \(newPrefs.monthlyLimit)")
             if newPrefs != userPref {
                 DispatchQueue.main.async { [weak self] in
                     self?.userPref = newPrefs
@@ -65,6 +76,15 @@ class SettingsManager: ObservableObject {
     
     func setMonthlyLimit(to limit: Double?) {
         userPref = UserPrefsCompanion(currency: userPref.currency, monthlyLimit: limit)
+    }
+    
+    func startReminders() {
+        
+    }
+    
+    
+    func invalidateReminders() {
+        
     }
     
 }

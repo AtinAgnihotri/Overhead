@@ -10,6 +10,7 @@ import CloudKit
 
 struct PersistenceManager {
     static let shared = PersistenceManager()
+    private let userDefaults = UserDefaults.standard
     
     static var viewContext: NSManagedObjectContext {
         shared.container.viewContext
@@ -45,7 +46,8 @@ struct PersistenceManager {
         guard let description = container.persistentStoreDescriptions.first else {
             fatalError("Failed to fetch description")
         }
-        description.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.ExpenseTrackingApp")
+//        description.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.ExpenseTrackingApp")
+        description.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: Constants.CoreDataKeys.COREDATA_CLOUDKIT_CONTAINER)
         let remoteChangeKey = "NSPersistentStoreRemoteChangeNotificationOptionKey"
         description.setOption(true as NSNumber, forKey: remoteChangeKey)
         container.persistentStoreDescriptions = [description]
@@ -206,6 +208,25 @@ struct PersistenceManager {
         }
         saveContext()
         print("Reaches here")
+    }
+    
+    func setReminders(areOn: Bool, reminders: [LimitReminder]) {
+        userDefaults.set(areOn, forKey: Constants.UserPrefKeys.REMINDERS_ON_KEY)
+        if let data = try? JSONEncoder().encode(reminders) {
+            userDefaults.setValue(data, forKey: Constants.UserPrefKeys.REMINDERS_STORE_KEY)
+        }
+        
+    }
+    
+    func getReminders() -> (Bool, [LimitReminder]) {
+        let setReminders = userDefaults.bool(forKey: Constants.UserPrefKeys.REMINDERS_ON_KEY)
+        var limitReminders = [LimitReminder]()
+        if let data = userDefaults.data(forKey: Constants.UserPrefKeys.REMINDERS_STORE_KEY) {
+            if let reminders = try? JSONDecoder().decode([LimitReminder].self, from: data) {
+                limitReminders = reminders
+            }
+        }
+        return (setReminders: setReminders, limitReminders: limitReminders)
     }
     
     // Once we send in the CDExpenseItem, if we change it in detail view, and then save, that will do the update operation

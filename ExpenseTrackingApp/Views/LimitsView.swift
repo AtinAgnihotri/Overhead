@@ -35,9 +35,36 @@ struct LimitsView: View {
                             Text(limitsVM.monthlyLimit)
                                 .frame(alignment: .trailing)
                         }
+                        
                     }
+                    
+                    
                         
                 }.secondaryListBackground()
+                
+                if limitsVM.hasLimitSet {
+                    Section(header: Text("Reminders")) {
+                        Toggle("Set Reminders?", isOn: $limitsVM.setReminder)
+                        
+                    }.secondaryListBackground()
+                }
+                
+                if limitsVM.setReminder {
+                    Section(header: Text("Current Reminders")) {
+                        Text(limitsVM.currentReminders)
+                        DayPicker(selectedDays: $limitsVM.selectedDays)
+                        DatePicker("Select Time", selection: $limitsVM.selectedTime, displayedComponents: .hourAndMinute)
+                            .datePickerStyle(WheelDatePickerStyle())
+                            .labelsHidden()
+                        HStack {
+                            Spacer()
+                            Button("Save") {
+                                print("Save coming soon")
+                            }
+                            Spacer()
+                        }
+                    }.secondaryListBackground()
+                }
             }.navigationBarItems(trailing: HStack {
                 Button(action: limitsVM.resetLimit) {
                     Text("Reset")

@@ -15,6 +15,18 @@ class LimitsViewModel: ObservableObject {
             updateLimit()
         }
     }
+    @Published var setReminder = false
+    @Published var selectedDays = Set<String>() {
+        didSet {
+            print(selectedDays)
+        }
+    }
+    @Published var selectedTime = Date()
+    
+    var currentReminders: String {
+        "No reminders currently set"
+    }
+    
     
     private let settingsManager = SettingsManager.shared
     var initialised = false
