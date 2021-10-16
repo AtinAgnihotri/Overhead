@@ -29,7 +29,7 @@ struct SettingsView: View {
             VStack {
                 Form {
                     CurrencySelectionCard(currency: $settingsVM.currency)
-                    LimitsSelectionCard()
+                    LimitsSelectionCard(refreshSettings: forceRefresh)
                     
                     Button("Reset Preferences") {
                         PersistenceManager.shared.resetPreferences()
@@ -74,6 +74,10 @@ struct SettingsView: View {
     func clearAllExpenses() {
         settingsVM.clearAllExpenses()
         dismissView()
+    }
+    
+    func forceRefresh() {
+        showingAlert = showingAlert
     }
     
     

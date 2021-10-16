@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LimitsSelectionCard: View {
+    typealias RefreshHandler = () -> Void
     private var currentLimit: String {
         var str = "No limit set"
         let settingsManager = SettingsManager.shared
@@ -19,10 +20,12 @@ struct LimitsSelectionCard: View {
         }
         return str
     }
+    var refreshSettings: RefreshHandler?
+    
     
     var body: some View {
         Section(header: Text("Monthly Limits")) {
-            NavigationLink(destination: LimitsView()) {
+            NavigationLink(destination: LimitsView(refreshSettings: refreshSettings)) {
                 Text("Limits")
                 Spacer()
                 Text(currentLimit)

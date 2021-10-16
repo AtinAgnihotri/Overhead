@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct LimitsView: View {
+    typealias RefreshHandler = () -> Void
     @ObservedObject var limitsVM = LimitsViewModel()
+    @State private var showingAlert = false
+    var refreshSettings: RefreshHandler?
     var editButtonText: String {
         limitsVM.isEditingLimit ? "Done" : "Edit"
     }
@@ -26,11 +29,14 @@ struct LimitsView: View {
                             Text(editButtonText)
                                 .foregroundColor(editButtonColor)
                         }
+                        .buttonStyle(PlainButtonStyle())
                         Spacer()
                         if limitsVM.isEditingLimit {
                             TextField("Monthly Limit", text: $limitsVM.spendingLimit)
                                 .frame(alignment: .trailing)
                                 .keyboardType(.decimalPad)
+                                .padding()
+                                .background(Color(UIColor.tertiarySystemFill))
                         } else {
                             Text(limitsVM.monthlyLimit)
                                 .frame(alignment: .trailing)
@@ -58,13 +64,19 @@ struct LimitsView: View {
                             .labelsHidden()
                         HStack {
                             Spacer()
-                            Button("Save", action: limitsVM.saveReminders)
+                            Button("Save") {
+                                limitsVM.saveReminders()
+                            }
                             Spacer()
                         }
                     }.secondaryListBackground()
                 }
-            }.navigationBarItems(trailing: HStack {
-                Button(action: limitsVM.resetLimit) {
+            }
+            .alert(isPresented: $showingAlert) {
+                getConfirmAlert()
+            }
+            .navigationBarItems(trailing: HStack {
+                Button(action: confirmReset) {
                     Text("Reset")
                         .foregroundColor(.red)
                 }
@@ -72,10 +84,21 @@ struct LimitsView: View {
         }.navigationBarTitle("Limits")
     }
     
-
-    
     func didPressEditButton() {
         limitsVM.isEditingLimit.toggle()
+        refreshSettings?()
+    }
+    
+    func getConfirmAlert() -> Alert {
+        Alert(title: Text("Reset Limits?"),
+              message: Text("Do you want to reset all the limits?"),
+              primaryButton: .default(Text("Confirm"), action: limitsVM.resetLimit),
+              secondaryButton: .cancel())
+    }
+    
+    func confirmReset() {
+        showingAlert = true
+        refreshSettings?()
     }
     
 }
