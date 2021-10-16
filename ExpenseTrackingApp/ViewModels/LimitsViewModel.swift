@@ -128,7 +128,10 @@ class LimitsViewModel: ObservableObject {
         settingsManager.reminders = selectedDays.map {
             LimitReminder(id: UUID().uuidString, day: RemindersDays(rawValue: $0)!, time: selectedTime)
         }
-        setReminder = setReminder // A hack to update the view
+        // A hack to update the view
+        let setReminder = self.setReminder
+        self.setReminder = setReminder
+//        setReminder = setReminder
     }
     
 }

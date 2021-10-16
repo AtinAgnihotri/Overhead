@@ -115,7 +115,8 @@ struct SettingsView: View {
     }
     
     func forceRefresh() {
-        showingAlert = showingAlert
+        let showingAlert = self.showingAlert
+        self.showingAlert = showingAlert
     }
     
     
