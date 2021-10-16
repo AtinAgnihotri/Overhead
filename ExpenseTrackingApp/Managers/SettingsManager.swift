@@ -92,11 +92,17 @@ class SettingsManager: ObservableObject {
     }
     
     func setCurrency(to denomination: String) {
-        userPref = UserPrefsCompanion(currency: denomination, monthlyLimit: userPref.monthlyLimit)
+//        userPref = UserPrefsCompanion(currency: denomination, monthlyLimit: userPref.monthlyLimit)
+        setUserPrefs(currency: denomination, limit: userPref.monthlyLimit)
     }
     
     func setMonthlyLimit(to limit: Double?) {
-        userPref = UserPrefsCompanion(currency: userPref.currency, monthlyLimit: limit)
+//        userPref = UserPrefsCompanion(currency: userPref.currency, monthlyLimit: limit)
+        setUserPrefs(currency: userPref.currency, limit: limit)
+    }
+    
+    func setUserPrefs(currency: String, limit: Double?) {
+        userPref = UserPrefsCompanion(currency: currency, monthlyLimit: limit)
     }
     
     func startReminders() {
@@ -153,6 +159,12 @@ class SettingsManager: ObservableObject {
                 print("Nay!")
             }
         }
+    }
+    
+    func resetSettings() {
+        setUserPrefs(currency: "$", limit: nil)
+        setReminders = false
+        reminders.removeAll()
     }
     
     

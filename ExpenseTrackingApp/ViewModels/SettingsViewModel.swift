@@ -31,6 +31,10 @@ class SettingsViewModel: ObservableObject {
             settingsManager.setCurrency(to: currency)
         }
     }
+    
+    func resetSettings() {
+        settingsManager.resetSettings()
+    }
 
     
 }

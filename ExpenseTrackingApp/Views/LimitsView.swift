@@ -7,10 +7,16 @@
 
 import SwiftUI
 
+enum LimitAlerts {
+    case confirmReset
+    case nothingToReset
+}
+
 struct LimitsView: View {
     typealias RefreshHandler = () -> Void
     @ObservedObject var limitsVM = LimitsViewModel()
     @State private var showingAlert = false
+    @State private var alertType: LimitAlerts = .confirmReset
     var refreshSettings: RefreshHandler?
     var editButtonText: String {
         limitsVM.isEditingLimit ? "Done" : "Edit"
@@ -73,7 +79,11 @@ struct LimitsView: View {
                 }
             }
             .alert(isPresented: $showingAlert) {
-                getConfirmAlert()
+                switch alertType {
+                    case .confirmReset: return getConfirmAlert()
+                    case .nothingToReset: return getInfoAlert()
+                }
+                
             }
             .navigationBarItems(trailing: HStack {
                 Button(action: confirmReset) {
@@ -89,14 +99,19 @@ struct LimitsView: View {
         refreshSettings?()
     }
     
+    func getInfoAlert() -> Alert {
+        Alert(title: Text("Nothing to reset"), message: nil, dismissButton: .default(Text("OK")))
+    }
+    
     func getConfirmAlert() -> Alert {
         Alert(title: Text("Reset Limits?"),
               message: Text("Do you want to reset all the limits?"),
-              primaryButton: .default(Text("Confirm"), action: limitsVM.resetLimit),
+              primaryButton: .destructive(Text("Confirm"), action: limitsVM.resetLimit),
               secondaryButton: .cancel())
     }
     
     func confirmReset() {
+        alertType = limitsVM.hasLimitSet ? .confirmReset : .nothingToReset
         showingAlert = true
         refreshSettings?()
     }

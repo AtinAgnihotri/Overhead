@@ -9,6 +9,7 @@ import SwiftUI
 
 enum AlertType {
     case deleteAll
+    case resetSettings
 }
 
 struct SettingsView: View {
@@ -31,15 +32,31 @@ struct SettingsView: View {
                     CurrencySelectionCard(currency: $settingsVM.currency)
                     LimitsSelectionCard(refreshSettings: forceRefresh)
                     
-                    Button("Reset Preferences") {
-                        PersistenceManager.shared.resetPreferences()
+//                    Button("Reset Preferences") {
+//                        PersistenceManager.shared.resetPreferences()
+//                    }
+                    
+                    Section(header: Text("Others")) {
+//                        CenteredFormButton(text: "Reset Settings", backgroundColor: .red, action: confirmResetSettings)
+                        HStack {
+                            Spacer()
+                            Button("Reset Settings", action: confirmResetSettings)
+                                .foregroundColor(.red)
+                            Spacer()
+                        }.secondaryListBackground()
+                        HStack {
+                            Spacer()
+                            Button("Clear all expenses", action: confirmDeleteAllExpenses)
+                                .foregroundColor(.red)
+                            Spacer()
+                        }.secondaryListBackground()
                     }
                     
                 }
-                ShadedButton(text: "Clear All", backgroundColor: .red, gradientColor: .red, action: clearAllExpenses)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+//                ShadedButton(text: "Clear All", backgroundColor: .red, gradientColor: .red, action: clearAllExpenses)
+//                    .frame(maxWidth: .infinity)
+//                    .padding()
+//                    .clipShape(RoundedRectangle(cornerRadius: 10))
             
             }.navigationBarTitle("Settings")
             .navigationBarItems(trailing: DoneNavBarButton(action: dismissView))
@@ -53,7 +70,12 @@ struct SettingsView: View {
         self.presentationMode.wrappedValue.dismiss()
     }
     
-    func confirmDeleteAll() {
+    func confirmResetSettings() {
+        alertType = .resetSettings
+        showingAlert = true
+    }
+    
+    func confirmDeleteAllExpenses() {
         alertType = .deleteAll
         showingAlert = true
     }
@@ -61,13 +83,29 @@ struct SettingsView: View {
     func showAlert() -> Alert {
         switch alertType {
             case .deleteAll: return showDeletionAlert()
+        case .resetSettings: return showResetAlert()
         }
     }
     
+    func showResetAlert() -> Alert {
+        getCriticalConfirmationAlert(title: "Confirm Reset",
+                                     message: "Are you sure you want to reset the settings?", action: settingsVM.resetSettings)
+    }
+    
     func showDeletionAlert() -> Alert {
-        Alert(title: Text("Confirm Deletion"),
-              message: Text("Are you sure you want to delete all the expenses?"),
-              primaryButton: .destructive(Text("Confirm"), action: settingsVM.clearAllExpenses),
+//        Alert(title: Text("Confirm Deletion"),
+//              message: Text("Are you sure you want to delete all the expenses?"),
+//              primaryButton: .destructive(Text("Confirm"), action: settingsVM.clearAllExpenses),
+//              secondaryButton: .cancel())
+        getCriticalConfirmationAlert(title: "Confirm Deletion",
+                                     message: "Are you sure you want to delete all the expenses?", action: clearAllExpenses)
+    }
+    
+    func getCriticalConfirmationAlert(title: String, message: String?, action: @escaping () -> Void) -> Alert {
+        let messageText = message == nil ? nil : Text(message!)
+        return Alert(title: Text(title),
+              message: messageText,
+              primaryButton: .destructive(Text("Confirm"), action: action),
               secondaryButton: .cancel())
     }
     
