@@ -37,11 +37,11 @@ struct ContentView: View {
                 VStack {
                     if !expenseManager.expenseList.isEmpty {
                         Spacer(minLength: geo.size.height * Constants.Views.PieChart.spacerWidthFactor)
-                        ExpensePieChartView(width: geo.size.width * Constants.Views.PieChart.widthFactor,
+                        ExpensePieChart(width: geo.size.width * Constants.Views.PieChart.widthFactor,
                                             height: geo.size.height * Constants.Views.PieChart.heightFactor)
                     }
                     Spacer()
-                    ExpenseListView()
+                    ExpenseList()
                 }
             }
             .navigationBarTitle(Constants.Global.appName)

@@ -9,7 +9,7 @@ import SwiftUI
 import Introspect
 
 
-struct ExpenseListView: View {
+struct ExpenseList: View {
     @ObservedObject private var expenseListVM = ExpenseListViewModel()
     @State private var tableView: UITableView?
 
@@ -54,6 +54,6 @@ struct ExpenseListView: View {
 
 struct ExpenseListView_Previews: PreviewProvider {
     static var previews: some View {
-        ExpenseListView()
+        ExpenseList()
     }
 }

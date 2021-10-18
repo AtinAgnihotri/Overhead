@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ExpensePieChartView: View {
+struct ExpensePieChart: View {
     @ObservedObject private var expensePieChartVM = ExpensePieChartViewModel()
     private var width: CGFloat
     private var height: CGFloat
@@ -58,7 +58,7 @@ struct ExpensePieChartView: View {
 struct ExpensePieChartView_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { geo in
-            ExpensePieChartView(width: geo.size.width, height: geo.size.height * Constants.Views.PieChart.heightFactor)
+            ExpensePieChart(width: geo.size.width, height: geo.size.height * Constants.Views.PieChart.heightFactor)
         }
     }
 }

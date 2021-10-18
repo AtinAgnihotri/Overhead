@@ -45,8 +45,8 @@
 		858EC0A8271745D900E1D904 /* LimitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858EC0A7271745D800E1D904 /* LimitsView.swift */; };
 		858EC0AA27174B0100E1D904 /* LimitsSelectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858EC0A927174B0100E1D904 /* LimitsSelectionCard.swift */; };
 		85A2F99726FF0677001818AC /* NavBarButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99626FF0677001818AC /* NavBarButtons.swift */; };
-		85A2F99926FF09E8001818AC /* ExpensePieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99826FF09E8001818AC /* ExpensePieChartView.swift */; };
-		85A2F99D26FF8163001818AC /* ExpenseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99C26FF8163001818AC /* ExpenseListView.swift */; };
+		85A2F99926FF09E8001818AC /* ExpensePieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99826FF09E8001818AC /* ExpensePieChart.swift */; };
+		85A2F99D26FF8163001818AC /* ExpenseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99C26FF8163001818AC /* ExpenseList.swift */; };
 		85A2F99F26FF81AE001818AC /* DevTestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A2F99E26FF81AE001818AC /* DevTestUtils.swift */; };
 		85A9F9B92718B74A0060F5FD /* DayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A9F9B82718B74A0060F5FD /* DayPicker.swift */; };
 		85A9F9BB27197F9A0060F5FD /* LimitReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A9F9BA27197F9A0060F5FD /* LimitReminder.swift */; };
@@ -122,8 +122,8 @@
 		858EC0A7271745D800E1D904 /* LimitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitsView.swift; sourceTree = "<group>"; };
 		858EC0A927174B0100E1D904 /* LimitsSelectionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitsSelectionCard.swift; sourceTree = "<group>"; };
 		85A2F99626FF0677001818AC /* NavBarButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButtons.swift; sourceTree = "<group>"; };
-		85A2F99826FF09E8001818AC /* ExpensePieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensePieChartView.swift; sourceTree = "<group>"; };
-		85A2F99C26FF8163001818AC /* ExpenseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListView.swift; sourceTree = "<group>"; };
+		85A2F99826FF09E8001818AC /* ExpensePieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensePieChart.swift; sourceTree = "<group>"; };
+		85A2F99C26FF8163001818AC /* ExpenseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseList.swift; sourceTree = "<group>"; };
 		85A2F99E26FF81AE001818AC /* DevTestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevTestUtils.swift; sourceTree = "<group>"; };
 		85A9F9B82718B74A0060F5FD /* DayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPicker.swift; sourceTree = "<group>"; };
 		85A9F9BA27197F9A0060F5FD /* LimitReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitReminder.swift; sourceTree = "<group>"; };
@@ -194,6 +194,9 @@
 		854FDE6D271E056E00A2CAC1 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				85F9CC0B2705765E007C2DF3 /* ResponsiveTextField.swift */,
+				85A9F9B82718B74A0060F5FD /* DayPicker.swift */,
+				85A2F99626FF0677001818AC /* NavBarButtons.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -201,6 +204,13 @@
 		854FDE6E271E057700A2CAC1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				854FDE6B271E031C00A2CAC1 /* ReminderCard.swift */,
+				854FDE69271E009500A2CAC1 /* LimitCard.swift */,
+				857582C1270B3ED30062FDD0 /* CurrencySelectionCard.swift */,
+				858EC0A927174B0100E1D904 /* LimitsSelectionCard.swift */,
+				856679A42688E013007A731B /* ExpenseListItem.swift */,
+				85A2F99826FF09E8001818AC /* ExpensePieChart.swift */,
+				85A2F99C26FF8163001818AC /* ExpenseList.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -210,6 +220,9 @@
 			children = (
 				856679602688CE79007A731B /* ContentView.swift */,
 				856679A22688DE36007A731B /* AddExpenseView.swift */,
+				857582BF270AB6780062FDD0 /* SettingsView.swift */,
+				85367B312689871B00B9C1C8 /* DetailedExpenseView.swift */,
+				858EC0A7271745D800E1D904 /* LimitsView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -329,19 +342,6 @@
 				854FDE6E271E057700A2CAC1 /* Components */,
 				854FDE6D271E056E00A2CAC1 /* Controls */,
 				8523AEA326B4A171006EC205 /* Charts */,
-				856679A42688E013007A731B /* ExpenseListItem.swift */,
-				85367B312689871B00B9C1C8 /* DetailedExpenseView.swift */,
-				85A2F99626FF0677001818AC /* NavBarButtons.swift */,
-				85A2F99826FF09E8001818AC /* ExpensePieChartView.swift */,
-				85A2F99C26FF8163001818AC /* ExpenseListView.swift */,
-				85F9CC0B2705765E007C2DF3 /* ResponsiveTextField.swift */,
-				857582BF270AB6780062FDD0 /* SettingsView.swift */,
-				857582C1270B3ED30062FDD0 /* CurrencySelectionCard.swift */,
-				858EC0A7271745D800E1D904 /* LimitsView.swift */,
-				858EC0A927174B0100E1D904 /* LimitsSelectionCard.swift */,
-				85A9F9B82718B74A0060F5FD /* DayPicker.swift */,
-				854FDE69271E009500A2CAC1 /* LimitCard.swift */,
-				854FDE6B271E031C00A2CAC1 /* ReminderCard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -512,7 +512,7 @@
 				8554E0E526FE30D0003945EE /* AddExpenseViewModel.swift in Sources */,
 				85A2F99726FF0677001818AC /* NavBarButtons.swift in Sources */,
 				854FDE6A271E009500A2CAC1 /* LimitCard.swift in Sources */,
-				85A2F99926FF09E8001818AC /* ExpensePieChartView.swift in Sources */,
+				85A2F99926FF09E8001818AC /* ExpensePieChart.swift in Sources */,
 				85A2F99F26FF81AE001818AC /* DevTestUtils.swift in Sources */,
 				8523AEAD26B4A171006EC205 /* PieChart.swift in Sources */,
 				85EB1A15270B48290088F168 /* SettingsManager.swift in Sources */,
@@ -527,7 +527,7 @@
 				8523AEAB26B4A171006EC205 /* LegendItem.swift in Sources */,
 				85A9F9B92718B74A0060F5FD /* DayPicker.swift in Sources */,
 				858EC0AA27174B0100E1D904 /* LimitsSelectionCard.swift in Sources */,
-				85A2F99D26FF8163001818AC /* ExpenseListView.swift in Sources */,
+				85A2F99D26FF8163001818AC /* ExpenseList.swift in Sources */,
 				85E7E613269986D100CBEEB0 /* ExpenseItemViewModel.swift in Sources */,
 				85A9F9BD2719D5550060F5FD /* Constants.swift in Sources */,
 				85EB1A13270B478A0088F168 /* UserPrefsCompanion.swift in Sources */,
