@@ -88,17 +88,13 @@ struct SettingsView: View {
     }
     
     func showResetAlert() -> Alert {
-        getCriticalConfirmationAlert(title: "Confirm Reset",
-                                     message: "Are you sure you want to reset the settings?", action: settingsVM.resetSettings)
+        getCriticalConfirmationAlert(title: Constants.Alerts.ResetSettings.title,
+                                     message: Constants.Alerts.ResetSettings.message, action: settingsVM.resetSettings)
     }
     
     func showDeletionAlert() -> Alert {
-//        Alert(title: Text("Confirm Deletion"),
-//              message: Text("Are you sure you want to delete all the expenses?"),
-//              primaryButton: .destructive(Text("Confirm"), action: settingsVM.clearAllExpenses),
-//              secondaryButton: .cancel())
-        getCriticalConfirmationAlert(title: "Confirm Deletion",
-                                     message: "Are you sure you want to delete all the expenses?", action: clearAllExpenses)
+        getCriticalConfirmationAlert(title: Constants.Alerts.DeleteAllExpenses.title,
+                                     message: Constants.Alerts.DeleteAllExpenses.message, action: clearAllExpenses)
     }
     
     func getCriticalConfirmationAlert(title: String, message: String?, action: @escaping () -> Void) -> Alert {

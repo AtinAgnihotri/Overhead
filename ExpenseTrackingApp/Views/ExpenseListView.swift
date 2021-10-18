@@ -13,17 +13,6 @@ struct ExpenseListView: View {
     @ObservedObject private var expenseListVM = ExpenseListViewModel()
     @State private var tableView: UITableView?
 
-    private func deselectRows() {
-        if let tableView = tableView, let selectedRow = tableView.indexPathForSelectedRow {
-            print("Deselecting rows")
-            tableView.deselectRow(at: selectedRow, animated: true)
-        }
-    }
-    
-//    init() {
-//        self.expenseListVM = ExpenseManager.shared.expenseList
-//    }
-    
     var body: some View {
         List {
             ForEach(expenseListVM.expenseList, id:\.id) { expenseVM in
@@ -55,14 +44,16 @@ struct ExpenseListView: View {
         expenseListVM.deleteExpenses(at: offset)
     }
     
-    func editItem() {
-        print("Edit coming soon")
+    private func deselectRows() {
+        if let tableView = tableView, let selectedRow = tableView.indexPathForSelectedRow {
+            print("Deselecting rows")
+            tableView.deselectRow(at: selectedRow, animated: true)
+        }
     }
 }
 
 struct ExpenseListView_Previews: PreviewProvider {
     static var previews: some View {
-//        ExpenseListView(DevTestUtils.shared.getExpenseListVM())
         ExpenseListView()
     }
 }

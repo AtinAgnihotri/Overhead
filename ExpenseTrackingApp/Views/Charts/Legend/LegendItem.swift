@@ -14,7 +14,7 @@ struct LegendItem: View {
     let font: Font
     let cubeSize: CGSize
     
-    init(item: String, color: Color, font: Font = .caption, size cubeSize: CGSize = CGSize(width: 20, height: 20)) {
+    init(item: String, color: Color, font: Font = .caption, size cubeSize: CGSize = Constants.Views.Legend.defaultSize) {
         self.item = item
         self.color = color
         self.font = font

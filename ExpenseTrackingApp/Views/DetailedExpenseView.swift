@@ -32,12 +32,6 @@ struct DetailedExpenseView: View {
         "Date: \(formatDate: expenseVM.date)"
     }
     
-    
-    init(_ expenseVM: ExpenseItemViewModel) {
-        self.expenseVM = expenseVM
-        self.detailedExpenseVM = DetailedExpenseViewModel(with: expenseVM)
-    }
-    
     var isEditing: Bool {
         detailedExpenseVM.isEditing
     }
@@ -50,6 +44,12 @@ struct DetailedExpenseView: View {
         isEditing || hasNote
     }
     
+    
+    init(_ expenseVM: ExpenseItemViewModel) {
+        self.expenseVM = expenseVM
+        self.detailedExpenseVM = DetailedExpenseViewModel(with: expenseVM)
+    }
+    
     var body: some View {
         Form {
             if isEditing {
@@ -60,9 +60,9 @@ struct DetailedExpenseView: View {
                             textField.textAlignment = .right
                             textField.contentHorizontalAlignment = .right
                         }
-                        .padding(5)
+                        .padding(Constants.Views.basePadding)
                         .background(
-                            RoundedRectangle(cornerRadius: 10)
+                            RoundedRectangle(cornerRadius: Constants.Views.basePadding)
                                 .foregroundColor(Color(UIColor.secondarySystemFill))
                         )
                 }.secondaryListBackground()
@@ -77,9 +77,9 @@ struct DetailedExpenseView: View {
                         textField.textAlignment = .right
                         textField.contentHorizontalAlignment = .right
                     }
-                    .padding(5)
+                    .padding(Constants.Views.basePadding)
                     .background(
-                        RoundedRectangle(cornerRadius: 10)
+                        RoundedRectangle(cornerRadius: Constants.Views.basePadding)
                             .foregroundColor(Color(UIColor.secondarySystemFill))
                     )
                     

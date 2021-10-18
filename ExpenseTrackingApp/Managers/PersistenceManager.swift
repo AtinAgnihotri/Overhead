@@ -46,7 +46,6 @@ struct PersistenceManager {
         guard let description = container.persistentStoreDescriptions.first else {
             fatalError("Failed to fetch description")
         }
-//        description.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.ExpenseTrackingApp")
         description.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: Constants.CoreDataKeys.COREDATA_CLOUDKIT_CONTAINER)
         let remoteChangeKey = "NSPersistentStoreRemoteChangeNotificationOptionKey"
         description.setOption(true as NSNumber, forKey: remoteChangeKey)
@@ -144,12 +143,6 @@ struct PersistenceManager {
     
     func getPreferences() -> CDUserPrefs? {
         let request: NSFetchRequest<CDUserPrefs> = CDUserPrefs.fetchRequest()
-        if let fetchster = try? PersistenceManager.viewContext.fetch(request) {
-            fetchster.forEach { fetcher in
-                print("Jenga, \(fetcher.currency), \(fetcher.monthyLimit)")
-            }
-        }
-        
         do {
             return try PersistenceManager.viewContext.fetch(request).first
         } catch {
@@ -160,15 +153,6 @@ struct PersistenceManager {
     
     func setPreferences(to userPref: UserPrefsCompanion) {
         let request: NSFetchRequest<CDUserPrefs> = CDUserPrefs.fetchRequest()
-//        if let pref = try? PersistenceManager.viewContext.fetch(request).first {
-//            pref.currency = userPref.currency
-//            pref.monthyLimit = NSDecimalNumber(decimal: Decimal(userPref.monthlyLimit))
-//
-//        } else {
-//            let pref = CDUserPrefs(context: PersistenceManager.viewContext)
-//            pref.currency = userPref.currency
-//            pref.monthyLimit = NSDecimalNumber(decimal: Decimal(userPref.monthlyLimit))
-//        }
         // Fetches saved pref if present, otherwise creates a new pref
         let savedPref = try? PersistenceManager.viewContext.fetch(request).first
         let pref =  savedPref ?? CDUserPrefs(context: PersistenceManager.viewContext)

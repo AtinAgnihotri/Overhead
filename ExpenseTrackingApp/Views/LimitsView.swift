@@ -13,69 +13,24 @@ enum LimitAlerts {
 }
 
 struct LimitsView: View {
-    typealias RefreshHandler = () -> Void
     @ObservedObject var limitsVM = LimitsViewModel()
     @State private var showingAlert = false
     @State private var alertType: LimitAlerts = .confirmReset
-    var refreshSettings: RefreshHandler?
-    var editButtonText: String {
-        limitsVM.isEditingLimit ? "Done" : "Edit"
-    }
-    
-    var editButtonColor: Color {
-        limitsVM.isEditingLimit ? .blue : .red
-    }
+    var refreshSettings: Constants.Types.RefreshHandler?
     
     var body: some View {
         VStack {
             Form {
-                Section(header: Text("Monthly Limit")) {
-                    HStack {
-                        Button(action: didPressEditButton) {
-                            Text(editButtonText)
-                                .foregroundColor(editButtonColor)
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                        Spacer()
-                        if limitsVM.isEditingLimit {
-                            TextField("Monthly Limit", text: $limitsVM.spendingLimit)
-                                .frame(alignment: .trailing)
-                                .keyboardType(.decimalPad)
-                                .padding()
-                                .background(Color(UIColor.tertiarySystemFill))
-                        } else {
-                            Text(limitsVM.monthlyLimit)
-                                .frame(alignment: .trailing)
-                        }
-                        
-                    }
-                    
-                    
-                        
-                }.secondaryListBackground()
+                LimitCard(limitsVM, refreshSettings: refreshSettings)
                 
                 if limitsVM.hasLimitSet {
                     Section(header: Text("Reminders")) {
                         Toggle("Set Reminders?", isOn: $limitsVM.setReminder)
-                        
                     }.secondaryListBackground()
                 }
                 
                 if limitsVM.setReminder {
-                    Section(header: Text("Current Reminders")) {
-                        Text(limitsVM.currentReminders)
-                        DayPicker(selectedDays: $limitsVM.selectedDays)
-                        DatePicker("Select Time", selection: $limitsVM.selectedTime, displayedComponents: .hourAndMinute)
-                            .datePickerStyle(WheelDatePickerStyle())
-                            .labelsHidden()
-                        HStack {
-                            Spacer()
-                            Button("Save") {
-                                limitsVM.saveReminders()
-                            }
-                            Spacer()
-                        }
-                    }.secondaryListBackground()
+                    ReminderCard(limitsVM)
                 }
             }
             .alert(isPresented: $showingAlert) {
@@ -94,23 +49,18 @@ struct LimitsView: View {
         }.navigationBarTitle("Limits")
     }
     
-    func didPressEditButton() {
-        limitsVM.isEditingLimit.toggle()
-        refreshSettings?()
+    private func getInfoAlert() -> Alert {
+        Alert(title: Text(Constants.Alerts.ResetLimit.failedResetTitle), message: nil, dismissButton: .default(Text("OK")))
     }
     
-    func getInfoAlert() -> Alert {
-        Alert(title: Text("Nothing to reset"), message: nil, dismissButton: .default(Text("OK")))
-    }
-    
-    func getConfirmAlert() -> Alert {
-        Alert(title: Text("Reset Limits?"),
-              message: Text("Do you want to reset all the limits?"),
+    private func getConfirmAlert() -> Alert {
+        Alert(title: Text(Constants.Alerts.ResetLimit.title),
+              message: Text(Constants.Alerts.ResetLimit.message),
               primaryButton: .destructive(Text("Confirm"), action: limitsVM.resetLimit),
               secondaryButton: .cancel())
     }
     
-    func confirmReset() {
+    private func confirmReset() {
         alertType = limitsVM.hasLimitSet ? .confirmReset : .nothingToReset
         showingAlert = true
         refreshSettings?()

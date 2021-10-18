@@ -27,8 +27,8 @@ struct Legend: View {
          withBorder: Bool = true,
          width legendWidth: CGFloat = .infinity,
          font: Font = .caption,
-         cubeSize: CGSize = CGSize(width: 20, height: 20),
-         borderWidth: CGFloat = 1,
+         cubeSize: CGSize = Constants.Views.Legend.defaultSize,
+         borderWidth: CGFloat = Constants.Views.Legend.defaultBorderWidth,
          borderColor: Color = .primary) {
         self.legendTitle = legendTitle
         self.legendItems = legendItems
@@ -51,9 +51,9 @@ struct Legend: View {
     func getBorderedLegend() -> some View {
         getLegend()
             .border(borderColor, width: borderWidth)
-            .clipShape(RoundedRectangle(cornerRadius: 2))
-            .shadow(radius: 5)
-            .padding(5)
+            .clipShape(RoundedRectangle(cornerRadius: Constants.Views.Legend.baseRadius))
+            .shadow(radius: Constants.Views.basePadding)
+            .padding(Constants.Views.basePadding)
             .frame(width: legendWidth, alignment: .trailing)
     }
     
@@ -66,14 +66,14 @@ struct Legend: View {
                 HStack {
                     LegendItem(item: key, color: legendItems[key] ?? .black, font: font, size: cubeSize)
                         .frame( alignment: .leading)
-                    Spacer(minLength: 0.1)
+                    Spacer(minLength: Constants.Views.Legend.baseSpace)
                 }
             }.frame(alignment: .leading)
         }
-        .padding(5)
-        .clipShape(RoundedRectangle(cornerRadius: 2))
-        .shadow(radius: 5)
-        .padding(5)
+        .padding(Constants.Views.basePadding)
+        .clipShape(RoundedRectangle(cornerRadius: Constants.Views.Legend.baseRadius))
+        .shadow(radius: Constants.Views.basePadding)
+        .padding(Constants.Views.basePadding)
         .frame(width: legendWidth, alignment: .trailing)
     }
 }

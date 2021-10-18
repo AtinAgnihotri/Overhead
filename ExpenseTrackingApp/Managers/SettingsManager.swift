@@ -7,6 +7,7 @@
 
 import Foundation
 import UserNotifications
+import UIKit
 
 class SettingsManager: ObservableObject {
     static let shared = SettingsManager()
@@ -14,7 +15,6 @@ class SettingsManager: ObservableObject {
     private var persistenceManager = PersistenceManager.shared
     private let notificationCenter = UNUserNotificationCenter.current()
     private let foregroundNotificationHandler = ForegroundNotificationHandler()
-//    private
     
     @Published var userPref: UserPrefsCompanion {
         didSet {
@@ -92,12 +92,10 @@ class SettingsManager: ObservableObject {
     }
     
     func setCurrency(to denomination: String) {
-//        userPref = UserPrefsCompanion(currency: denomination, monthlyLimit: userPref.monthlyLimit)
         setUserPrefs(currency: denomination, limit: userPref.monthlyLimit)
     }
     
     func setMonthlyLimit(to limit: Double?) {
-//        userPref = UserPrefsCompanion(currency: userPref.currency, monthlyLimit: limit)
         setUserPrefs(currency: userPref.currency, limit: limit)
     }
     
@@ -121,19 +119,16 @@ class SettingsManager: ObservableObject {
         let trigger = getNotificationTrigger(for: reminder)
         let request = UNNotificationRequest(identifier: reminder.id,
                     content: content, trigger: trigger)
-//        notificationCenter.add(request, withCompletionHandler: nil)
         
         notificationCenter.add(request) { (error) in
             if let error = error {
                 print(error.localizedDescription)
             }
         }
-        print("ExpenseSave Set reminder at \(reminder.time) on \(reminder.day.rawValue), Curr: \(Date())")
     }
     
     func getNotificationContent() -> UNMutableNotificationContent? {
         guard let limit = monthyLimit else {
-            print("ExpenseSave that's why notif didn't come")
             return nil
         }
         let content = UNMutableNotificationContent()
@@ -152,11 +147,11 @@ class SettingsManager: ObservableObject {
     }
     
     func requestAuthorisation() {
-        notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
-            if granted {
-                print("Yay!")
-            } else {
-                print("Nay!")
+        notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { [weak self] granted, error in
+            if !granted || error != nil {
+                self?.presentRejectedAuthorisationAlert()
+            } else if granted {
+                print("Notification Permission successfully granted")
             }
         }
     }
@@ -167,5 +162,24 @@ class SettingsManager: ObservableObject {
         reminders.removeAll()
     }
     
+    func presentRejectedAuthorisationAlert() {
+        let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        
+        if var topController = keyWindow?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+            topController.present(getRejectedAuthorisationAlert(), animated: true)
+        }
+    }
+    
+    func getRejectedAuthorisationAlert() -> UIViewController {
+        let rejectedNotificationConstants = Constants.Alerts.RejectedNotificationPermissions.self
+        let alertVC = UIAlertController(title: rejectedNotificationConstants.title,
+                                        message: rejectedNotificationConstants.message,
+                                        preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default))
+        return alertVC
+    }
     
 }

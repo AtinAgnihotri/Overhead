@@ -68,7 +68,6 @@ struct AddExpenseView: View {
                             }
                             .onChange(of: addExpenseVM.note) { _ in
                                 keyboardUtil.scrollWhenKeyboard(for: tableView)
-
                             }
                             .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
                                     keyboardUtil.scrollWhenKeyboard(for: tableView)

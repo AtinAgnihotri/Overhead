@@ -16,6 +16,8 @@ class ExpenseManager: ObservableObject {
     private let persistenceController = PersistenceManager.shared
     private weak var settingsManager = SettingsManager.shared
     
+    @Published var expenseList = [ExpenseItemViewModel]()
+    
     var total: Double {
         expenseList.reduce(0) { value, expense in
             value + expense.amount
@@ -31,7 +33,11 @@ class ExpenseManager: ObservableObject {
         return false
     }
     
-    @Published var expenseList = [ExpenseItemViewModel]()
+    private init() {
+        // Get items from DataModel on startup
+        getAllExpenses()
+        setupRemoteChangeObservation()
+    }
     
     func deleteExpenses(at offsets: IndexSet) {
         offsets.forEach { index in
@@ -57,12 +63,6 @@ class ExpenseManager: ObservableObject {
         getAllExpenses()
     }
     
-    private init() {
-        // Get items from DataModel on startup
-        getAllExpenses()
-        setupRemoteChangeObservation()
-    }
-    
     func setupRemoteChangeObservation() {
         NotificationCenter.default.addObserver(
             self,
@@ -74,7 +74,6 @@ class ExpenseManager: ObservableObject {
     
     
     @objc func fetchChanges(_ notification: Notification) {
-        print("Fetching Changes")
         let expenses = persistenceController.getAllExpenses().map(ExpenseItemViewModel.init).sorted()
         if hasNewChanges(expenses) {
             DispatchQueue.main.async { [weak self] in

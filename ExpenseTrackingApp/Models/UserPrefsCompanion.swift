@@ -17,7 +17,6 @@ struct UserPrefsCompanion: Equatable {
     }
     
     init(_ userPrefs: CDUserPrefs?) {
-        print("Jenga init, \(userPrefs?.currency), \(userPrefs?.monthyLimit)")
         self.currency = userPrefs?.currency ?? "$"
         if let monthlyLimit = userPrefs?.monthyLimit {
             self.monthlyLimit = Double(truncating: monthlyLimit)

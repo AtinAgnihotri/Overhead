@@ -9,24 +9,17 @@ import SwiftUI
 
 struct DayPicker: View {
     
-    private let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-//    @State private var selectedDays = Set<String>() {
-//        didSet {
-//            print(selectedDays)
-//        }
-//    }
     @Binding var selectedDays: Set<String>
     
     var body: some View {
         HStack {
             Spacer()
-            ForEach(days, id: \.self) { day in
+            ForEach(Constants.Views.DayPicker.days, id: \.self) { day in
                 Button(action: {
                     didClick(on: day)
                 }, label: {
                     Text(day)
                         .padding(3)
-//                        .padding()
                         .background(switchBackground(for: day))
                         .clipShape(RoundedRectangle(cornerRadius: 5))
                         

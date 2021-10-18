@@ -67,11 +67,11 @@ struct PieChartWithLegend: View {
          centerTextColor: Color = Color.primary,
          centerTextFont: Font = .caption,
          centerTextFontWeight: Font.Weight = .regular,
-         title legendTitle: String = "Legend",
+         title legendTitle: String = Constants.Views.Legend.title,
          withBorder: Bool = true,
          font: Font = .caption,
-         cubeSize: CGSize = CGSize(width: 20, height: 20),
-         borderWidth: CGFloat = 1,
+         cubeSize: CGSize = Constants.Views.Legend.defaultSize,
+         borderWidth: CGFloat = Constants.Views.Legend.defaultBorderWidth,
          borderColor: Color = .primary) {
         
         total = Array(chartData.values).reduce(0, +)
@@ -109,7 +109,7 @@ struct PieChartWithLegend: View {
     
     func getHorizontallyAlignedChart() -> some View {
         HStack {
-            getPieChart().padding(5)
+            getPieChart().padding(Constants.Views.basePadding)
             getLegend()
         }
     }

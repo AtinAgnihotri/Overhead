@@ -21,9 +21,10 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @ObservedObject var expenseManager = ExpenseManager.shared
-    @State var activeSheet: ActiveSheet?
     
+    @State var activeSheet: ActiveSheet?
     @State private var tableView: UITableView?
+    
     private func deselectRows() {
         if let tableView = tableView, let selectedRow = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: selectedRow, animated: true)
@@ -35,28 +36,17 @@ struct ContentView: View {
             GeometryReader { geo in
                 VStack {
                     if !expenseManager.expenseList.isEmpty {
-                        Spacer(minLength: geo.size.height * 0.02)
-                        ExpensePieChartView(width: geo.size.width * 0.95,
-                                        height: geo.size.height * 0.4)
+                        Spacer(minLength: geo.size.height * Constants.Views.PieChart.spacerWidthFactor)
+                        ExpensePieChartView(width: geo.size.width * Constants.Views.PieChart.widthFactor,
+                                            height: geo.size.height * Constants.Views.PieChart.heightFactor)
                     }
                     Spacer()
                     ExpenseListView()
                 }
             }
-            .navigationBarTitle("Expense Tracker")
-            .navigationBarItems(leading:                                        SettingsNavBarButton(action: showSettings)
-                                    
-                                ,
-                                trailing: AddNavBarButton(action: addItem)
-                                        
-                                    )
-//                                trailing: HStack {
-//                                    SearchNavBarButton {
-//                                        print("Search coming soon")
-//                                    }.padding()
-//                                    AddNavBarButton(action: addItem)
-//                                })
-//            .navigationBarItems(trailing: AddNavBarButton(action: addItem))
+            .navigationBarTitle(Constants.Global.appName)
+            .navigationBarItems(leading: SettingsNavBarButton(action: showSettings),
+                                trailing: AddNavBarButton(action: addItem))
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationViewStyle(StackNavigationViewStyle())
@@ -87,15 +77,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let expense = CDExpenseItem(context: PersistenceManager.viewContext)
-        expense.name = "Test Expense"
-        expense.amount = 1.22
-        expense.date = Date()
-        expense.type = "Personal"
-        let expenseVM = ExpenseItemViewModel(expenseItem: expense)
-        let expenseListVM = ExpenseManager.shared
-        expenseListVM.expenseList = [expenseVM]
-        return ContentView().environment(\.managedObjectContext, PersistenceManager.preview.container.viewContext)
+        ContentView().environment(\.managedObjectContext, PersistenceManager.preview.container.viewContext)
     }
 }
 

@@ -10,31 +10,14 @@ import SwiftUI
 struct CurrencySelectionCard: View {
     
     @Binding var currency: String
-    var currencies = ["د.إ", "$", "৳", "R$", "ب.د", "₣", "¥", "₡", "kr", "€", "ლ", "₵", "D", "L", "Kn", "G", "Rp", "₪", "₹", "Sh", "₩", "د.ك", "Rs"]
-    
-//    init(currency: )
     
     var body: some View {
         Section(header: Text("Currency Selection")) {
-//            HStack {
-//                Text("Currency Selected:")
-//                Spacer()
-//                Text(currency)
-//            }.padding()
-//            .font(.headline)
             Picker("Currency", selection: $currency) {
-                ForEach(currencies, id: \.self) {
+                ForEach(Constants.Views.Settings.currencies, id: \.self) {
                     Text($0).foregroundColor(.blue)
                 }
             }
-//            Section(header: Text("Currency Selection")) {
-//                Picker("Currency", selection: $currency) {
-//                    ForEach(currencies, id: \.self) {
-//                        Text($0)
-//                    }
-//                }
-//                Text("Hello")
-//            }
         }.secondaryListBackground()
     }
 }

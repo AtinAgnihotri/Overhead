@@ -57,16 +57,8 @@ struct ExpensePieChartView: View {
 }
 struct ExpensePieChartView_Previews: PreviewProvider {
     static var previews: some View {
-        let expense = CDExpenseItem(context: PersistenceManager.viewContext)
-        expense.name = "Test Expense"
-        expense.amount = 1.22
-        expense.date = Date()
-        expense.type = "Personal"
-        let expenseVM = ExpenseItemViewModel(expenseItem: expense)
-        let expenseListVM = ExpenseManager.shared
-        expenseListVM.expenseList = [expenseVM]
-        return GeometryReader { geo in
-            ExpensePieChartView(width: geo.size.width, height: geo.size.height * 0.4)
+        GeometryReader { geo in
+            ExpensePieChartView(width: geo.size.width, height: geo.size.height * Constants.Views.PieChart.heightFactor)
         }
     }
 }

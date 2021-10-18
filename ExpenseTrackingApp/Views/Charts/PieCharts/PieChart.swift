@@ -32,7 +32,7 @@ struct PieChart: View {
             return colors
         } else {
             var colors = [String: Color]()
-            let possibleColors: [Color] = [.red, .blue, .green, .orange, .pink, .purple, .red, .yellow]
+            let possibleColors: [Color] = Constants.Views.PieChart.possibleColors
             var indx = 0
             for eachKey in dataKeys {
                 colors[eachKey] = possibleColors[indx]

@@ -14,6 +14,8 @@
 		8523AEAF26B4A171006EC205 /* PieChartWithLegend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8523AEAA26B4A171006EC205 /* PieChartWithLegend.swift */; };
 		85337B102702133F00EFABB4 /* DetailedExpenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85337B0F2702133F00EFABB4 /* DetailedExpenseViewModel.swift */; };
 		85367B322689871B00B9C1C8 /* DetailedExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85367B312689871B00B9C1C8 /* DetailedExpenseView.swift */; };
+		854FDE6A271E009500A2CAC1 /* LimitCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854FDE69271E009500A2CAC1 /* LimitCard.swift */; };
+		854FDE6C271E031C00A2CAC1 /* ReminderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854FDE6B271E031C00A2CAC1 /* ReminderCard.swift */; };
 		8554E0E226FE2AC3003945EE /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 8554E0E126FE2AC3003945EE /* Introspect */; };
 		8554E0E526FE30D0003945EE /* AddExpenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8554E0E426FE30D0003945EE /* AddExpenseViewModel.swift */; };
 		8554E0E826FE3251003945EE /* ExpenseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8554E0E726FE3251003945EE /* ExpenseType.swift */; };
@@ -31,8 +33,6 @@
 		856679952688D177007A731B /* CustomViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679942688D176007A731B /* CustomViewModifiers.swift */; };
 		856679972688D336007A731B /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679962688D336007A731B /* String+Extensions.swift */; };
 		8566799D2688D46A007A731B /* ExpenseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566799C2688D46A007A731B /* ExpenseManager.swift */; };
-		8566799F2688D4ED007A731B /* AddItemImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566799E2688D4ED007A731B /* AddItemImage.swift */; };
-		856679A12688DD08007A731B /* CenteredFormButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679A02688DD08007A731B /* CenteredFormButton.swift */; };
 		856679A32688DE37007A731B /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679A22688DE36007A731B /* AddExpenseView.swift */; };
 		856679A52688E013007A731B /* ExpenseListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856679A42688E013007A731B /* ExpenseListItem.swift */; };
 		857582B62709E6500062FDD0 /* ExpenseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857582B52709E6500062FDD0 /* ExpenseListViewModel.swift */; };
@@ -52,7 +52,6 @@
 		85A9F9BB27197F9A0060F5FD /* LimitReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A9F9BA27197F9A0060F5FD /* LimitReminder.swift */; };
 		85A9F9BD2719D5550060F5FD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A9F9BC2719D5550060F5FD /* Constants.swift */; };
 		85A9F9BF271A11960060F5FD /* ForegroundNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A9F9BE271A11960060F5FD /* ForegroundNotificationHandler.swift */; };
-		85B2258226A4466E00A698A8 /* ShadedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B2258126A4466E00A698A8 /* ShadedButton.swift */; };
 		85E7E613269986D100CBEEB0 /* ExpenseItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E7E612269986D100CBEEB0 /* ExpenseItemViewModel.swift */; };
 		85EB1A13270B478A0088F168 /* UserPrefsCompanion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EB1A12270B478A0088F168 /* UserPrefsCompanion.swift */; };
 		85EB1A15270B48290088F168 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EB1A14270B48290088F168 /* SettingsManager.swift */; };
@@ -86,6 +85,8 @@
 		85337B0F2702133F00EFABB4 /* DetailedExpenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedExpenseViewModel.swift; sourceTree = "<group>"; };
 		85339C7827038A08006F5521 /* ExpenseTrackingApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExpenseTrackingApp.entitlements; sourceTree = "<group>"; };
 		85367B312689871B00B9C1C8 /* DetailedExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedExpenseView.swift; sourceTree = "<group>"; };
+		854FDE69271E009500A2CAC1 /* LimitCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitCard.swift; sourceTree = "<group>"; };
+		854FDE6B271E031C00A2CAC1 /* ReminderCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCard.swift; sourceTree = "<group>"; };
 		8554E0E426FE30D0003945EE /* AddExpenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseViewModel.swift; sourceTree = "<group>"; };
 		8554E0E726FE3251003945EE /* ExpenseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseType.swift; sourceTree = "<group>"; };
 		8554E0E926FE4C82003945EE /* UIAppearanceUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAppearanceUtils.swift; sourceTree = "<group>"; };
@@ -109,8 +110,6 @@
 		856679942688D176007A731B /* CustomViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewModifiers.swift; sourceTree = "<group>"; };
 		856679962688D336007A731B /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		8566799C2688D46A007A731B /* ExpenseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseManager.swift; sourceTree = "<group>"; };
-		8566799E2688D4ED007A731B /* AddItemImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemImage.swift; sourceTree = "<group>"; };
-		856679A02688DD08007A731B /* CenteredFormButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredFormButton.swift; sourceTree = "<group>"; };
 		856679A22688DE36007A731B /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
 		856679A42688E013007A731B /* ExpenseListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListItem.swift; sourceTree = "<group>"; };
 		857582B52709E6500062FDD0 /* ExpenseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListViewModel.swift; sourceTree = "<group>"; };
@@ -130,7 +129,6 @@
 		85A9F9BA27197F9A0060F5FD /* LimitReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitReminder.swift; sourceTree = "<group>"; };
 		85A9F9BC2719D5550060F5FD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		85A9F9BE271A11960060F5FD /* ForegroundNotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForegroundNotificationHandler.swift; sourceTree = "<group>"; };
-		85B2258126A4466E00A698A8 /* ShadedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadedButton.swift; sourceTree = "<group>"; };
 		85E7E612269986D100CBEEB0 /* ExpenseItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseItemViewModel.swift; sourceTree = "<group>"; };
 		85EB1A12270B478A0088F168 /* UserPrefsCompanion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPrefsCompanion.swift; sourceTree = "<group>"; };
 		85EB1A14270B48290088F168 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
@@ -191,6 +189,29 @@
 				8523AEAA26B4A171006EC205 /* PieChartWithLegend.swift */,
 			);
 			path = PieCharts;
+			sourceTree = "<group>";
+		};
+		854FDE6D271E056E00A2CAC1 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		854FDE6E271E057700A2CAC1 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		854FDE6F271E058000A2CAC1 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				856679602688CE79007A731B /* ContentView.swift */,
+				856679A22688DE36007A731B /* AddExpenseView.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		8554E0E326FE2D0A003945EE /* Extensions */ = {
@@ -304,14 +325,12 @@
 		8566798F2688CFC0007A731B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				854FDE6F271E058000A2CAC1 /* Screens */,
+				854FDE6E271E057700A2CAC1 /* Components */,
+				854FDE6D271E056E00A2CAC1 /* Controls */,
 				8523AEA326B4A171006EC205 /* Charts */,
-				856679602688CE79007A731B /* ContentView.swift */,
-				8566799E2688D4ED007A731B /* AddItemImage.swift */,
-				856679A02688DD08007A731B /* CenteredFormButton.swift */,
-				856679A22688DE36007A731B /* AddExpenseView.swift */,
 				856679A42688E013007A731B /* ExpenseListItem.swift */,
 				85367B312689871B00B9C1C8 /* DetailedExpenseView.swift */,
-				85B2258126A4466E00A698A8 /* ShadedButton.swift */,
 				85A2F99626FF0677001818AC /* NavBarButtons.swift */,
 				85A2F99826FF09E8001818AC /* ExpensePieChartView.swift */,
 				85A2F99C26FF8163001818AC /* ExpenseListView.swift */,
@@ -321,6 +340,8 @@
 				858EC0A7271745D800E1D904 /* LimitsView.swift */,
 				858EC0A927174B0100E1D904 /* LimitsSelectionCard.swift */,
 				85A9F9B82718B74A0060F5FD /* DayPicker.swift */,
+				854FDE69271E009500A2CAC1 /* LimitCard.swift */,
+				854FDE6B271E031C00A2CAC1 /* ReminderCard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -485,16 +506,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				857582C0270AB6780062FDD0 /* SettingsView.swift in Sources */,
+				854FDE6C271E031C00A2CAC1 /* ReminderCard.swift in Sources */,
 				85F9CC0A2704DB07007C2DF3 /* KeyboardUtils.swift in Sources */,
 				856679682688CE81007A731B /* PersistenceManager.swift in Sources */,
 				8554E0E526FE30D0003945EE /* AddExpenseViewModel.swift in Sources */,
 				85A2F99726FF0677001818AC /* NavBarButtons.swift in Sources */,
+				854FDE6A271E009500A2CAC1 /* LimitCard.swift in Sources */,
 				85A2F99926FF09E8001818AC /* ExpensePieChartView.swift in Sources */,
 				85A2F99F26FF81AE001818AC /* DevTestUtils.swift in Sources */,
 				8523AEAD26B4A171006EC205 /* PieChart.swift in Sources */,
 				85EB1A15270B48290088F168 /* SettingsManager.swift in Sources */,
 				8523AEAE26B4A171006EC205 /* PieceOfPie.swift in Sources */,
-				85B2258226A4466E00A698A8 /* ShadedButton.swift in Sources */,
 				856679612688CE79007A731B /* ContentView.swift in Sources */,
 				85337B102702133F00EFABB4 /* DetailedExpenseViewModel.swift in Sources */,
 				85F9CC0C2705765E007C2DF3 /* ResponsiveTextField.swift in Sources */,
@@ -515,11 +537,9 @@
 				858EC0A8271745D900E1D904 /* LimitsView.swift in Sources */,
 				8566795F2688CE79007A731B /* ExpenseTrackingAppApp.swift in Sources */,
 				857582B62709E6500062FDD0 /* ExpenseListViewModel.swift in Sources */,
-				856679A12688DD08007A731B /* CenteredFormButton.swift in Sources */,
 				8589A239270356860033B791 /* UIApplication+Extensions.swift in Sources */,
 				856679A52688E013007A731B /* ExpenseListItem.swift in Sources */,
 				857582BE270AB5700062FDD0 /* SettingsViewModel.swift in Sources */,
-				8566799F2688D4ED007A731B /* AddItemImage.swift in Sources */,
 				856679972688D336007A731B /* String+Extensions.swift in Sources */,
 				856679952688D177007A731B /* CustomViewModifiers.swift in Sources */,
 				8566796B2688CE81007A731B /* ExpenseTrackingApp.xcdatamodeld in Sources */,
