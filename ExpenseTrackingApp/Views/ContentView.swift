@@ -44,8 +44,12 @@ struct ContentView: View {
                 }
             }
             .navigationBarTitle("Expense Tracker")
-            .navigationBarItems(leading: SettingsNavBarButton(action: showSettings),
-                                trailing: AddNavBarButton(action: addItem))
+            .navigationBarItems(leading:                                        SettingsNavBarButton(action: showSettings)
+                                    
+                                ,
+                                trailing: AddNavBarButton(action: addItem)
+                                        
+                                    )
 //                                trailing: HStack {
 //                                    SearchNavBarButton {
 //                                        print("Search coming soon")

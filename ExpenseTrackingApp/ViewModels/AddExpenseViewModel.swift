@@ -32,6 +32,10 @@ class AddExpenseViewModel: ObservableObject {
             onFail("Invalid Amount", "Please enter a valid amount")
             return
         }
+        guard amount != 0 else {
+            onFail("Invalid Amount", "Amount cannot be zero")
+            return
+        }
         ExpenseManager.shared.saveExpense(name: name, type: type.rawValue, amount: amount, note: note)
         completion()
     }
