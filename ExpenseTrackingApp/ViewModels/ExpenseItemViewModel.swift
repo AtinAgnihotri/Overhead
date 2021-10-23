@@ -24,30 +24,18 @@ struct ExpenseItemViewModel: Equatable, Comparable {
     }
     
     var amount: Double {
-//        guard let decimalAmount = expenseItem.amount else { return 0 }
-//        return Double(truncating: decimalAmount)
         expenseCompanion.amount
     }
     
     var date: Date {
-//        expenseItem.date ?? Date()
         expenseCompanion.date
     }
     
     var type: ExpenseType {
-//        expenseItem.type ?? "Unknown Type"
-//        var type: ExpenseType
-//        if let expenseType = expenseItem.type {
-//            type = ExpenseType.init(rawValue: expenseType) ?? ExpenseType.other
-//        } else {
-//            type = ExpenseType.other
-//        }
-//        return type
         expenseCompanion.type
     }
     
     var note: String {
-//        expenseItem.note ?? ""
         expenseCompanion.note
     }
     
@@ -56,12 +44,6 @@ struct ExpenseItemViewModel: Equatable, Comparable {
     }
     
     static func ==(lhs: ExpenseItemViewModel, rhs: ExpenseItemViewModel) -> Bool {
-//        let nameCheck = lhs.name == rhs.name
-//        let dateCheck = lhs.date == rhs.date
-//        let amountCheck = lhs.amount == rhs.amount
-//        let typeCheck = lhs.type == rhs.type
-//        let noteCheck = lhs.note == rhs.note
-//        return nameCheck && dateCheck && amountCheck && typeCheck && noteCheck
         lhs.expenseCompanion == rhs.expenseCompanion
     }
     

@@ -13,7 +13,6 @@ class LimitsViewModel: ObservableObject {
     @Published var isEditingLimit = false {
         willSet {
             updateLimit()
-//            settingsManager.startReminders()
         }
     }
     @Published var setReminder = false {
@@ -124,14 +123,12 @@ class LimitsViewModel: ObservableObject {
     private var currentlySelectedTime: Date? = nil
     
     func saveReminders() {
-        print("ExpenseSave Reminders")
         settingsManager.reminders = selectedDays.map {
             LimitReminder(id: UUID().uuidString, day: RemindersDays(rawValue: $0)!, time: selectedTime)
         }
         // A hack to update the view
         let setReminder = self.setReminder
         self.setReminder = setReminder
-//        setReminder = setReminder
     }
     
 }
