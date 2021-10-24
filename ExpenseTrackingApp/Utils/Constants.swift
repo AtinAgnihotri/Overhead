@@ -11,7 +11,7 @@ import SwiftUI
 struct Constants {
     
     struct Global {
-        static let appName = "Expense Tracking App"
+        static let appName = "BILLFOLD"
     }
     
     struct Views {
@@ -29,7 +29,7 @@ struct Constants {
         
         struct PieChart {
             static let possibleColors: [Color] = [.red, .blue, .green, .orange, .pink, .purple, .red, .yellow]
-            static let heightFactor: CGFloat = 0.4
+            static let heightFactor: CGFloat = 0.3
             static let widthFactor: CGFloat = 0.95
             static let spacerWidthFactor: CGFloat = 0.02
         }

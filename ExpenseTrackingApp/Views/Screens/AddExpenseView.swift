@@ -33,12 +33,14 @@ struct AddExpenseView: View {
                     Section (header: Text("Name of the expense")
                                 .font(.headline)) {
                         ResponsiveTextFeild(title: "Name", text: $addExpenseVM.name)
+                            .autocorrection(.no)
                             .introspectTextField{ textField in
                                 if formAppeared {
                                     textField.becomeFirstResponder()
                                     formAppeared.toggle()
                                 }
                             }
+                            
                     }
                     Section (header: Text("Amount spent")
                                 .font(.headline)) {
@@ -65,9 +67,13 @@ struct AddExpenseView: View {
                         TextEditor(text: $addExpenseVM.note)
                             .introspectTextView { textView in
                                 self.textView = textView
+                                setDoneOnKeyboard(on: textView)
                             }
                             .onChange(of: addExpenseVM.note) { _ in
                                 keyboardUtil.scrollWhenKeyboard(for: tableView)
+                            }
+                            .onChange(of: keyboardUtil.keyboardClosed) { _ in
+                                textView?.resignFirstResponder()
                             }
                             .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
                                     keyboardUtil.scrollWhenKeyboard(for: tableView)
@@ -117,13 +123,31 @@ struct AddExpenseView: View {
         self.presentationMode.wrappedValue.dismiss()
     }
     
-    func setDoneOnKeyboard(on textField: UITextField) {
+    private func getKeyboardToolBarWithDone() -> UIToolbar {
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()
         let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: keyboardUtil, action: #selector(keyboardUtil.closeAllKeyboards) )
         keyboardToolbar.items = [flexBarButton, doneBarButton]
-        textField.inputAccessoryView = keyboardToolbar
+        return keyboardToolbar
+    }
+    
+    func setDoneOnKeyboard(on textField: UITextField) {
+//        let keyboardToolbar = UIToolbar()
+//        keyboardToolbar.sizeToFit()
+//        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+//        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: keyboardUtil, action: #selector(keyboardUtil.closeAllKeyboards) )
+//        keyboardToolbar.items = [flexBarButton, doneBarButton]
+        textField.inputAccessoryView = getKeyboardToolBarWithDone()
+    }
+    
+    func setDoneOnKeyboard(on textView: UITextView) {
+//        let keyboardToolbar = UIToolbar()
+//        keyboardToolbar.sizeToFit()
+//        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+//        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: keyboardUtil, action: #selector(keyboardUtil.closeAllKeyboards) )
+//        keyboardToolbar.items = [flexBarButton, doneBarButton]
+        textView.inputAccessoryView = getKeyboardToolBarWithDone()
     }
 
 }

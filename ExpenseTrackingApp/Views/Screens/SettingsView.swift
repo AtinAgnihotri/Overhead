@@ -53,6 +53,7 @@ struct SettingsView: View {
                     }
                     
                 }
+//                .tertiaryBackground()
 //                ShadedButton(text: "Clear All", backgroundColor: .red, gradientColor: .red, action: clearAllExpenses)
 //                    .frame(maxWidth: .infinity)
 //                    .padding()

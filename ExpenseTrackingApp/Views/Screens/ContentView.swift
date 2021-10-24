@@ -19,7 +19,7 @@ enum ActiveSheet: Identifiable {
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var expenseManager = ExpenseManager.shared
     
     @State var activeSheet: ActiveSheet?
@@ -35,25 +35,48 @@ struct ContentView: View {
         NavigationView {
             GeometryReader { geo in
                 VStack {
+                    HStack {
+                        Button(action: showSettings, label: {
+                            Text("Settings")
+                                .fontWeight(.semibold)
+                        }).padding(.horizontal, 20)
+                        Spacer()
+                        Button(action: addItem, label: {
+                            Text(Image(systemName: "plus.app"))
+                                .fontWeight(.semibold)
+                        }).padding(.horizontal)
+                    }.font(.title2)
+                    .padding(.vertical, 10)
+                    HStack {
+                        Text("BILL")
+                            .font(.largeTitle)
+                            .fontWeight(.semibold)
+                            .foregroundColor(Constants.Colors.PieChart.other)
+                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 5, trailing: -3))
+                        Text("FOLD")
+                            .font(.largeTitle)
+                            .fontWeight(.semibold)
+                            .foregroundColor( Constants.Colors.PieChart.personal)
+                            .padding(EdgeInsets(top: 0, leading: -3 , bottom: 5, trailing: 5))
+                        Spacer()
+                    }
                     if !expenseManager.expenseList.isEmpty {
                         Spacer(minLength: geo.size.height * Constants.Views.PieChart.spacerWidthFactor)
                         ExpensePieChart(width: geo.size.width * Constants.Views.PieChart.widthFactor,
                                             height: geo.size.height * Constants.Views.PieChart.heightFactor)
+                        
                     }
-                    Spacer()
+                    Spacer(minLength: geo.size.height * Constants.Views.PieChart.spacerWidthFactor)
                     ExpenseList()
                 }
             }
-            .navigationBarTitle(Constants.Global.appName)
-            .navigationBarItems(leading: SettingsNavBarButton(action: showSettings),
-                                trailing: AddNavBarButton(action: addItem))
+            .navigationBarHidden(true)
         }
         .edgesIgnoringSafeArea(.bottom)
-        .navigationViewStyle(StackNavigationViewStyle())
         .sheet(item: $activeSheet) { item in
             switch item {
                 case .add_expense: AddExpenseView()
-                case .settings: SettingsView() // Add SettingsView here later
+                case .settings: SettingsView()
             }
         }
         .onAppear {
@@ -72,6 +95,7 @@ struct ContentView: View {
     func showSettings() {
         activeSheet = .settings
     }
+    
 }
 
 

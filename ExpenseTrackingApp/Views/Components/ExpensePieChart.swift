@@ -46,7 +46,8 @@ struct ExpensePieChart: View {
                                centerTextFont: totalFont,
                                centerTextFontWeight: totalFontWeight)
                 .frame(width: width, height: height)
-                .aspectRatio(contentMode: .fit)
+//                .aspectRatio(contentMode: .fit)
+                .aspectRatio(contentMode: .fill)
                 .padding(5)
                 .transition(.asymmetric(insertion: .slide,
                                         removal: .scale))
