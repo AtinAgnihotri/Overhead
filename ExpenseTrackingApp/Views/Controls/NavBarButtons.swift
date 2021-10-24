@@ -115,3 +115,25 @@ struct DoneNavBarButton: View {
         TextBarButton(label: "Done", action: action)
     }
 }
+
+struct CustomSettingNavBarButton: View {
+    var action: () -> Void
+    
+    var body: some View {
+        Button(action: action, label: {
+            Text("Settings")
+                .fontWeight(.semibold)
+        }).padding(.horizontal, 20)
+    }
+}
+
+struct CustomAddItemNavBarButton: View {
+    var action: () -> Void
+    
+    var body: some View {
+        Button(action: action, label: {
+            Text(Image(systemName: "plus.app"))
+                .fontWeight(.semibold)
+        }).padding(.horizontal)
+    }
+}

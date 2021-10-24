@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		851362E6272537C6000FB347 /* AppNavTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851362E5272537C5000FB347 /* AppNavTitle.swift */; };
+		851362E8272538A2000FB347 /* AppNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851362E7272538A2000FB347 /* AppNavBar.swift */; };
 		8523AEAB26B4A171006EC205 /* LegendItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8523AEA526B4A171006EC205 /* LegendItem.swift */; };
 		8523AEAC26B4A171006EC205 /* Legend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8523AEA626B4A171006EC205 /* Legend.swift */; };
 		8523AEAD26B4A171006EC205 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8523AEA826B4A171006EC205 /* PieChart.swift */; };
@@ -77,6 +79,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		851362E5272537C5000FB347 /* AppNavTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavTitle.swift; sourceTree = "<group>"; };
+		851362E7272538A2000FB347 /* AppNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavBar.swift; sourceTree = "<group>"; };
 		8523AEA526B4A171006EC205 /* LegendItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegendItem.swift; sourceTree = "<group>"; };
 		8523AEA626B4A171006EC205 /* Legend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Legend.swift; sourceTree = "<group>"; };
 		8523AEA826B4A171006EC205 /* PieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
@@ -211,6 +215,8 @@
 				856679A42688E013007A731B /* ExpenseListItem.swift */,
 				85A2F99826FF09E8001818AC /* ExpensePieChart.swift */,
 				85A2F99C26FF8163001818AC /* ExpenseList.swift */,
+				851362E5272537C5000FB347 /* AppNavTitle.swift */,
+				851362E7272538A2000FB347 /* AppNavBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -534,6 +540,7 @@
 				8564902D2706E550007FB202 /* ExpensePieChartViewModel.swift in Sources */,
 				8566799D2688D46A007A731B /* ExpenseManager.swift in Sources */,
 				858EC0A62717324300E1D904 /* LimitsViewModel.swift in Sources */,
+				851362E6272537C6000FB347 /* AppNavTitle.swift in Sources */,
 				858EC0A8271745D900E1D904 /* LimitsView.swift in Sources */,
 				8566795F2688CE79007A731B /* ExpenseTrackingAppApp.swift in Sources */,
 				857582B62709E6500062FDD0 /* ExpenseListViewModel.swift in Sources */,
@@ -547,6 +554,7 @@
 				85367B322689871B00B9C1C8 /* DetailedExpenseView.swift in Sources */,
 				85A9F9BF271A11960060F5FD /* ForegroundNotificationHandler.swift in Sources */,
 				857582C2270B3ED30062FDD0 /* CurrencySelectionCard.swift in Sources */,
+				851362E8272538A2000FB347 /* AppNavBar.swift in Sources */,
 				857582BA270A2D1A0062FDD0 /* ExpenseCompanion.swift in Sources */,
 				8523AEAF26B4A171006EC205 /* PieChartWithLegend.swift in Sources */,
 			);
