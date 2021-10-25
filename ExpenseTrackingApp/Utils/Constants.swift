@@ -11,7 +11,7 @@ import SwiftUI
 struct Constants {
     
     struct Global {
-        static let appName = "BILLFOLD"
+        static let appName = "OVERHEAD"
     }
     
     struct Views {

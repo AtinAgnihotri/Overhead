@@ -1,4 +1,4 @@
-# <img src="ExpenseTrackingAppScreenshots/billfold_logo.png" alt="Add, Delete and Edit Expenses" width=25> <b>Billfold</b>
+# <img src="ExpenseTrackingAppScreenshots/billfold_logo.png" alt="Add, Delete and Edit Expenses" width=25> <b>Overhead</b>
 An Expense tracking app made with SwiftUI in MVVM pattern
 
 ## Add, Delete, View & Edit Expenses 

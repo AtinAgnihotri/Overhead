@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="billfold_launcher" translatesAutoresizingMaskIntoConstraints="NO" id="xmj-yg-qOv">
+                            <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="overhead_launcher" translatesAutoresizingMaskIntoConstraints="NO" id="xmj-yg-qOv">
                                 <rect key="frame" x="0.0" y="309" width="414" height="278"/>
                             </imageView>
                         </subviews>
@@ -36,7 +36,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="billfold_launcher" width="199.5" height="83.5"/>
+        <image name="overhead_launcher" width="798.5" height="334.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
