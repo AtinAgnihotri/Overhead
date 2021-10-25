@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		851362E6272537C6000FB347 /* AppNavTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851362E5272537C5000FB347 /* AppNavTitle.swift */; };
 		851362E8272538A2000FB347 /* AppNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851362E7272538A2000FB347 /* AppNavBar.swift */; };
+		851362EA27253C77000FB347 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 851362E927253C76000FB347 /* Launch Screen.storyboard */; };
 		8523AEAB26B4A171006EC205 /* LegendItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8523AEA526B4A171006EC205 /* LegendItem.swift */; };
 		8523AEAC26B4A171006EC205 /* Legend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8523AEA626B4A171006EC205 /* Legend.swift */; };
 		8523AEAD26B4A171006EC205 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8523AEA826B4A171006EC205 /* PieChart.swift */; };
@@ -81,6 +82,7 @@
 /* Begin PBXFileReference section */
 		851362E5272537C5000FB347 /* AppNavTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavTitle.swift; sourceTree = "<group>"; };
 		851362E7272538A2000FB347 /* AppNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavBar.swift; sourceTree = "<group>"; };
+		851362E927253C76000FB347 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		8523AEA526B4A171006EC205 /* LegendItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegendItem.swift; sourceTree = "<group>"; };
 		8523AEA626B4A171006EC205 /* Legend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Legend.swift; sourceTree = "<group>"; };
 		8523AEA826B4A171006EC205 /* PieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				8566796C2688CE81007A731B /* Info.plist */,
 				856679692688CE81007A731B /* ExpenseTrackingApp.xcdatamodeld */,
 				856679642688CE81007A731B /* Preview Content */,
+				851362E927253C76000FB347 /* Launch Screen.storyboard */,
 			);
 			path = ExpenseTrackingApp;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				851362EA27253C77000FB347 /* Launch Screen.storyboard in Resources */,
 				856679662688CE81007A731B /* Preview Assets.xcassets in Resources */,
 				856679632688CE81007A731B /* Assets.xcassets in Resources */,
 			);
@@ -643,7 +647,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -698,7 +702,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
