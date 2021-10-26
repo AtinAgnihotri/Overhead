@@ -1,6 +1,15 @@
 # <img src="ExpenseTrackingAppScreenshots/overhead_logo.png" alt="Add, Delete and Edit Expenses" width=25> <b>Overhead</b>
 An Expense tracking app made with SwiftUI in MVVM pattern
 
+## Light & Dark Mode
+<center>
+<img src="ExpenseTrackingAppScreenshots/rot_light_dark.gif" alt="Data Persistence" width=400>
+</center>
+
+Supports both light and dark mode
+
+<br><br>
+
 ## Add, Delete, View & Edit Expenses 
 <center>
 <img src="ExpenseTrackingAppScreenshots/cmp_add_del_edt.gif" alt="Add, Delete and Edit Expenses" width=400>
@@ -24,15 +33,6 @@ The expenses and settings are synced with your iCloud account.
 
 <br><br>
 
-## Light & Dark Mode
-<center>
-<img src="ExpenseTrackingAppScreenshots/rot_light_dark.gif" alt="Data Persistence" width=400>
-</center>
-
-Supports both light and dark mode
-
-<br><br>
-
 ## Technologies Used
 * SwiftUI
 * Combine
@@ -48,7 +48,7 @@ Supports both light and dark mode
 ## Third Party Libraries Used
 * <a href="https://github.com/siteline/SwiftUI-Introspect">SwiftUI-Introspect</a>: Introspect underlying UIKit components from SwiftUI. Check them out <a href="https://github.com/siteline/SwiftUI-Introspect">here</a>.
 
-<br><br>
+<br>
 
 ## Setup
 
