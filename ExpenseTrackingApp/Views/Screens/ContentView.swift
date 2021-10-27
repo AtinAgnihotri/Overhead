@@ -37,17 +37,23 @@ struct ContentView: View {
                 VStack {
                     AppNavBar(settingsTapped: showSettings, addTapped: addItem)
                     AppNavTitle()
+                    HorizontalFilter(selection: $expenseManager.chartFilter, options: Constants.Views.PieChart.filters)
                     if !expenseManager.expenseList.isEmpty {
                         Spacer(minLength: geo.size.height * Constants.Views.PieChart.spacerWidthFactor)
                         ExpensePieChart(width: geo.size.width * Constants.Views.PieChart.widthFactor,
                                             height: geo.size.height * Constants.Views.PieChart.heightFactor)
                         
                     }
+                    
                     Spacer(minLength: geo.size.height * Constants.Views.PieChart.spacerWidthFactor)
+                    
                     ExpenseList()
                 }
             }
             .navigationBarHidden(true)
+            .tabItem {
+                AddExpenseView()
+            }
         }
         .edgesIgnoringSafeArea(.bottom)
         .sheet(item: $activeSheet) { item in

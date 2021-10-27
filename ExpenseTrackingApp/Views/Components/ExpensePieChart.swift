@@ -37,23 +37,25 @@ struct ExpensePieChart: View {
     
     var body: some View {
         Section {
-            PieChartWithLegend(chartData: expensePieChartVM.pieChartData,
-                               legendWidth: 100,
-                               chartColors: ExpenseType.chartColors,
-                               circlet: true,
-                               centerText: totalText,
-                               centerTextColor: totalColor,
-                               centerTextFont: totalFont,
-                               centerTextFontWeight: totalFontWeight)
-                .frame(width: width, height: height)
-//                .aspectRatio(contentMode: .fit)
-                .aspectRatio(contentMode: .fill)
-                .padding(5)
-                .transition(.asymmetric(insertion: .slide,
-                                        removal: .scale))
-                .animation(.easeInOut(duration: 1))
+            VStack {
+                PieChartWithLegend(chartData: expensePieChartVM.pieChartData,
+                                   legendWidth: 100,
+                                   chartColors: ExpenseType.chartColors,
+                                   circlet: true,
+                                   centerText: totalText,
+                                   centerTextColor: totalColor,
+                                   centerTextFont: totalFont,
+                                   centerTextFontWeight: totalFontWeight)
+                    .frame(width: width, height: height)
+                    .aspectRatio(contentMode: .fill)
+                    .padding(5)
+                    .transition(.asymmetric(insertion: .slide,
+                                            removal: .scale))
+                    .animation(.easeInOut(duration: 1))
+            }
         }
         .padding(.vertical)
+        .shadow(radius: 10)
     }
 }
 struct ExpensePieChartView_Previews: PreviewProvider {

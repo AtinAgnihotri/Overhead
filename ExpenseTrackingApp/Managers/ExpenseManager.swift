@@ -11,12 +11,29 @@ import SwiftUI
 import NotificationCenter
 
 class ExpenseManager: ObservableObject {
+    
+    enum ChartFilter: String{
+        case day = "Today"
+        case week = "Week"
+        case month = "Month"
+        case quarter = "Quarter"
+        case year = "Year"
+    }
+    
     static public let shared = ExpenseManager()
     
     private let persistenceController = PersistenceManager.shared
     private weak var settingsManager = SettingsManager.shared
     
     @Published var expenseList = [ExpenseItemViewModel]()
+    @Published var chartFilter: String {
+        didSet {
+            currentChartFilter = ChartFilter(rawValue: chartFilter)
+            getAllExpenses()
+        }
+    }
+    
+    private var currentChartFilter: ChartFilter? = nil
     
     var total: Double {
         expenseList.reduce(0) { value, expense in
@@ -35,6 +52,7 @@ class ExpenseManager: ObservableObject {
     
     private init() {
         // Get items from DataModel on startup
+        chartFilter = ""
         getAllExpenses()
         setupRemoteChangeObservation()
     }
@@ -50,12 +68,26 @@ class ExpenseManager: ObservableObject {
     
     func getAllExpenses() {
         // Fix for notification shimmer bug
-        expenseList = persistenceController.getAllExpenses().map(ExpenseItemViewModel.init).sorted()
+//        expenseList = persistenceController.getAllExpenses().map(ExpenseItemViewModel.init).sorted()
+        expenseList = persistenceController.getAllExpenses().compactMap { cdExpense in
+            let expense = ExpenseItemViewModel(expenseItem: cdExpense)
+            if isExpenseInFilteredRange(expense) {
+                return expense
+            } else {
+                return nil
+            }
+        }.sorted()
     }
     
     func setExpenses(to expenses: [ExpenseItemViewModel]) {
         // Fix for notification shimmer bug
-        expenseList = expenses
+        expenseList = expenses.compactMap { expense in
+            if isExpenseInFilteredRange(expense) {
+                return expense
+            } else {
+                return nil
+            }
+        }
     }
     
     func saveExpense(name: String, type: String, amount: Double, note: String) {
@@ -99,6 +131,33 @@ class ExpenseManager: ObservableObject {
         }
         expenseList.removeAll(keepingCapacity: true)
         getAllExpenses()
+    }
+    
+    func isExpenseInFilteredRange(_ expense: ExpenseItemViewModel) -> Bool {
+        if let filter = currentChartFilter {
+            let components: Set<Calendar.Component> = [.day, .weekOfYear, .month, .quarter, .year]
+            let expenseComponent = Calendar.current.dateComponents(components, from: expense.date)
+            let filteredComponent = Calendar.current.dateComponents(components, from: Date())
+            let dayCheck = expenseComponent.day == filteredComponent.day
+            let weekCheck = expenseComponent.weekOfYear == filteredComponent.weekOfYear
+            let monthCheck = expenseComponent.month == filteredComponent.month
+            let quarterCheck = expenseComponent.quarter == filteredComponent.quarter
+            let yearCheck = expenseComponent.year == expenseComponent.year
+            switch filter {
+            case .day:
+                return dayCheck && monthCheck && yearCheck
+            case .week:
+                return weekCheck && yearCheck
+            case .month:
+                return monthCheck && yearCheck
+            case .quarter:
+                return quarterCheck && yearCheck
+            case .year:
+                return yearCheck
+            }
+        } else {
+            return true
+        }
     }
     
 }

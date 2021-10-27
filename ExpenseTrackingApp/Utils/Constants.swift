@@ -29,6 +29,7 @@ struct Constants {
         
         struct PieChart {
             static let possibleColors: [Color] = [.red, .blue, .green, .orange, .pink, .purple, .red, .yellow]
+            static let filters = ["Today", "Week", "Month", "Quarter", "Year"]
             static let heightFactor: CGFloat = 0.3
             static let widthFactor: CGFloat = 0.95
             static let spacerWidthFactor: CGFloat = 0.02
@@ -41,6 +42,10 @@ struct Constants {
         
         struct Settings {
             static let currencies = ["د.إ", "$", "৳", "R$", "ب.د", "₣", "¥", "₡", "kr", "€", "ლ", "₵", "D", "L", "Kn", "G", "Rp", "₪", "₹", "Sh", "₩", "د.ك", "Rs"]
+        }
+        
+        struct Filters {
+            
         }
     }
     

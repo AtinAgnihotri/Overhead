@@ -44,6 +44,8 @@
 		857582C0270AB6780062FDD0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857582BF270AB6780062FDD0 /* SettingsView.swift */; };
 		857582C2270B3ED30062FDD0 /* CurrencySelectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857582C1270B3ED30062FDD0 /* CurrencySelectionCard.swift */; };
 		8589A239270356860033B791 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8589A238270356860033B791 /* UIApplication+Extensions.swift */; };
+		858AD08227292BE2005E90AF /* HorizontalScrollFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858AD08127292BE2005E90AF /* HorizontalScrollFilter.swift */; };
+		858AD08427293252005E90AF /* HorizontalFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858AD08327293252005E90AF /* HorizontalFilter.swift */; };
 		858EC0A62717324300E1D904 /* LimitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858EC0A52717324300E1D904 /* LimitsViewModel.swift */; };
 		858EC0A8271745D900E1D904 /* LimitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858EC0A7271745D800E1D904 /* LimitsView.swift */; };
 		858EC0AA27174B0100E1D904 /* LimitsSelectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858EC0A927174B0100E1D904 /* LimitsSelectionCard.swift */; };
@@ -124,6 +126,8 @@
 		857582BF270AB6780062FDD0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		857582C1270B3ED30062FDD0 /* CurrencySelectionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectionCard.swift; sourceTree = "<group>"; };
 		8589A238270356860033B791 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
+		858AD08127292BE2005E90AF /* HorizontalScrollFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollFilter.swift; sourceTree = "<group>"; };
+		858AD08327293252005E90AF /* HorizontalFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalFilter.swift; sourceTree = "<group>"; };
 		858EC0A52717324300E1D904 /* LimitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitsViewModel.swift; sourceTree = "<group>"; };
 		858EC0A7271745D800E1D904 /* LimitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitsView.swift; sourceTree = "<group>"; };
 		858EC0A927174B0100E1D904 /* LimitsSelectionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitsSelectionCard.swift; sourceTree = "<group>"; };
@@ -203,6 +207,8 @@
 				85F9CC0B2705765E007C2DF3 /* ResponsiveTextField.swift */,
 				85A9F9B82718B74A0060F5FD /* DayPicker.swift */,
 				85A2F99626FF0677001818AC /* NavBarButtons.swift */,
+				858AD08127292BE2005E90AF /* HorizontalScrollFilter.swift */,
+				858AD08327293252005E90AF /* HorizontalFilter.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -528,6 +534,7 @@
 				85EB1A15270B48290088F168 /* SettingsManager.swift in Sources */,
 				8523AEAE26B4A171006EC205 /* PieceOfPie.swift in Sources */,
 				856679612688CE79007A731B /* ContentView.swift in Sources */,
+				858AD08227292BE2005E90AF /* HorizontalScrollFilter.swift in Sources */,
 				85337B102702133F00EFABB4 /* DetailedExpenseViewModel.swift in Sources */,
 				85F9CC0C2705765E007C2DF3 /* ResponsiveTextField.swift in Sources */,
 				856679A32688DE37007A731B /* AddExpenseView.swift in Sources */,
@@ -547,6 +554,7 @@
 				851362E6272537C6000FB347 /* AppNavTitle.swift in Sources */,
 				858EC0A8271745D900E1D904 /* LimitsView.swift in Sources */,
 				8566795F2688CE79007A731B /* ExpenseTrackingAppApp.swift in Sources */,
+				858AD08427293252005E90AF /* HorizontalFilter.swift in Sources */,
 				857582B62709E6500062FDD0 /* ExpenseListViewModel.swift in Sources */,
 				8589A239270356860033B791 /* UIApplication+Extensions.swift in Sources */,
 				856679A52688E013007A731B /* ExpenseListItem.swift in Sources */,
