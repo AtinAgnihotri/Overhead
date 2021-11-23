@@ -1,7 +1,10 @@
 # <img src="ExpenseTrackingAppScreenshots/overhead_logo.png" alt="Add, Delete and Edit Expenses" width=25> <b>Overhead</b>
-An Expense tracking app made with SwiftUI in MVVM pattern
+
+An Expense tracking app made with SwiftUI in MVVM pattern.
+Check it out on <a href="https://testflight.apple.com/join/114vx8iC">Testflight.</a>
 
 ## Light & Dark Mode
+
 <center>
 <img src="ExpenseTrackingAppScreenshots/rot_light_dark.gif" alt="Data Persistence" width=400>
 </center>
@@ -10,19 +13,21 @@ Supports both light and dark mode
 
 <br><br>
 
-## Add, Delete, View & Edit Expenses 
+## Add, Delete, View & Edit Expenses
+
 <center>
 <img src="ExpenseTrackingAppScreenshots/cmp_add_del_edt.gif" alt="Add, Delete and Edit Expenses" width=400>
 </center>
 
-* Add Expenses
-* Delete Expenses
-* View and Edit Expenses
-* See representation of total expenses
+- Add Expenses
+- Delete Expenses
+- View and Edit Expenses
+- See representation of total expenses
 
 <br><br>
 
 ## Data Persistence & Live Daya Sync
+
 <center>
 <img src="ExpenseTrackingAppScreenshots/cmp_sync.gif" alt="Data Persistence and Live Data Sync with CoreData + Cloudkit" width=400>
 </center>
@@ -34,19 +39,21 @@ The expenses and settings are synced with your iCloud account.
 <br><br>
 
 ## Technologies Used
-* SwiftUI
-* Combine
-* UIKit
-* CoreData
-* CloudKit
-* UserDefaults
-* UserNotifications
-* Core Graphics
+
+- SwiftUI
+- Combine
+- UIKit
+- CoreData
+- CloudKit
+- UserDefaults
+- UserNotifications
+- Core Graphics
 
 <br>
 
 ## Third Party Libraries Used
-* <a href="https://github.com/siteline/SwiftUI-Introspect">SwiftUI-Introspect</a>: Introspect underlying UIKit components from SwiftUI. Check them out <a href="https://github.com/siteline/SwiftUI-Introspect">here</a>.
+
+- <a href="https://github.com/siteline/SwiftUI-Introspect">SwiftUI-Introspect</a>: Introspect underlying UIKit components from SwiftUI. Check them out <a href="https://github.com/siteline/SwiftUI-Introspect">here</a>.
 
 <br>
 
